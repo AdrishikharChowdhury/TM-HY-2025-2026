@@ -1,10 +1,26 @@
-# Working instructions
+﻿# Working instructions
 
 - Treat this folder as the source project for *Electronic Trends*, the ECE department magazine at St. Thomas' College of Engineering & Technology.
-- Preserve the confirmed issue identity: Volume X, 2025–26. Correct any stale Volume IX references when editing magazine material.
+- Preserve the confirmed issue identity: Volume X, 2025â€“26. Correct any stale Volume IX references when editing magazine material.
 - Follow the folder map and LaTeX build guidance in the root `README.md`. Keep article sources, front matter, events, activities, assets, submissions, and build output in their current categories; update LaTeX paths whenever files move.
 - Keep `.gitignore` aligned with generated LaTeX output and local editor/OS clutter. Do not ignore submitted source material or reviewed publication PDFs by default.
 - Publication PDFs exceed GitHub's regular 100 MB file limit; commit the `*.pdf` Git LFS attributes before commits that add PDFs, and migrate already committed PDF history when needed before pushing.
+- In magazine reports, place tables at page tops or bottoms; do not pin them mid-page. Keep any explanatory lead-in adjacent to the table without pushing the table away from the page edge; when the lead-in would displace a top-placed table, put the lead-in immediately after it. Ensure following sections do not overtake the table in rendered reading order. Avoid forced breaks or spacing that leave large blank areas.
+- Keep explanatory sentences introducing tables within one column; the tables may span the full page width when the layout requires it.
+- Keep each table's citation or explanatory lead-in on the same page as its table. When a table is placed at the top and an above-table lead-in would push it down, place the unchanged lead-in immediately after the table within the same float, at one-column width.
+- When several tables would stack at the top of one page, distribute them across adjacent page edges where the layout allows, keeping each citation with its table and avoiding large blank areas.
+- In Report 1, align Table 1's lead-in to the right column immediately above the bottom-placed full-width table.
+- Leave a small visible gap between a full-width table and any lead-in sentence placed immediately below it.
+- Use a consistent light yellow background for all “Did you know?” boxes. When the user asks to split a fact into points, preserve its existing facts and wording without adding new claims.
+- When the user explicitly asks for new technical facts, add only the requested number and verify them against authoritative sources.
+- Keep visible separation between points in boxed “Did you know?” lists when requested.
+- Keep consecutive report sections in one continuous `multicols` flow; closing and reopening columns mid-article can cause later left-column headings to appear before earlier right-column text.
+- The user is the editor, not the report author. Do not add, remove, paraphrase, or invent report content unless explicitly asked; make layout-only changes and preserve the author's wording.
+- When the user asks to check a report for “discrepancies,” interpret that as checking wording consistency and content/reading sequence (including misplaced lead-ins and citations that do not match the reference list); do not treat it as a request for technical fact-checking unless asked.
+- For a sequentialization review, inspect the rendered report from beginning to end in actual two-column reading order across page breaks, then compare that order to the source. Do not stop after checking float lead-ins or source order.
+- After every report layout change, render and inspect the affected PDF pages for blank areas below figures, table placement, and reading order before telling the user the change is complete. A successful LaTeX build alone does not confirm the layout rules are met; do this automatically without waiting for the user to point out a gap.
+- After every change, inspect the rendered pages for content sequence, column order, spacing, and float placement before considering the change complete. Never assume the layout is correct from the source or a successful build; check it in the PDF.
 - For every new instruction the user gives in this project, update both `AGENT.md` and `CONTEXT.md`: add durable working guidance here when appropriate, and record the request, relevant decision, and outcome in `CONTEXT.md`.
 - Before starting work in a later session, read this file and `CONTEXT.md` for the accumulated instructions and project context.
 - Keep `CONTEXT.md` as a concise, current handoff; update or consolidate it as work progresses.
+- Avoid optional MiKTeX font-package probes in the main preamble when the document does not require that font; they can trigger recurring package-install prompts. Keep builds noninteractive where possible.

@@ -48,16 +48,14 @@
   \subsection*{\centering\uppercase{Beyond Conventional Silicon}}
   Silicon remains the foundation of semiconductor manufacturing, but continued scaling motivates alternative channel, contact, dielectric, and interconnect materials. Graphene offers exceptional carrier mobility and thermal conductivity, although its lack of a natural bandgap complicates ordinary digital switching [3]. Carbon nanotubes can form narrow transistor channels with strong electrostatic control [4]. Two-dimensional semiconductors, nanowires, and high-permittivity dielectrics provide further routes toward low-power and highly scaled devices.
 
-  \noindent
-  A promising material must satisfy more than one laboratory metric. It must be manufacturable over large areas, stable during processing, compatible with contacts and dielectrics, reproducible across devices, and economically integrated into existing production systems.
 \end{multicols}
 
-\begin{table}[t]
+\begin{table}[b]
 \centering
 \caption{Representative nanoelectronic technologies and their engineering value.}
 \footnotesize
   \setlength{\tabcolsep}{4pt}
-  \renewcommand{\arraystretch}{1.18}
+  \renewcommand{\arraystretch}{1.0}
   \begin{tabular}{@{}>{\bfseries\RaggedRight\arraybackslash}p{0.20\textwidth}
                       >{\RaggedRight\arraybackslash}p{0.28\textwidth}
                       >{\RaggedRight\arraybackslash}p{0.44\textwidth}@{}}
@@ -70,12 +68,14 @@
     Two-dimensional materials & Atomically thin channels and surfaces & Flexible electronics, sensing, and scaled transistors \\
     Resistive and phase-change memory & Non-volatile programmable conductance & Storage, in-memory computing, and artificial synapses \\
     Nanowires and thin films & High surface-to-volume ratio and flexibility & Biomedical sensors, wearable devices, and energy systems \\
-    \bottomrule
+  \bottomrule
   \end{tabular}
 \end{table}
 \vspace{-0.18em}
 
 \begin{multicols}{2}
+  A promising material must satisfy more than one laboratory metric. It must be manufacturable over large areas, stable during processing, compatible with contacts and dielectrics, reproducible across devices, and economically integrated into existing production systems.
+
   \subsection*{\centering\uppercase{AI for Nanoelectronics}}
   Table~1 summarizes representative nanoelectronic technologies and their engineering value.
   AI supports nanoelectronics at several stages, from material discovery to manufacturing and circuit operation. Its principal advantage is the ability to learn useful approximations from experimental or simulated data and then evaluate new candidates much faster than repeated physical trials.
@@ -101,14 +101,9 @@
   \subsubsection*{In-Memory Computing}
   Crossbar arrays of resistive or phase-change devices can store conductance values representing neural-network weights. Applying input voltages allows currents to accumulate according to Kirchhoff's laws, approximating many multiply--accumulate operations in parallel. The approach can be highly efficient, but practical systems must manage device variation, limited precision, noise, endurance, and analogue-to-digital conversion overhead.
 
-  \subsubsection*{Neuromorphic Hardware}
-  Neuromorphic systems imitate selected organisational principles of biological nervous systems [6]. Electronic neurons communicate through events or spikes, while synaptic devices store adaptable connection strengths. Processing and memory are placed close together, allowing sparse sensory information to be handled with low energy. Applications include robotics, vision, audio processing, medical monitoring, and always-on edge intelligence.
-
-  \subsubsection*{Edge AI}
-  Compact nanoelectronic accelerators allow inference to occur near a sensor rather than in a remote cloud. Local processing reduces communication delay, bandwidth, and exposure of private raw data. It is particularly valuable for wearables, autonomous machines, industrial monitoring, and battery-powered systems.
 \end{multicols}
 
-\begin{table}[t]
+\begin{table}[b]
 \centering
 \caption{The reciprocal relationship between AI and nanoelectronics.}
 \footnotesize
@@ -132,6 +127,12 @@
 \vspace{-0.18em}
 
 \begin{multicols}{2}
+  \subsubsection*{Neuromorphic Hardware}
+  Neuromorphic systems imitate selected organisational principles of biological nervous systems [6]. Electronic neurons communicate through events or spikes, while synaptic devices store adaptable connection strengths. Processing and memory are placed close together, allowing sparse sensory information to be handled with low energy. Applications include robotics, vision, audio processing, medical monitoring, and always-on edge intelligence.
+
+  \subsubsection*{Edge AI}
+  Compact nanoelectronic accelerators allow inference to occur near a sensor rather than in a remote cloud. Local processing reduces communication delay, bandwidth, and exposure of private raw data. It is particularly valuable for wearables, autonomous machines, industrial monitoring, and battery-powered systems.
+
   \subsection*{\centering\uppercase{An Integrated Development Cycle}}
   Table~2 summarizes the reciprocal relationship between AI and nanoelectronics.
   The strongest results emerge when AI and physical engineering are combined in a closed loop:

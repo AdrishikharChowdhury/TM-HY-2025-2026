@@ -1,10 +1,16 @@
-\begin{center}
+﻿\begin{center}
   \section{\capitalisewords{Next-Generation Networking and Communication Protocols for IoT}}
   Dr. Prasun Chowdhury, Associate Professor, ECE
 \end{center}
 
 \setcounter{figure}{0}
 \setcounter{table}{0}
+
+\begingroup
+  \setlength{\parskip}{1pt}
+  \setlength{\multicolsep}{3pt}
+  \setlength{\abovecaptionskip}{1.5pt}
+  \setlength{\belowcaptionskip}{1.5pt}
 
 \begin{multicols}{2}
 
@@ -35,7 +41,7 @@
 \vspace{-0.9em}
 \begin{minipage}{0.98\columnwidth}
 \centering
-    \includegraphics[width=0.45\columnwidth]{assets/images/faculty_pc_five_layer.jpg}
+    \includegraphics[width=0.50\columnwidth]{assets/images/faculty_pc_five_layer.jpg}
     \captionof{figure}{A layered view of IoT sensing, networking, processing, and applications.}
 \end{minipage}
   \end{center}
@@ -60,13 +66,13 @@
 \vspace{-0.9em}
 \begin{minipage}{0.98\columnwidth}
 \centering
-    \includegraphics[width=0.50\columnwidth]{assets/images/faculty_pc_protocol_stack.jpg}
+    \includegraphics[width=0.70\columnwidth]{assets/images/faculty_pc_protocol_stack.jpg}
     \captionof{figure}{Protocols and technologies across a representative IoT stack.}
 \end{minipage}
   \end{center}
 \vspace{-0.9em}
 
-  \needspace{8\baselineskip}
+  \needspace{4\baselineskip}
   \subsection*{\centering\uppercase{Short-Range Connectivity}}
   BLE operates in the 2.4-GHz band and is designed for small data exchanges with long battery life. It is widely used in wearables, beacons, fitness devices, and health monitors. Zigbee builds low-data-rate mesh networks over IEEE 802.15.4, allowing messages to pass through intermediate nodes. Z-Wave uses sub-GHz spectrum in home-automation networks, reducing interference from crowded 2.4-GHz systems.
 
@@ -81,12 +87,16 @@
 
 \end{multicols}
 
-\begin{table}[t]
+\begin{table}[!b]
+\noindent\hfill\begin{minipage}{0.48\textwidth}
+\raggedright
+Table~1 summarizes representative IoT communication technologies and their design trade-offs.\par
+\end{minipage}\par
 \centering
 \caption{Representative IoT communication technologies and design trade-offs.}
-\scriptsize
+\normalsize
   \setlength{\tabcolsep}{2.5pt}
-  \renewcommand{\arraystretch}{1.12}
+  \renewcommand{\arraystretch}{1.8}
   \begin{tabular}{@{}>{\bfseries\RaggedRight\arraybackslash}p{0.16\textwidth}
                       >{\Centering\arraybackslash}p{0.14\textwidth}
                       >{\Centering\arraybackslash}p{0.12\textwidth}
@@ -104,37 +114,11 @@
     \bottomrule
   \end{tabular}
 \end{table}
-\vspace{-0.18em}
+\newpage
 
-\begin{multicols}{2}
-
-  \subsection*{\centering\uppercase{Application-Layer Protocols}}
-  Table~1 summarizes representative IoT communication technologies and their design trade-offs.
-  \subsubsection*{MQTT}
-  MQTT uses a publish--subscribe model. Devices publish messages to named topics through a broker, and subscribers receive topics of interest. This decouples producers and consumers and supports scalable telemetry. MQTT defines QoS 0 (at most once), QoS 1 (at least once), and QoS 2 (exactly once), trading overhead for delivery assurance [4].
-
-  \subsubsection*{CoAP}
-  The Constrained Application Protocol (CoAP) follows a REST-style request--response model similar to HTTP but normally uses UDP. Compact binary headers, multicast support, resource observation, and DTLS or object security make it suitable for constrained nodes [5].
-
-  \subsubsection*{HTTP and AMQP}
-  HTTP/HTTPS remains common between gateways, web applications, and cloud platforms because tools and services support it universally. Its overhead may be excessive for very constrained endpoints. AMQP provides reliable message queuing and routing for enterprise and industrial integration where richer broker functionality is required.
-
-  \subsection*{\centering\uppercase{Quality of Service}}
-  IoT performance is measured through latency, jitter, throughput, packet loss, reliability, and availability. Requirements vary sharply: a soil sensor may tolerate minutes of delay, while a protection relay or robotic controller may require deterministic response.   QoS must therefore be designed across the radio, scheduling, routing, transport, application, and computing layers.
-
-  \subsection*{\centering\uppercase{Security Across the Stack}}
-  Table~2 compares common IoT application protocols and their typical placements.
-  {\justifying
-    IoT devices often operate unattended, handle sensitive data, and control physical equipment. Major threats include spoofing, replay, malware, tampering, denial-of-service, and insecure firmware; one compromised endpoint can expose a wider network.
-
-    \noindent
-    Defence requires unique identities, secure boot and key storage, signed updates, least privilege, and removal of default passwords. AES, ECC, TLS or DTLS, segmentation, monitoring, certificate management, vulnerability disclosure, and long-term update support provide layered protection [6].\par
-  }
-\end{multicols}
-
-\begin{table}[tb]
+\noindent\begin{minipage}{\textwidth}
 \centering
-\caption{Comparison of common IoT application protocols.}
+\captionof{table}{Comparison of common IoT application protocols.}
 \scriptsize
   \setlength{\tabcolsep}{2.5pt}
   \renewcommand{\arraystretch}{1.12}
@@ -152,10 +136,37 @@
     AMQP & Queues, routing, and publish--subscribe & TCP & Reliable enterprise messaging & Back-end and industrial integration \\
     \bottomrule
   \end{tabular}
-\end{table}
-\vspace{-0.18em}
+\end{minipage}
+\par\vspace{4pt}
+\noindent\begin{minipage}{0.48\textwidth}
+\raggedright
+Table~2 compares common IoT application protocols and their typical placements.\par
+\end{minipage}
+\par\vspace{4pt}
 
 \begin{multicols}{2}
+
+  \subsection*{\centering\uppercase{Application-Layer Protocols}}
+  \subsubsection*{MQTT}
+  MQTT uses a publish--subscribe model. Devices publish messages to named topics through a broker, and subscribers receive topics of interest. This decouples producers and consumers and supports scalable telemetry. MQTT defines QoS 0 (at most once), QoS 1 (at least once), and QoS 2 (exactly once), trading overhead for delivery assurance [4].
+
+  \subsubsection*{CoAP}
+  The Constrained Application Protocol (CoAP) follows a REST-style request--response model similar to HTTP but normally uses UDP. Compact binary headers, multicast support, resource observation, and DTLS or object security make it suitable for constrained nodes [5].
+
+  \subsubsection*{HTTP and AMQP}
+  HTTP/HTTPS remains common between gateways, web applications, and cloud platforms because tools and services support it universally. Its overhead may be excessive for very constrained endpoints. AMQP provides reliable message queuing and routing for enterprise and industrial integration where richer broker functionality is required.
+
+  \subsection*{\centering\uppercase{Quality of Service}}
+  IoT performance is measured through latency, jitter, throughput, packet loss, reliability, and availability. Requirements vary sharply: a soil sensor may tolerate minutes of delay, while a protection relay or robotic controller may require deterministic response. QoS must therefore be designed across the radio, scheduling, routing, transport, application, and computing layers.
+
+  \subsection*{\centering\uppercase{Security Across the Stack}}
+  {\justifying
+    IoT devices often operate unattended, handle sensitive data, and control physical equipment. Major threats include spoofing, replay, malware, tampering, denial-of-service, and insecure firmware; one compromised endpoint can expose a wider network.
+
+    \noindent
+    Defence requires unique identities, secure boot and key storage, signed updates, least privilege, and removal of default passwords. AES, ECC, TLS or DTLS, segmentation, monitoring, certificate management, vulnerability disclosure, and long-term update support provide layered protection [6].\par
+  }
+
   \subsection*{\centering\uppercase{Interoperability and Standardisation}}
   Heterogeneous devices must agree on radio interfaces, addressing, message formats, discovery, security, and application semantics. IEEE develops important physical and MAC standards; the IETF specifies Internet protocols; 3GPP standardises cellular systems; the ITU coordinates international telecommunications; and industry alliances define application profiles.
 
@@ -172,7 +183,7 @@
 \vspace{-0.9em}
 \begin{minipage}{0.98\columnwidth}
 \centering
-    \includegraphics[width=0.55\columnwidth]{assets/images/faculty_pc_edge.jpg}
+    \includegraphics[width=0.75\columnwidth]{assets/images/faculty_pc_edge.jpg}
     \captionof{figure}{Edge nodes process time-sensitive data near IoT devices while coordinating with cloud services.}
 \end{minipage}
   \end{center}
@@ -220,3 +231,4 @@
     \end{enumerate}
   \end{justify}}
 \end{multicols}
+\endgroup
