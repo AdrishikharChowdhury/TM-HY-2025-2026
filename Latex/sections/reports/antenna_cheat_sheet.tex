@@ -1,0 +1,76 @@
+
+\begin{tcolorbox}[
+  colback=black!2,
+  colframe=blue!35!black,
+  fonttitle=\large\bfseries\sffamily,
+  toptitle=2mm,
+  bottomtitle=2mm,
+  boxrule=0.7pt,
+  arc=0mm,
+  left=4mm,
+  right=4mm,
+  top=3mm,
+  bottom=3mm
+]
+\small
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.25}
+
+\noindent{\sffamily\footnotesize\color{black!65}
+Standard antenna characteristics, design shortcuts, and link guidelines for RF design.\par}
+\vspace{0.18em}
+
+\begin{tabular}{@{}>{\bfseries\raggedright\arraybackslash}p{0.24\linewidth}>{\sffamily\raggedright\arraybackslash}p{0.14\linewidth}>{\raggedright\arraybackslash}p{0.18\linewidth}>{\raggedright\arraybackslash}p{0.36\linewidth}@{}}
+  \toprule
+  \textbf{Type} & \textbf{Gain} & \textbf{Pattern} & \textbf{Best used for} \\
+  \midrule
+  Half-Wave Dipole & $2.15\text{ dBi}$ & Omnidirectional & Base stations, FM radio \\
+
+  Quarter-Wave Monopole & $\approx 5.15\text{ dBi}$ & Omnidirectional & Vehicle radios, compact devices \\
+
+  Patch / Microstrip & $6\text{--}9\text{ dBi}$ & Directional & Mobile devices, Wi-Fi routers \\
+
+  Yagi-Uda & $10\text{--}17\text{ dBi}$ & High directivity & TV reception, point-to-point links \\
+
+  Log-Periodic & $6\text{--}10\text{ dBi}$ & Wideband direct. & Spectrum monitoring, broadband \\
+
+  Horn & $10\text{--}25\text{ dBi}$ & Directional & Microwave links, lab testing \\
+
+  Helical & $10\text{--}15\text{ dBi}$ & Circular direct. & Satellite and space links \\
+
+  Parabolic Dish & $20\text{--}40+\text{ dBi}$ & Focused beam & Deep space, long-range radar \\
+  \bottomrule
+\end{tabular}
+
+\vspace{0.18em}
+\noindent
+\begin{minipage}[t]{0.58\linewidth}
+  {\sffamily\bfseries\textcolor{blue!35!black}{DESIGN SHORTCUTS}}\par
+  \vspace{2pt}
+  {\color{blue!35!black}\rule{\linewidth}{0.5pt}}\par
+  \vspace{3pt}
+  \scriptsize
+  \renewcommand{\arraystretch}{1.2}
+  \begin{tabular}{@{}>{\bfseries\raggedright\arraybackslash}p{0.30\linewidth}
+                      >{\raggedright\arraybackslash}p{0.65\linewidth}@{}}
+    Wavelength & \(\lambda=c/f\) \\
+    Dipole length & \(L\approx143/f_{\mathrm{MHz}}\text{ m}\) \\
+    Monopole length & \(L\approx71.5/f_{\mathrm{MHz}}\text{ m}\) \\
+    Free-space loss & \(\mathrm{FSPL}=32.44+20\log_{10}(f_{\mathrm{MHz}})
+      +20\log_{10}(d_{\mathrm{km}})\text{ dB}\) \\
+  \end{tabular}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.38\linewidth}
+  {\sffamily\bfseries\textcolor{blue!35!black}{GOOD PRACTICE}}\par
+  \vspace{2pt}
+  {\color{blue!35!black}\rule{\linewidth}{0.5pt}}\par
+  \vspace{3pt}
+  \scriptsize
+  \begin{itemize}[leftmargin=1.2em,itemsep=1pt,topsep=0pt,parsep=0pt]
+    \item Expect narrower beams as antenna gain increases.
+    \item Match polarization at both ends of the link.
+    \item Use an adequate monopole ground plane and verify low VSWR at the operating frequency.
+  \end{itemize}
+\end{minipage}
+\end{tcolorbox}

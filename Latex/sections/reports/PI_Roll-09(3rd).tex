@@ -1,0 +1,246 @@
+\begin{center}
+  \section{\capitalisewords{Pi Digits in Huffman Coding: Entropy, Compression, and Randomness}}
+  Adrishikhar Chowdhury, 3$^{rd}$ Year, ECE
+\end{center}
+
+\setcounter{figure}{0}
+\setcounter{table}{0}
+
+\begin{multicols}{2}
+  \begin{abstract}
+    \bfseries
+    This report uses the first $N=10^5$ decimal digits of $\pi$ as a test bed for lossless source coding and empirical randomness. If the digits behave like independent, uniformly distributed symbols from the alphabet $\{0,1,\ldots,9\}$, their Shannon entropy is $\log_2(10)\approx3.3219$ bits per digit. A frequency analysis, chi-squared uniformity test, and Huffman-code construction can therefore compare observed statistics with this theoretical model. The report examines fixed four-bit coding, static and adaptive Huffman coding, average code length, compression ratio, implementation complexity, and round-trip decoding. A theoretical audit is also included: for ten exactly uniform symbols, an ordinary binary symbol-by-symbol Huffman code has average length $3.4$ bits per digit, not $3.3219$. Reaching the entropy limit requires arithmetic coding, range coding, or sufficiently large block coding. This distinction is essential when interpreting compression results as evidence of randomness.
+  \end{abstract}
+
+  \subsection*{\centering\uppercase{Introduction}}
+  The decimal expansion of $\pi$ is widely conjectured to be normal: every digit should occur asymptotically with probability $0.1$, and every finite digit block should occur with its expected frequency. Normality has not been proved for $\pi$, but large computed prefixes show strong empirical agreement with uniform digit frequencies [3].
+
+  \noindent
+  This makes the digit stream an interesting source-coding experiment. A fixed representation assigns four bits to each decimal digit, even though ten symbols theoretically require only $\log_2(10)$ bits on average. Variable-length or arithmetic codes can reduce this redundancy, while deviations in achieved compression may reveal nonuniform frequencies, finite-sample effects, code constraints, or implementation overhead.
+
+  \subsection*{\centering\uppercase{Objectives}}
+  The analysis has four objectives:
+  \begin{enumerate}\justifying
+    \item estimate digit frequencies and empirical entropy;
+    \item test whether the observed counts are consistent with a uniform distribution;
+    \item construct and verify a lossless Huffman encoder and decoder;
+    \item compare average length, storage, and runtime with theoretical and fixed-length baselines.
+  \end{enumerate}
+
+  \subsection*{\centering\uppercase{Information-Theory Model}}
+  Let $p_i$ be the probability of digit $i$. The source entropy is
+  \[
+    H(X)=-\sum_{i=0}^{9}p_i\log_2p_i.
+  \]
+  For an exactly uniform decimal source, $p_i=0.1$, hence
+  \[
+    \begin{aligned}
+      H(X)&=-10(0.1)\log_2(0.1)\\
+          &=\log_2(10)\\
+          &\approx3.3219\ \text{bits/digit}.
+    \end{aligned}
+  \]
+  Entropy is a lower bound on the average length of any uniquely decodable binary code. It is not automatically the achieved length of a symbol-by-symbol Huffman code.
+
+  \subsubsection*{Fixed-Length Baseline}
+  A decimal digit can be stored in a four-bit nibble, using binary values \texttt{0000} through \texttt{1001}. The cost is
+  \[
+    L_{\mathrm{fixed}}=4\ \text{bits/digit},
+  \]
+  which is approximately $0.6781$ bits above the uniform-source entropy.
+
+  \subsubsection*{Huffman Coding}
+  Huffman coding repeatedly merges the two least frequent nodes in a minimum-priority queue. Assigning 0 and 1 to the branches creates a prefix-free tree in which more probable symbols receive shorter codewords. Its average length is
+  \[
+    L=\sum_{i=0}^{9}p_i\ell_i,
+  \]
+  where $\ell_i$ is the codeword length for digit $i$. Huffman coding guarantees
+  \[
+    H(X)\leq L < H(X)+1.
+  \]
+
+  \subsubsection*{Uniform Ten-Symbol Constraint}
+  For ten equally likely symbols, the optimal binary Huffman tree contains six codewords of length 3 and four of length 4. The Kraft equality is
+  \[
+    6\left(2^{-3}\right)+4\left(2^{-4}\right)=1,
+  \]
+  giving
+  \[
+    L=\frac{6(3)+4(4)}{10}=3.4\ \text{bits/digit}.
+  \]
+  Therefore, a result of $3.322$ bits per digit cannot come from ordinary digit-wise binary Huffman coding unless the measurement represents entropy rather than code length, uses blocks of digits, or applies a different entropy coder.
+\end{multicols}
+
+\begin{table}[tb]
+\centering
+\caption{Theoretical comparison of coding approaches for nearly uniform decimal digits.}
+\scriptsize
+  \setlength{\tabcolsep}{3pt}
+  \renewcommand{\arraystretch}{1.4}
+  \begin{tabular}{@{}>{\RaggedRight\arraybackslash}p{0.25\textwidth}
+                      >{\Centering\arraybackslash}p{0.17\textwidth}
+                      >{\Centering\arraybackslash}p{0.18\textwidth}
+                      >{\RaggedRight\arraybackslash}p{0.32\textwidth}@{}}
+    \toprule
+    \textbf{Representation} & \textbf{Bits/Digit} & \textbf{Relative Size} & \textbf{Interpretation} \\
+    \midrule
+    Fixed four-bit code & $4.000$ & $100\%$ & Simple baseline with unused binary patterns \\
+    Uniform-source entropy & $3.3219$ & $83.05\%$ & Shannon lower bound, not a digit-wise prefix code \\
+    Binary Huffman, uniform digits & $3.400$ & $85.0\%$ & Optimal symbol-by-symbol binary prefix code \\
+    Arithmetic or range coding & Approaches $3.3219$ & Approaches $83.05\%$ & Can approach entropy for long sequences \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+\vspace{-0.18em}
+
+\begin{multicols}{2}
+  \subsection*{\centering\uppercase{Uniformity Testing}}
+  Table~1 compares theoretical coding approaches for nearly uniform decimal digits.
+  For $N$ digits, let $f_i$ be the observed count of digit $i$. Under the uniform hypothesis, the expected count is $e_i=N/10$. The chi-squared statistic is
+  \[
+    \chi^2=\sum_{i=0}^{9}\frac{(f_i-e_i)^2}{e_i}.
+  \]
+  It is compared with a chi-squared distribution having $9$ degrees of freedom. A large $p$-value means the data do not provide sufficient evidence to reject uniformity; it does not prove independence or normality. Testing single-digit counts cannot detect every form of local correlation, so digit-pair and longer-block tests are useful extensions.
+
+  \subsection*{\centering\uppercase{Methodology}}
+  \subsubsection*{Digit Generation}
+  The first $10^5$ digits after the decimal point are generated using arbitrary-precision arithmetic, such as \texttt{mpmath}, or read from a verified digit file. The leading integer part and decimal point are excluded. A checksum or independent source should be used to validate the input.
+
+  \subsubsection*{Frequency and Entropy Analysis}
+  Each digit count is measured and converted to an empirical probability
+  \[
+    \hat{p}_i=\frac{f_i}{N}.
+  \]
+  The empirical entropy is then
+  \[
+    \hat{H}=-\sum_{i=0}^{9}\hat{p}_i\log_2\hat{p}_i.
+  \]
+  Near-uniform counts should produce a value close to $\log_2(10)$.
+
+  \subsubsection*{Static Huffman Construction}
+  A minimum heap is initialised with ten leaf nodes weighted by $f_i$. The two nodes with the smallest weights are removed, merged, and returned to the heap until a single tree remains. Tree traversal assigns a binary codeword to each digit.
+
+  \subsubsection*{Adaptive Coding}
+  An adaptive Huffman encoder updates its model as digits arrive, eliminating the need to transmit a complete frequency table in advance. It can follow changing local statistics, but it has additional update complexity and still obeys integer codeword-length constraints.
+
+  \subsubsection*{Verification and Metrics}
+  The encoded stream is decoded and compared byte-for-byte with the original digit sequence. The primary metrics are
+  \[
+    L=\frac{B_{\mathrm{encoded}}}{N}, \qquad
+    R=\frac{B_{\mathrm{encoded}}}{4N}\times100\%,
+  \]
+  where $B_{\mathrm{encoded}}$ is the number of coded payload bits. A complete storage comparison must also include the codebook, tree, length metadata, padding, and file headers.
+
+  \subsection*{\centering\uppercase{Algorithm Outline}}
+  \begin{enumerate}\justifying
+    \item Generate or load the verified $\pi$-digit sequence.
+    \item Count occurrences of digits 0 through 9.
+    \item Compute empirical probabilities and entropy.
+    \item Apply the chi-squared uniformity test.
+    \item Build the Huffman tree from the counts.
+    \item Encode every digit using the derived codebook.
+    \item Decode the bitstream and verify exact recovery.
+    \item Record payload length, total file size, construction time, encoding time, and decoding time.
+  \end{enumerate}
+
+  \subsection*{\centering\uppercase{Results and Critical Discussion}}
+  The uploaded report states that the first $10^5$ digits are close to uniformly distributed and that chi-squared $p$-values remain above $0.05$ across several prefix lengths. This is consistent with the general empirical behaviour reported for large computed prefixes of $\pi$ [3].
+
+  \noindent
+  It also reports $3.322$ bits per digit, an $83\%$ size relative to four-bit coding, and runtimes of approximately $0.4$ seconds for Huffman coding versus $0.1$ seconds for the fixed baseline. The ratio calculation is internally consistent because $3.322/4\approx0.8305$. However, the code length is inconsistent with ordinary binary digit-wise Huffman coding for a near-uniform ten-symbol alphabet. The expected Huffman result should be near $3.4$ bits per digit, or roughly $85\%$ of the four-bit baseline.
+
+  \noindent
+  This discrepancy does not invalidate the experiment; it identifies a measurement or labelling issue. The reported $3.322$ may be empirical entropy, an arithmetic-coding result, a block-code estimate, or a payload calculation that did not measure the actual prefix-coded stream. Reproducing the experiment should print each digit's codeword length and verify that
+  \[
+    B_{\mathrm{encoded}}=\sum_{i=0}^{9}f_i\ell_i.
+  \]
+
+\end{multicols}
+
+\begin{table}[b]
+\centering
+\caption{Recommended measurements for a reproducible compression experiment.}
+\scriptsize
+  \setlength{\tabcolsep}{3pt}
+  \renewcommand{\arraystretch}{1.25}
+  \begin{tabular}{@{}>{\bfseries\RaggedRight\arraybackslash}p{0.22\textwidth}
+                      >{\RaggedRight\arraybackslash}p{0.32\textwidth}
+                      >{\RaggedRight\arraybackslash}p{0.38\textwidth}@{}}
+    \toprule
+    \textbf{Measurement} & \textbf{Purpose} & \textbf{Reporting Requirement} \\
+    \midrule
+    Digit counts & Test first-order uniformity & Report all ten counts and $N$ \\
+    Entropy $\hat{H}$ & Estimate ideal first-order rate & State log base and probability model \\
+    Huffman payload bits & Measure actual prefix-code length & Compute $\sum f_i\ell_i$ \\
+    File overhead & Measure practical storage & Include codebook, padding, and headers \\
+    Round-trip test & Establish losslessness & Compare decoded and original sequences exactly \\
+    Runtime & Compare computational cost & Separate generation, construction, encode, and decode time \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+\vspace{-0.18em}
+
+\begin{multicols}{2}
+  \subsection*{\centering\uppercase{Implementation Considerations}}
+  {\justifying
+  A practical Python implementation can use \texttt{mpmath} for high-precision digit generation, \texttt{numpy.bincount} for digit frequencies, \texttt{heapq} for the Huffman priority queue, and \texttt{scipy.stats.chisquare} for the statistical test [4--6].\par}
+
+  \begin{center}
+  \begin{tcolorbox}[
+    colback=black!2,
+    colframe=IEEEblue!70!black,
+    boxrule=0.5pt,
+    arc=0mm,
+    left=2mm,right=2mm,top=2mm,bottom=2mm
+  ]
+    \scriptsize\ttfamily\justifying
+    counts = bincount(digits, minlength=10)\par
+    probs = counts / len(digits)\par
+    entropy = -sum(probs * log2(probs))\par
+    tree = build\_huffman\_tree(counts)\par
+    bits = encode(digits, tree)\par
+    assert decode(bits, tree) == digits
+  \end{tcolorbox}
+  \end{center}
+
+  For only ten symbols, tree construction is negligible. Encoding and decoding are $O(N)$ once the codebook is available. Digit generation and conversion may dominate runtime, so timing should separate data preparation from coding.
+
+  \subsection*{\centering\uppercase{Randomness and Compressibility}}
+  Compression is a useful diagnostic, but it is not a complete randomness test. A sequence can have uniform single-symbol frequencies and still contain predictable pairs or repeated blocks. Conversely, a finite random sequence may show small frequency imbalances. Stronger analysis should examine:
+  \begin{itemize}\justifying
+    \item pair and block frequencies;
+    \item serial correlation and runs;
+    \item entropy rate rather than single-symbol entropy;
+    \item arithmetic-coding length with a contextual model;
+    \item standard suites such as NIST statistical tests, with careful interpretation.
+  \end{itemize}
+
+  \subsection*{\centering\uppercase{Future Work}}
+  Arithmetic coding or range coding should be used to approach the $3.3219$-bit entropy limit without integer codeword restrictions. Block Huffman coding over pairs of digits creates an alphabet of 100 symbols and reduces per-digit redundancy, although it requires a larger codebook. Context models can test whether knowledge of previous digits improves prediction; any stable improvement would indicate exploitable dependence in the tested prefix.
+
+  \subsection*{\centering\uppercase{Conclusion}}
+  Table~2 lists recommended measurements for a reproducible compression experiment.
+  The decimal digits of $\pi$ provide a useful and engaging data source for studying entropy, prefix codes, statistical uniformity, and lossless compression. The first $10^5$ digits are expected to have empirical entropy close to $\log_2(10)$, and frequency tests generally support a near-uniform first-order model.
+
+  \noindent
+  The experiment also demonstrates why theoretical interpretation matters. Shannon entropy is a lower bound, whereas binary Huffman codewords have integer lengths. For ten uniform symbols, the optimal symbol-by-symbol Huffman average is $3.4$ bits per digit. Claims of $3.322$ bits per digit should therefore be identified as entropy, arithmetic coding, block coding, or re-examined as a measurement error.
+
+  \noindent
+  With transparent metrics, complete overhead accounting, and exact decode verification, the project becomes a strong demonstration of the relationship between information theory, algorithms, probability, and the numerical properties of $\pi$.
+
+  \subsection*{\centering\uppercase{References}}
+  {\small
+  \begin{justify}
+    \begin{enumerate}[label={\relax[\arabic*]},leftmargin=*,labelsep=0.5em,itemsep=0.20em,parsep=0pt]
+      \item C. E. Shannon, “A Mathematical Theory of Communication,” \textit{Bell System Technical Journal}, vol. 27, pp. 379--423 and 623--656, 1948.
+      \item D. A. Huffman, “A Method for the Construction of Minimum-Redundancy Codes,” \textit{Proceedings of the IRE}, vol. 40, no. 9, pp. 1098--1101, 1952.
+      \item Y. Kanada and T. Kuroda, “Distribution of Leading Digits and Properties of the Decimal Expansion of $\pi$,” \textit{The Mathematical Intelligencer}, vol. 24, no. 1, pp. 56--60, 2002.
+      \item F. Johansson et al., “mpmath: Python library for arbitrary-precision floating-point arithmetic,” Version 1.3.0.
+      \item S. van der Walt, S. C. Colbert, and G. Varoquaux, “The NumPy Array: A Structure for Efficient Numerical Computation,” \textit{Computing in Science \& Engineering}, vol. 13, no. 2, pp. 22--30, 2011.
+      \item P. Virtanen et al., “SciPy 1.0: Fundamental Algorithms for Scientific Computing in Python,” \textit{Nature Methods}, vol. 17, pp. 261--272, 2020.
+    \end{enumerate}
+  \end{justify}}
+
+\end{multicols}
+
+\input{sections/reports/pi_huffman_did_you_know}

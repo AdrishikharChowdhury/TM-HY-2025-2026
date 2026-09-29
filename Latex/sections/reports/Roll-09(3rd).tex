@@ -1,0 +1,167 @@
+\begin{center}
+  \section{\capitalisewords{Modern Cybersecurity: Emerging Threats and Defensive Strategies}}
+  Adrishikhar Chowdhury, 3$^{rd}$ Year, ECE
+\end{center}
+
+\setcounter{figure}{0}
+\setcounter{table}{0}
+
+\begin{multicols}{2}
+  \begin{abstract}
+    \bfseries
+    The modern digital environment has transformed cybersecurity from a specialised technical concern into a requirement for organisational resilience, industrial safety, and national stability. Contemporary attacks combine web vulnerabilities, malware, credential theft, social engineering, distributed denial-of-service, and supply-chain compromise with risks specific to the Internet of Things (IoT), smart grids, industrial automation, mobile networks, and autonomous systems. This report examines these threats and the transition from reactive, signature-based security toward proactive, intelligence-driven defence. It discusses Zero Trust, multi-factor authentication, encryption, network segmentation, predictive analytics, artificial intelligence, blockchain-based integrity, real-time monitoring, incident response, and human-centred security policies. It also considers cyber operations in hybrid warfare and the growing risks created by 5G, deepfakes, data poisoning, and state-supported cybercrime. Effective cybersecurity ultimately requires layered technical controls, continuous monitoring, trained personnel, tested recovery plans, and coordinated governance.
+  \end{abstract}
+
+  \subsection*{\centering\uppercase{Introduction}}
+  Cybersecurity now protects more than computers and files. Digital networks support banking, healthcare, manufacturing, transportation, power systems, communications, government services, and personal devices. As cloud computing, remote work, smart sensors, and industrial automation expand, attackers gain more possible entry points and security failures can create physical, financial, and social consequences.
+
+  \noindent
+  The threat landscape has also moved beyond isolated technical exploits. Modern campaigns may combine stolen credentials, malicious software, social engineering, cloud misconfiguration, disinformation, and attacks on suppliers. Defenders must therefore replace the older “patch after compromise” mindset with continuous risk assessment, threat intelligence, secure design, rapid detection, and rehearsed recovery.
+  \vspace{-0.4em}
+  \noindent
+  This report reviews common cyber threats, vulnerabilities in interconnected ECE domains, detection technologies, defensive controls, organisational resilience, and strategic challenges. The discussion is organised around the principle that security must protect confidentiality, integrity, and availability while preserving the safety and usability of critical systems.
+
+  \subsection*{\centering\uppercase{Literature and Standards Review}}
+  Modern guidance increasingly emphasises risk-based security rather than a single product or perimeter. The NIST Cybersecurity Framework organises security activity around governance, identification, protection, detection, response, and recovery [1]. Zero Trust guidance assumes that network location alone does not establish trust [2], while OWASP documents recurring weaknesses in web applications [3]. NIST guidance for IoT and operational technology highlights the distinct constraints of embedded and industrial devices [4, 5]. MITRE ATT\&CK complements these standards by cataloguing adversary tactics and techniques [6].
+\end{multicols}
+
+\begin{table}[tb]
+\centering
+\caption{Cybersecurity guidance across major technical domains.}
+\small
+  \setlength{\tabcolsep}{6pt}
+  \renewcommand{\arraystretch}{1.3}
+  \begin{tabular}{@{}>{\RaggedRight\arraybackslash}p{0.22\textwidth}
+                      >{\RaggedRight\arraybackslash}p{0.32\textwidth}
+                      >{\RaggedRight\arraybackslash}p{0.38\textwidth}@{}}
+    \toprule
+    \textbf{Domain} & \textbf{Primary Concern} & \textbf{Representative Guidance} \\
+    \midrule
+    Enterprise security & Coordinated risk management and recovery & NIST Cybersecurity Framework [1] \\
+    Identity and access & Continuous verification and least privilege & NIST Zero Trust Architecture [2] \\
+    Web applications & Injection, access control, and insecure design & OWASP Top 10 [3] \\
+    IoT devices & Constrained hardware, updates, and device identity & NISTIR 8259A [4] \\
+    Industrial and OT systems & Safety, availability, segmentation, and legacy protocols & NIST SP 800-82 [5] \\
+    Adversary behaviour & Tactics, techniques, detection, and threat hunting & MITRE ATT\&CK [6] \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+\vspace{-0.18em}
+
+\begin{multicols}{2}
+  \subsection*{\centering\uppercase{Security Foundations}}
+  Table~1 summarizes cybersecurity guidance across major technical domains.
+  \subsubsection*{From Reactive to Proactive Defence}
+  Traditional security depended heavily on perimeter firewalls and known-malware signatures. These controls remain useful, but they cannot reliably detect zero-day exploits, stolen legitimate accounts, encrypted command traffic, or attackers already inside a network. Proactive security adds vulnerability management, threat hunting, attack-surface reduction, behavioural monitoring, and incident preparation.
+
+  \subsubsection*{The CIA Triad}
+  The three fundamental security objectives are:
+  \begin{itemize}\justifying
+    \item \textbf{Confidentiality:} information is accessible only to authorised users. Encryption, access control, and multi-factor authentication support this objective.
+    \item \textbf{Integrity:} data and configurations remain accurate and unaltered. Hashing, digital signatures, secure logging, and change control help preserve integrity.
+    \item \textbf{Availability:} authorised users can access systems and data when required. Redundancy, load balancing, backups, and disaster recovery reduce downtime.
+  \end{itemize}
+
+  \subsubsection*{Zero Trust}
+  Zero Trust treats every access request as potentially hostile, regardless of whether it originates inside or outside the traditional network boundary. Access decisions consider identity, device health, resource sensitivity, and context; privileges are restricted to the minimum required; and sessions are continuously monitored [2].
+
+  \subsection*{\centering\uppercase{Contemporary Cyber Threats}}
+  \subsubsection*{Web Application Attacks}
+  Public web applications expose databases and services to untrusted input. Broken access control may allow users to exceed their privileges, while injection flaws can cause an interpreter to execute malicious input. SQL injection, cross-site scripting, insecure APIs, and cryptographic failures are reduced through parameterised queries, input validation, secure session management, code review, and automated security testing [3].
+
+  \subsubsection*{Malware and Ransomware}
+  Malware has progressed from simple viruses and worms to fileless payloads, rootkits, botnets, and Advanced Persistent Threats (APTs). Modern ransomware groups often steal information before encrypting it, creating “double extortion”: the victim faces both operational disruption and the threat of a public data leak. Offline, tested backups and network segmentation are essential because prevention cannot be assumed to succeed every time.
+
+  \subsubsection*{DDoS and Network Exploitation}
+  Distributed Denial-of-Service attacks use many compromised systems to overwhelm a target. Volumetric floods consume bandwidth, protocol attacks exhaust network infrastructure, and application-layer floods consume server resources. Rate limiting, traffic filtering, content-delivery networks, redundant architecture, and upstream mitigation services improve resilience.
+
+  \subsubsection*{Social Engineering and Phishing}
+  Attackers frequently bypass technical controls by exploiting urgency, fear, authority, curiosity, or trust. Spear phishing targets a specific person; whaling focuses on senior executives; and Business Email Compromise attempts to authorise fraudulent payments or expose sensitive data. Verification procedures and phishing-resistant authentication are more dependable than awareness training alone.
+
+  \subsubsection*{Credential Attacks}
+  Brute-force attacks try many possible passwords, dictionary attacks prioritise common phrases, and credential stuffing reuses leaked username-password pairs. Strong unique passwords, password managers, login throttling, compromised-password screening, and FIDO2 security keys reduce these risks.
+
+  \subsection*{\centering\uppercase{Vulnerabilities in ECE Domains}}
+  \subsubsection*{Internet of Things}
+  IoT security is often analysed through three layers:
+  \begin{enumerate}\justifying
+    \item \textbf{Perception layer:} sensors and actuators face physical tampering, node capture, side-channel attacks, and limited processing resources.
+    \item \textbf{Network layer:} wireless and routed communication faces eavesdropping, replay, routing manipulation, jamming, and man-in-the-middle attacks.
+    \item \textbf{Application layer:} cloud portals and APIs face weak authentication, insecure interfaces, privacy leakage, and software vulnerabilities.
+  \end{enumerate}
+  Secure boot, unique device credentials, signed updates, protected key storage, minimal services, and lifecycle update support should be designed into the device rather than added later [4].
+
+  \subsubsection*{Smart Grids and Critical Infrastructure}
+  Smart grids connect Advanced Metering Infrastructure, sensors, control centres, and operational equipment. Legacy protocols such as Modbus and older DNP3 deployments may lack native encryption or authentication. False-data injection, unauthorised switching commands, and compromised remote access can affect physical power delivery. Strong segmentation between IT and operational technology (OT), authenticated protocols, allow-listed control traffic, and tested manual recovery are critical [5].
+
+  \subsubsection*{Wireless and Mobile Security}
+  {\justifying WPA3 improves wireless authentication through Simultaneous Authentication of Equals and provides stronger resistance to offline password guessing. Nevertheless, rogue access points, poor implementation, unsafe fallback to older protocols, stolen mobile sessions, and insecure applications remain threats. Wireless security therefore depends on correct configuration, certificate validation, protected management frames, and timely device updates.\par}
+
+  \subsubsection*{Industry 4.0 and Cyber-Physical Systems}
+  Industrial systems prioritise safety and availability. Aggressive scanning or untested patching can interrupt real-time processes, so conventional IT practices must be adapted. Defenders use the Purdue Model, micro-segmentation, industrial intrusion detection, secure remote maintenance, asset inventories, and carefully scheduled updates to restrict movement from corporate networks into control loops.
+
+  \subsection*{\centering\uppercase{Detection and Analysis}}
+  \subsubsection*{Signature and Anomaly Detection}
+  Signature-based systems compare activity with known malicious patterns. They are efficient for recognised threats but cannot identify genuinely new attacks. Anomaly-based systems learn or define normal behaviour and flag significant deviations. They can detect unknown activity but often produce more false alarms. Effective monitoring combines both approaches.
+
+  \subsubsection*{AI, Machine Learning, and Predictive Analytics}
+  ML can classify malware, detect phishing, identify unusual login behaviour, and prioritise alerts. User and Entity Behaviour Analytics (UEBA), for example, may flag an administrator accessing sensitive data from an unusual location or at an unusual time. These systems require representative training data, protection against data poisoning, explainable decisions, and human validation.
+
+  \subsubsection*{SIEM, XDR, and SOAR}
+  Security Information and Event Management systems collect and correlate logs from endpoints, networks, identities, and cloud services. Extended Detection and Response links evidence across these sources, while Security Orchestration, Automation, and Response can isolate a device, disable an account, or block an indicator. Automation should include safeguards because an incorrect response may disrupt legitimate operations.
+
+  \subsection*{\centering\uppercase{Integrated Defensive Strategies}}
+  \subsubsection*{Encryption, Firewalls, and Prevention}
+  AES is widely used for stored data, while TLS protects data in transit. Next-generation firewalls add application awareness and deep packet inspection, and intrusion-prevention systems can block malicious traffic inline. Cryptographic controls must be supported by secure key generation, storage, rotation, and revocation.
+
+  \subsubsection*{Authentication and Least Privilege}
+  Multi-factor authentication combines at least two categories: something known, something possessed, and something inherent to the user. Hardware-backed, phishing-resistant authentication is stronger than one-time codes that can be relayed through a fraudulent login page. Least privilege and periodic access review limit damage after an account is compromised.
+
+  \subsubsection*{Segmentation, Backups, and Recovery}
+  Segmentation restricts lateral movement between users, servers, IoT devices, and industrial systems. Backups should include offline or immutable copies, and organisations should regularly test restoration rather than merely confirm that backup jobs ran. Recovery plans should define responsibilities, communication channels, acceptable downtime, and fallback procedures.
+
+  \subsubsection*{Policies, Training, and Auditing}
+  Technology cannot compensate for unclear responsibility or unsafe processes. Security policies define acceptable use, data handling, incident escalation, supplier access, and recovery requirements. Training should be role-specific, while audits, penetration tests, and exercises verify whether controls operate as intended.
+
+  \subsubsection*{Quantitative Risk Analysis}
+  Risk assessment connects technical weaknesses with business or safety impact. Quantitative models estimate the frequency of a threat event, the probability that controls fail, and the likely loss magnitude. Although estimates contain uncertainty, explicit assumptions support better investment decisions than an unexplained “high-medium-low” label.
+
+  \subsection*{\centering\uppercase{Strategic and National Dimensions}}
+  Cyber operations enable asymmetric conflict because relatively small groups can disrupt major financial, communication, or infrastructure systems. Hybrid warfare combines technical attacks with information operations intended to alter perception, reduce trust, and create confusion. Deepfakes, automated accounts, stolen documents, and targeted narratives can attack the cognitive sphere even when physical infrastructure remains operational.
+
+  \noindent
+  National resilience requires coordination among government agencies, Computer Emergency Response Teams, defence organisations, researchers, and private operators of critical infrastructure. Shared threat intelligence, protected reporting channels, sector exercises, and clear crisis authority help prevent local incidents from becoming cascading national failures.
+
+  \subsection*{\centering\uppercase{Future Threats}}
+  \begin{itemize}\justifying
+    \item \textbf{5G and edge computing:} software-defined and distributed infrastructure increases the number of components and trust relationships that must be secured.
+    \item \textbf{State-supported cybercrime:} criminal groups may receive protection, tools, or intelligence from nation-states while providing plausible deniability.
+    \item \textbf{Deepfakes and disinformation:} synthetic media can support fraud, impersonation, and influence operations.
+    \item \textbf{Cryptojacking:} attackers steal computing resources for cryptocurrency mining, increasing costs and reducing system performance.
+    \item \textbf{Autonomous systems:} compromised sensors, poisoned training data, or adversarial inputs can create unsafe physical actions in robots and vehicles.
+    \item \textbf{Post-quantum migration:} organisations must inventory cryptographic dependencies and prepare to replace algorithms vulnerable to future quantum computers.
+  \end{itemize}
+
+  \subsection*{\centering\uppercase{Conclusion}}
+  Cybersecurity is a continuing engineering and governance process rather than a one-time installation. The expanding use of IoT, smart grids, industrial automation, cloud platforms, AI, and autonomous systems links digital compromise with physical and social impact. Defenders must combine secure design, identity verification, encryption, segmentation, continuous monitoring, threat intelligence, and tested recovery.
+
+  \noindent
+  The most resilient organisations assume that some controls will fail and prepare additional layers to contain the damage. Technical safeguards must be reinforced by trained personnel, clear policies, accountable leadership, supplier management, and cooperation across institutions. This integrated approach is essential for maintaining confidentiality, integrity, availability, safety, and public trust.
+
+  \subsection*{\centering\uppercase{References}}
+  {\small
+  \begin{justify}
+    \begin{enumerate}[label={\relax[\arabic*]},leftmargin=*,labelsep=0.5em,itemsep=0.20em,parsep=0pt]
+      \item National Institute of Standards and Technology, \textit{The NIST Cybersecurity Framework (CSF) 2.0}, 2024.
+      \item S. Rose et al., \textit{Zero Trust Architecture}, NIST Special Publication 800-207, 2020.
+      \item OWASP Foundation, \textit{OWASP Top 10: The Ten Most Critical Web Application Security Risks}, 2021.
+      \item M. Fagan et al., \textit{IoT Device Cybersecurity Capability Core Baseline}, NISTIR 8259A, 2020.
+      \item K. Stouffer et al., \textit{Guide to Operational Technology Security}, NIST Special Publication 800-82 Rev. 3, 2023.
+      \item MITRE, \textit{ATT\&CK: Adversarial Tactics, Techniques, and Common Knowledge}.
+      \item National Institute of Standards and Technology, \textit{Computer Security Incident Handling Guide}, Special Publication 800-61 Rev. 2, 2012.
+      \item National Institute of Standards and Technology, \textit{Digital Identity Guidelines: Authentication and Lifecycle Management}, Special Publication 800-63B.
+      \item European Union Agency for Cybersecurity, \textit{ENISA Threat Landscape}.
+      \item Cybersecurity and Infrastructure Security Agency, \textit{Zero Trust Maturity Model}, Version 2.0, 2023.
+    \end{enumerate}
+  \end{justify}}
+\end{multicols}

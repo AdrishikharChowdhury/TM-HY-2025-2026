@@ -1,0 +1,232 @@
+\begin{center}
+  \section{\capitalisewords{Mathematical Symbols and Their Engineering Applications}}
+  Tanisha Ghosh, 3$^{rd}$ Year, ECE
+\end{center}
+
+\setcounter{figure}{0}
+\setcounter{table}{0}
+
+\begin{multicols}{2}
+  \begin{abstract}
+    \bfseries
+    Pi Day, observed on March 14, celebrates the constant $\pi\approx3.14$ and the wider role of mathematics in science and engineering. This report studies the origins and practical meanings of five central symbols: $\pi$, $\sum$, $\infty$, $\sqrt{\phantom{x}}$, and $\int$. It also examines the ECE symbols $\theta$, $\lambda$, $\alpha$, $\Delta$, and $\mu$, which describe phase, wavelength, attenuation, finite change, statistical mean, and electromagnetic properties. Applications are drawn from circular and orbital geometry, RF communication, signal processing, circuit analysis, mechanics, numerical methods, and RMS measurement. Compact worked examples demonstrate how symbolic notation transforms engineering ideas into calculations that can be communicated, checked, and implemented.
+  \end{abstract}
+
+  \subsection*{\centering\uppercase{Introduction}}
+  Pi Day links the date 3/14 with the first three digits of $\pi$. Public celebrations are commonly traced to physicist Larry Shaw at the Exploratorium in San Francisco in 1988, and UNESCO recognised March 14 as the International Day of Mathematics in 2019 [1, 2].
+
+  \noindent
+  The importance of the day extends beyond a single constant. Mathematical symbols make technical reasoning compact and reusable. The same notation can describe an antenna pattern, satellite orbit, AC waveform, statistical estimate, control-system response, or numerical algorithm. Engineers can therefore exchange precise ideas without rewriting every operation in words.
+
+  \noindent
+  This report first reviews the historical origins of major symbols and then connects each symbol to practical work in Electronics and Communication Engineering. Case studies and worked examples show how notation supports real calculations.
+
+  \subsection*{\centering\uppercase{Historical Origins of Key Symbols}}
+  \subsubsection*{Pi, $\pi$}
+  Pi is the ratio of a circle's circumference to its diameter:
+  \[
+    \pi=\frac{C}{d}\approx3.14159.
+  \]
+  Civilisations had approximated the constant since antiquity, but William Jones used the Greek letter $\pi$ for the circle constant in his 1706 publication \textit{Synopsis Palmariorum Matheseos}. The letter is associated with the Greek word \textit{perimetron}, meaning perimeter. Leonhard Euler's later use established $\pi$ as the international standard [3, 4].
+
+  \subsubsection*{Summation, $\sum$}
+  The uppercase Greek letter sigma denotes the addition of indexed terms:
+  \[
+    \sum_{i=m}^{n}a_i.
+  \]
+  Euler introduced and popularised sigma notation in the eighteenth century. It replaced repeated written addition with a compact statement containing a lower bound, upper bound, index, and general term [3--5].
+
+  \subsubsection*{Infinity, $\infty$}
+  John Wallis used the infinity symbol in his 1655 work \textit{De Sectionibus Conicis}. The symbol describes an unbounded process or limiting behaviour rather than an ordinary finite value:
+  \[
+    \lim_{x\to\infty}f(x), \qquad
+    \int_{0}^{\infty}g(t)\,dt.
+  \]
+  Its looped shape is often interpreted as suggesting continuation without an endpoint [6, 7].
+
+  \subsubsection*{Radical, $\sqrt{\phantom{x}}$}
+  Christoff Rudolff introduced the printed radical sign in his 1525 algebra book \textit{Die Coss}. Earlier writers used words or abbreviations related to the Latin \textit{radix}, meaning root. René Descartes later helped establish the vinculum, the horizontal line extending over the expression [3, 5].
+
+  \subsubsection*{Integral, $\int$}
+  Gottfried Wilhelm Leibniz introduced the integral sign in 1675. It is an elongated S derived from \textit{summa}, reflecting the idea that integration accumulates infinitely many small contributions. Leibniz's notation, together with the differential $d$, remains central to calculus [8].
+\end{multicols}
+
+\begin{table}[tb]
+\centering
+\caption{Origins and modern roles of selected mathematical symbols.}
+\small
+  \setlength{\tabcolsep}{6pt}
+  \renewcommand{\arraystretch}{1.35}
+  \begin{tabular}{@{}>{\Centering\arraybackslash}p{0.10\textwidth}
+                      >{\RaggedRight\arraybackslash}p{0.18\textwidth}
+                      >{\RaggedRight\arraybackslash}p{0.26\textwidth}
+                      >{\RaggedRight\arraybackslash}p{0.38\textwidth}@{}}
+    \toprule
+    \textbf{Symbol} & \textbf{Associated Name} & \textbf{Historical Introduction} & \textbf{Representative Modern Role} \\
+    \midrule
+    $\pi$ & William Jones / Euler & 1706; widely standardised in the 18th century & Circles, periodic motion, waves, and orbital geometry \\
+    $\sum$ & Leonhard Euler & 18th-century discrete-sum notation & DSP, statistics, machine learning, forces, and moments \\
+    $\infty$ & John Wallis & 1655 & Limits, ideal models, asymptotic behaviour, and infinite series \\
+    $\sqrt{\phantom{x}}$ & Christoff Rudolff & Printed in 1525 & Distance, RMS, vector magnitude, roots, and natural frequency \\
+    $\int$ & G. W. Leibniz & 1675 & Accumulation, area, energy, charge, and continuous-time systems \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+\vspace{-0.18em}
+
+\begin{multicols}{2}
+  \subsection*{\centering\uppercase{Additional Symbols in ECE}}
+  Table~1 summarizes origins and modern roles of selected mathematical symbols.
+  \subsubsection*{Theta, $\theta$}
+  Theta usually represents an angle or phase. Polar coordinates use $(r\cos\theta,r\sin\theta)$, AC circuit analysis uses phase differences, and antenna radiation patterns express gain as a function of direction $G(\theta,\phi)$.
+
+  \subsubsection*{Lambda, $\lambda$}
+  Lambda denotes wavelength:
+  \[
+    \lambda=\frac{c}{f}, \qquad
+    \beta=\frac{2\pi}{\lambda},
+  \]
+  where $c$ is propagation speed, $f$ is frequency, and $\beta$ is phase constant. Wavelength determines antenna dimensions and propagation behaviour.
+
+  \subsubsection*{Alpha, $\alpha$}
+  Alpha commonly represents attenuation. A wave travelling in a lossy medium may have amplitude
+  \[
+    V(z)=V_0e^{-\alpha z}.
+  \]
+  The symbol also denotes angles, thermal expansion coefficients, and statistical significance levels.
+
+  \subsubsection*{Delta, $\Delta$ and $\delta$}
+  Uppercase delta indicates a finite change, such as $\Delta t$ or $\Delta V$. Finite-difference methods approximate derivatives using
+  \[
+    \Delta f=f(x+\Delta x)-f(x).
+  \]
+  Lowercase delta may indicate a small variation, an error, or the Dirac delta impulse used in signals and systems.
+
+  \subsubsection*{Mu, $\mu$}
+  Mu represents the prefix micro, $10^{-6}$, and is used in units such as $\mu\mathrm{F}$ and $\mu\mathrm{m}$. It can also denote population mean,
+  \[
+    \mu=\frac{1}{n}\sum_{i=1}^{n}x_i,
+  \]
+  or magnetic permeability, $\mu=\mu_0\mu_r$.
+
+  \subsection*{\centering\uppercase{Applications of Pi}}
+  Circular geometry uses
+  \[
+    C=2\pi r, \qquad A=\pi r^2,
+  \]
+  while a cylinder has volume $V=\pi r^2h$. In ECE, the angular frequency of a sinusoidal signal is
+  \[
+    \omega=2\pi f,
+  \]
+  so a carrier can be written $v(t)=V_m\sin(2\pi ft+\phi)$.
+
+  \noindent
+  Satellite orbits, antenna pointing, rover-wheel distance, rotating machines, circular waveguides, and phase calculations all depend on $\pi$. NASA describes many mission-planning uses, including orbital geometry, spacecraft navigation, and circular laser footprints [9, 10].
+
+  \subsection*{\centering\uppercase{Applications of Summation}}
+  Digital systems work with sampled values, making summation fundamental. A sample mean is
+  \[
+    \bar{x}=\frac{1}{N}\sum_{n=0}^{N-1}x[n],
+  \]
+  and discrete convolution is
+  \[
+    y[n]=\sum_{k=-\infty}^{\infty}x[k]h[n-k].
+  \]
+  Signal energy is $E=\sum_n|x[n]|^2$. In mechanics, static equilibrium requires $\sum F_x=0$, $\sum F_y=0$, and $\sum M=0$. Kirchhoff's Current Law similarly states that the algebraic sum of currents at a node is zero.
+
+  Infinite series also support Fourier analysis. The partial sums of
+  \[
+    \sum_{k=1}^{\infty}\frac{1}{k^2}=\frac{\pi^2}{6}
+  \]
+  approach a finite limit, illustrating how $\sum$, $\infty$, and $\pi$ can appear in a single result.
+
+  \subsection*{\centering\uppercase{Applications of Square Root}}
+  The radical sign appears in the quadratic formula,
+  \[
+    x=\frac{-b\pm\sqrt{b^2-4ac}}{2a},
+  \]
+  Euclidean distance, vector magnitudes, standard deviation, natural frequency, and circuit calculations.
+
+  \noindent
+  For sampled voltage, the root-mean-square value is
+  \[
+    V_{\mathrm{RMS}}=\sqrt{\frac{1}{N}\sum_{n=1}^{N}v_n^2}.
+  \]
+  RMS expresses the DC-equivalent heating effect of an AC waveform, making it essential in electrical measurement and power calculations.
+
+  \subsection*{\centering\uppercase{Applications of Infinity and Integration}}
+  {\justifying
+  Infinity appears in idealised open-circuit impedance, long-time response, frequency-domain limits, and improper integrals. A stable system's steady state may be studied with $\lim_{t\to\infty}y(t)$.\par}
+
+  \noindent
+  Integration describes continuous accumulation. Charge is $q(t)=\int i(t)\,dt$, displacement is the integral of velocity, and signal energy is
+  \[
+    E=\int_{-\infty}^{\infty}|x(t)|^2\,dt.
+  \]
+  Together, $\int$ and $\infty$ allow engineers to model signals over an unlimited time interval.
+
+  \subsection*{\centering\uppercase{Engineering Case Studies}}
+  \subsubsection*{Orbital and Antenna Geometry}
+  A satellite in a circular orbit uses $2\pi r$ geometry, while its angular position can be expressed as $\theta=\omega t$. Ground antennas track the spacecraft using changing azimuth and elevation angles. The same symbols connect orbital motion with antenna pointing.
+
+  \subsubsection*{Inclined-Plane Equilibrium}
+  A force diagram resolves weight into components using $\theta$. Equilibrium requires summation of forces along each axis. If friction is present, $\mu$ may represent the coefficient of friction and $\alpha$ may be used for an inclination or friction angle.
+
+  \subsubsection*{Noise and Sensor Fusion}
+  A sensor system combines many samples using $\sum$, estimates their mean with $\mu$, and describes noise magnitude through a square-root operation such as standard deviation or RMS. Compact notation makes multi-stage processing easier to implement and review.
+\end{multicols}
+
+\begin{table}[tb]
+\centering
+\caption{Worked examples using mathematical symbols in engineering.}
+\small
+  \setlength{\tabcolsep}{6pt}
+  \renewcommand{\arraystretch}{1.45}
+  \begin{tabular}{@{}>{\bfseries\RaggedRight\arraybackslash}p{0.19\textwidth}
+                      >{\RaggedRight\arraybackslash}p{0.35\textwidth}
+                      >{\RaggedRight\arraybackslash}p{0.38\textwidth}@{}}
+    \toprule
+    \textbf{Example} & \textbf{Method} & \textbf{Result} \\
+    \midrule
+    Quadratic equation & For $x^2-5x+6=0$, $\Delta=b^2-4ac=25-24=1$ and $x=(5\pm\sqrt{1})/2$. & The roots are $x=3$ and $x=2$. \\
+    RMS voltage & For samples $[10,0,-10,0]$, $V_{\mathrm{RMS}}=\sqrt{(100+0+100+0)/4}$. & $V_{\mathrm{RMS}}=\sqrt{50}\approx7.07\,\mathrm{V}$. \\
+    Orbital period & For circular orbit radius $r$ and central mass $M$, use $T=2\pi\sqrt{r^3/(GM)}$. & The formula links $\pi$, a square root, and orbital geometry. \\
+    Wavelength & For frequency $f$ in free space, use $\lambda=c/f$. & At $1\,\mathrm{GHz}$, $\lambda\approx0.30\,\mathrm{m}$. \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+\vspace{-0.18em}
+
+\begin{multicols}{2}
+  \subsection*{\centering\uppercase{Conclusion}}
+  Table~2 presents worked examples using mathematical symbols in engineering.
+  Mathematical symbols carry both historical depth and practical value. Pi, sigma, infinity, the radical sign, and the integral symbol emerged from centuries of effort to express reasoning more clearly. Greek symbols such as theta, lambda, alpha, delta, and mu provide additional notation for the quantities used throughout Electronics and Communication Engineering.
+
+  \noindent
+  Their value becomes clearest in application. Symbolic notation describes sinusoidal carriers, antenna angles, orbital paths, attenuation, sample accumulation, circuit laws, RMS voltage, wavelength, and numerical approximations. Learning a symbol therefore means understanding not only how it looks, but also the physical and computational ideas it represents.
+
+  \subsection*{\centering\uppercase{References}}
+  {\small
+  \begin{justify}
+    \begin{enumerate}[label={\relax[\arabic*]},leftmargin=*,labelsep=0.5em,itemsep=0.20em,parsep=0pt]
+      \item Fulton County Library System, “March 14th is National Pi Day,” Library Blog, February 2025.
+      \item UNESCO, “International Day of Mathematics,” March 14.
+      \item F. Cajori, \textit{A History of Mathematical Notations}.
+      \item MacTutor History of Mathematics Archive, “Earliest Uses of Symbols of Operation.”
+      \item C. B. Boyer and U. C. Merzbach, \textit{A History of Mathematics}.
+      \item MacTutor History of Mathematics Archive, “John Wallis.”
+      \item “Infinity symbol,” historical reference overview.
+      \item Wired, “Leibniz Sums It All Up, Seriesly,” 2009.
+      \item NASA Jet Propulsion Laboratory, “18 Ways NASA Uses Pi,” March 2021.
+      \item Honeywell, “5 Ways Engineers Use Pi,” March 2020.
+      \item “Root mean square,” mathematical and engineering reference overview.
+    \end{enumerate}
+  \end{justify}}
+
+\end{multicols}
+
+\begin{center}
+  \begin{minipage}{\textwidth}
+    \input{sections/reports/pi_ece_did_you_know}
+  \end{minipage}
+\end{center}

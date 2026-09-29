@@ -1,0 +1,187 @@
+\begin{center}
+  \section{\capitalisewords{Nanoelectronics and Artificial Intelligence}}
+  Dr. Dipankar Kundu, Associate Professor, ECE
+\end{center}
+
+\setcounter{figure}{0}
+\setcounter{table}{0}
+
+\begin{multicols}{2}
+  \begin{abstract}
+    \bfseries
+    Nanoelectronics develops devices, materials, and circuits whose critical dimensions lie in the nanometre regime. Continued miniaturisation has enabled faster processors, dense memories, energy-efficient sensors, high-quality displays, flexible electronics, and compact computing systems. Artificial Intelligence (AI) is now accelerating this field by predicting nanomaterial properties, approximating expensive physical simulations, optimising device geometry and circuit layout, detecting fabrication defects, and controlling manufacturing processes. The relationship is reciprocal: nanoelectronics supplies specialised hardware for AI, including non-volatile memories, in-memory computing arrays, and neuromorphic devices that reduce the energy and data-movement cost of conventional processors. This article reviews the benefits and applications of nanoelectronics, the role of emerging materials, AI-assisted design and fabrication, brain-inspired hardware, technical limitations, and future opportunities for integrated nanoelectronic--AI systems.
+  \end{abstract}
+
+  \subsection*{\centering\uppercase{Introduction}}
+  Modern electronic systems depend on the ability to place enormous numbers of transistors and memory elements within a small area. Reducing device dimensions shortens signal paths, increases functional density, and permits powerful computation in smartphones, medical instruments, vehicles, communication equipment, and cloud infrastructure. Nanoelectronics extends this development beyond simple geometric scaling by introducing new device structures, materials, fabrication methods, and physical operating principles.
+
+  \noindent
+  At nanoscale dimensions, quantum confinement, tunnelling, interface effects, variability, and heat dissipation become increasingly important. Designers must therefore consider atomic-scale behaviour rather than treating a transistor as an ideal switch. This complexity makes nanoelectronics a natural application area for AI and machine learning, which can identify relationships in high-dimensional data and rapidly search large design spaces.
+
+  \subsection*{\centering\uppercase{Why Nanoelectronics Matters}}
+  \subsubsection*{Lower Energy Use}
+  Smaller devices can switch with less stored charge, reducing the energy required for many operations. A simplified expression for dynamic CMOS power is
+  \[
+    P_{\mathrm{dynamic}}=\alpha C V^2 f,
+  \]
+  where $\alpha$ is switching activity, $C$ is effective capacitance, $V$ is supply voltage, and $f$ is operating frequency. Lower capacitance and voltage reduce energy, although leakage current and heat density limit the benefit of continued scaling.
+
+  \subsubsection*{Faster Processing}
+  Shorter channels and interconnections reduce carrier transit distance and propagation delay. Advanced devices can therefore support high-speed processors and communication circuits. Performance depends not only on transistor speed, however, but also on interconnect resistance, capacitance, memory access, thermal conditions, and architecture.
+
+  \subsubsection*{High-Density Storage}
+  Nanoscale memory cells allow large amounts of information to be stored in a compact footprint. Flash memory, magnetic memories, resistive switching devices, and phase-change materials offer different combinations of density, endurance, retention, access time, and energy consumption.
+
+  \subsubsection*{Flexible and Wearable Systems}
+  Thin films, nanowires, two-dimensional materials, and printable conductors enable lightweight sensors and circuits on flexible substrates. Applications include bendable displays, smart textiles, medical patches, electronic skin, and unobtrusive health-monitoring devices.
+
+  \subsection*{\centering\uppercase{Core Applications}}
+  Nanoelectronics supports several major technology areas:
+  \begin{itemize}\justifying
+    \item \textbf{Advanced computing:} high-density logic and memory support microprocessors, accelerators, edge devices, and research toward quantum information systems.
+    \item \textbf{Displays:} quantum dots and nanoscale emitters improve colour purity, brightness, thickness, and energy efficiency in television and mobile displays.
+    \item \textbf{Sensors and wearables:} nanoscale surfaces respond strongly to chemical, biological, mechanical, and optical changes, enabling sensitive compact detectors.
+    \item \textbf{Communication systems:} high-frequency transistors, photonic devices, and compact antennas support faster wired and wireless links.
+    \item \textbf{Energy systems:} nanostructured electrodes and materials improve batteries, supercapacitors, solar cells, and energy-harvesting devices.
+  \end{itemize}
+
+  \subsection*{\centering\uppercase{Beyond Conventional Silicon}}
+  Silicon remains the foundation of semiconductor manufacturing, but continued scaling motivates alternative channel, contact, dielectric, and interconnect materials. Graphene offers exceptional carrier mobility and thermal conductivity, although its lack of a natural bandgap complicates ordinary digital switching [3]. Carbon nanotubes can form narrow transistor channels with strong electrostatic control [4]. Two-dimensional semiconductors, nanowires, and high-permittivity dielectrics provide further routes toward low-power and highly scaled devices.
+
+  \noindent
+  A promising material must satisfy more than one laboratory metric. It must be manufacturable over large areas, stable during processing, compatible with contacts and dielectrics, reproducible across devices, and economically integrated into existing production systems.
+\end{multicols}
+
+\begin{table}[t]
+\centering
+\caption{Representative nanoelectronic technologies and their engineering value.}
+\footnotesize
+  \setlength{\tabcolsep}{4pt}
+  \renewcommand{\arraystretch}{1.18}
+  \begin{tabular}{@{}>{\bfseries\RaggedRight\arraybackslash}p{0.20\textwidth}
+                      >{\RaggedRight\arraybackslash}p{0.28\textwidth}
+                      >{\RaggedRight\arraybackslash}p{0.44\textwidth}@{}}
+    \toprule
+    \textbf{Technology} & \textbf{Key Property} & \textbf{Representative Application} \\
+    \midrule
+    FinFET / gate-all-around FET & Strong gate control over a small channel & Dense low-power logic and advanced processors \\
+    Quantum dots & Size-dependent optical and electronic behaviour & Colour-conversion displays, imaging, and photodetectors \\
+    Carbon nanotubes & Nanoscale one-dimensional conduction path & Experimental transistors, sensors, and interconnects \\
+    Two-dimensional materials & Atomically thin channels and surfaces & Flexible electronics, sensing, and scaled transistors \\
+    Resistive and phase-change memory & Non-volatile programmable conductance & Storage, in-memory computing, and artificial synapses \\
+    Nanowires and thin films & High surface-to-volume ratio and flexibility & Biomedical sensors, wearable devices, and energy systems \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+\vspace{-0.18em}
+
+\begin{multicols}{2}
+  \subsection*{\centering\uppercase{AI for Nanoelectronics}}
+  Table~1 summarizes representative nanoelectronic technologies and their engineering value.
+  AI supports nanoelectronics at several stages, from material discovery to manufacturing and circuit operation. Its principal advantage is the ability to learn useful approximations from experimental or simulated data and then evaluate new candidates much faster than repeated physical trials.
+
+  \subsubsection*{Discovery of Materials}
+  Machine-learning models can screen chemical and structural databases to identify candidate conductors, semiconductors, dielectrics, magnetic materials, and catalysts [5]. Input features may include composition, crystal structure, bonding, calculated energy, or previously measured properties. The model ranks promising candidates, while physical theory and laboratory validation determine whether the prediction is reliable.
+
+  \subsubsection*{Predictive Modelling and Simulation}
+  Accurate atomistic and quantum-mechanical calculations may require substantial computation. Surrogate models learn the relationship between device geometry, materials, bias, temperature, and output characteristics. Once trained and validated, they can rapidly estimate current, delay, power, reliability, or process sensitivity. These models do not eliminate physics; they provide a faster approximation within the domain represented by their training data.
+
+  \subsubsection*{Device and Circuit Optimisation}
+  Nanoelectronic design contains many coupled variables: channel dimensions, doping, contact resistance, dielectric thickness, operating voltage, layout, and thermal constraints. Optimisation algorithms can search these variables for lower leakage, higher speed, improved yield, or a balanced power--performance--area result. AI-assisted electronic-design automation can also place and route dense circuits while reducing congestion and signal interference.
+
+  \subsubsection*{Nanofabrication Control}
+  Lithography, deposition, etching, annealing, and nanoparticle assembly are sensitive to process conditions. Machine vision detects pattern defects, while predictive models connect sensor measurements with final device performance. Real-time control can adjust exposure, temperature, gas flow, pressure, or timing to improve uniformity and yield.
+
+  \subsubsection*{Reliability and Predictive Maintenance}
+  AI can analyse electrical measurements, microscopy, acoustic data, and equipment logs to identify abnormal process behaviour. Early detection reduces wafer loss and unplanned downtime. At the device level, learning models can estimate degradation caused by bias stress, temperature cycling, electromigration, or repeated memory programming.
+
+  \subsection*{\centering\uppercase{Nanoelectronics for AI}}
+  Conventional processors store data in memory and repeatedly move it to separate computing units. This von Neumann organisation is flexible, but data movement consumes considerable time and energy in large AI workloads. Nanoelectronic devices can reduce this bottleneck through specialised accelerators, non-volatile memory, in-memory computation, and neuromorphic architectures.
+
+  \subsubsection*{In-Memory Computing}
+  Crossbar arrays of resistive or phase-change devices can store conductance values representing neural-network weights. Applying input voltages allows currents to accumulate according to Kirchhoff's laws, approximating many multiply--accumulate operations in parallel. The approach can be highly efficient, but practical systems must manage device variation, limited precision, noise, endurance, and analogue-to-digital conversion overhead.
+
+  \subsubsection*{Neuromorphic Hardware}
+  Neuromorphic systems imitate selected organisational principles of biological nervous systems [6]. Electronic neurons communicate through events or spikes, while synaptic devices store adaptable connection strengths. Processing and memory are placed close together, allowing sparse sensory information to be handled with low energy. Applications include robotics, vision, audio processing, medical monitoring, and always-on edge intelligence.
+
+  \subsubsection*{Edge AI}
+  Compact nanoelectronic accelerators allow inference to occur near a sensor rather than in a remote cloud. Local processing reduces communication delay, bandwidth, and exposure of private raw data. It is particularly valuable for wearables, autonomous machines, industrial monitoring, and battery-powered systems.
+\end{multicols}
+
+\begin{table}[t]
+\centering
+\caption{The reciprocal relationship between AI and nanoelectronics.}
+\footnotesize
+  \setlength{\tabcolsep}{4pt}
+  \renewcommand{\arraystretch}{1.18}
+  \begin{tabular}{@{}>{\bfseries\RaggedRight\arraybackslash}p{0.23\textwidth}
+                      >{\RaggedRight\arraybackslash}p{0.31\textwidth}
+                      >{\RaggedRight\arraybackslash}p{0.38\textwidth}@{}}
+    \toprule
+    \textbf{Direction} & \textbf{Method} & \textbf{Engineering Benefit} \\
+    \midrule
+    AI $\rightarrow$ Nanoelectronics & Material-property prediction and candidate screening & Reduces the number of expensive synthesis and characterisation experiments \\
+    AI $\rightarrow$ Nanoelectronics & Fast surrogate device models and optimisation & Accelerates design-space exploration for power, speed, area, and reliability \\
+    AI $\rightarrow$ Nanoelectronics & Vision-based inspection and process control & Detects defects and improves fabrication precision and yield \\
+    Nanoelectronics $\rightarrow$ AI & Non-volatile and in-memory computing devices & Reduces repeated movement of neural-network weights and data \\
+    Nanoelectronics $\rightarrow$ AI & Neuromorphic neurons and synapses & Supports event-driven, brain-inspired computation with low energy \\
+    Nanoelectronics $\rightarrow$ AI & Compact sensing and edge accelerators & Enables rapid local decisions with lower communication demand \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+\vspace{-0.18em}
+
+\begin{multicols}{2}
+  \subsection*{\centering\uppercase{An Integrated Development Cycle}}
+  Table~2 summarizes the reciprocal relationship between AI and nanoelectronics.
+  The strongest results emerge when AI and physical engineering are combined in a closed loop:
+  \begin{enumerate}\justifying
+    \item define the target electrical, mechanical, optical, or thermal properties;
+    \item generate candidate materials and device structures through theory, simulation, or prior experiments;
+    \item train a model to predict performance and uncertainty;
+    \item fabricate the most informative candidates rather than every possible design;
+    \item measure real devices and return the results to the model;
+    \item refine the design until performance, manufacturability, reliability, and cost targets are satisfied.
+  \end{enumerate}
+  This approach is often called active learning or design--build--test--learn. Human expertise remains essential for selecting meaningful objectives, recognising invalid assumptions, and confirming that a statistical improvement corresponds to a physically useful device.
+
+  \subsection*{\centering\uppercase{Challenges}}
+  \begin{itemize}\justifying
+    \item \textbf{Limited data:} nanoscale experiments are expensive, and datasets may be too small or inconsistent for robust learning.
+    \item \textbf{Model generalisation:} a model trained on one material system or fabrication tool may fail under different conditions.
+    \item \textbf{Interpretability:} engineers need to understand whether a prediction follows valid physical relationships or accidental correlations.
+    \item \textbf{Variability:} atomic defects, interfaces, temperature, and process fluctuations create significant device-to-device differences.
+    \item \textbf{Thermal management:} higher functional density can concentrate heat even when individual operations use less energy.
+    \item \textbf{Manufacturing integration:} promising laboratory devices must be compatible with repeatable, high-yield, large-scale fabrication.
+    \item \textbf{Hardware accuracy:} analogue and neuromorphic devices may exhibit noise, drift, limited precision, and endurance constraints.
+  \end{itemize}
+
+  \subsection*{\centering\uppercase{Future Scope}}
+  Future research will increasingly combine physics-based simulation with machine learning so that predictions respect conservation laws, symmetries, and known device behaviour. Automated laboratories may connect robotic fabrication, high-throughput measurement, and active-learning algorithms to explore materials with limited human intervention.
+
+  \noindent
+  At the system level, heterogeneous integration will combine conventional CMOS with memories, sensors, photonic devices, and specialised accelerators. Three-dimensional integration can shorten data paths but intensifies thermal and testing challenges. Neuromorphic and in-memory systems will continue to develop for applications where low energy and local response matter more than universal numerical precision.
+
+  \subsection*{\centering\uppercase{Conclusion}}
+  Nanoelectronics has enabled compact, fast, energy-conscious, and data-rich electronic systems. Its importance extends from processors and memories to displays, sensors, flexible devices, healthcare, communication, and energy technologies. Emerging materials such as graphene, carbon nanotubes, nanowires, and two-dimensional semiconductors expand the available design space beyond conventional silicon.
+
+  \noindent
+  AI accelerates this field through material discovery, surrogate simulation, circuit optimisation, defect inspection, fabrication control, and reliability prediction. In return, nanoelectronics provides in-memory and neuromorphic hardware capable of running AI with reduced energy and latency. Their convergence is therefore not a one-way application of software to devices; it is a co-design process in which materials, devices, circuits, architectures, algorithms, and manufacturing improve together.
+
+  \subsection*{\centering\uppercase{References}}
+  {\small
+  \begin{justify}
+    \begin{enumerate}[label={\relax[\arabic*]},leftmargin=*,labelsep=0.5em,itemsep=0.10em,parsep=0pt]
+      \item S. M. Sze and K. K. Ng, \textit{Physics of Semiconductor Devices}, 3rd ed. Hoboken, NJ, USA: Wiley, 2006.
+      \item International Roadmap for Devices and Systems, \textit{IRDS: More Moore and Beyond-CMOS Chapters}.
+      \item A. K. Geim and K. S. Novoselov, “The rise of graphene,” \textit{Nature Materials}, vol. 6, pp. 183--191, 2007.
+      \item S. Iijima, “Helical microtubules of graphitic carbon,” \textit{Nature}, vol. 354, pp. 56--58, 1991.
+      \item K. T. Butler et al., “Machine learning for molecular and materials science,” \textit{Nature}, vol. 559, pp. 547--555, 2018.
+      \item C. Mead, “Neuromorphic electronic systems,” \textit{Proceedings of the IEEE}, vol. 78, no. 10, pp. 1629--1636, 1990.
+      \item D. Markovi\'{c} et al., “Physics for neuromorphic computing,” \textit{Nature Reviews Physics}, vol. 2, pp. 499--510, 2020.
+      \item G. W. Burr et al., “Neuromorphic computing using non-volatile memory,” \textit{Advances in Physics: X}, vol. 2, no. 1, pp. 89--124, 2017.
+    \end{enumerate}
+  \end{justify}}
+\end{multicols}
+
+\par\noindent

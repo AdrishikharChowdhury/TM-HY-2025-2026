@@ -1,0 +1,60 @@
+% Formal ECE magazine contents page
+\renewcommand{\cftsecfont}{\footnotesize\bfseries\rmfamily\color{DarkGray}}
+\renewcommand{\cftsecpagefont}{\footnotesize\bfseries\rmfamily\color{IEEEblue}}
+\renewcommand{\cftsubsecfont}{\footnotesize\bfseries\rmfamily\color{DarkGray}}
+\renewcommand{\cftsubsecpagefont}{\footnotesize\bfseries\rmfamily\color{IEEEblue}}
+\renewcommand{\cftsecleader}{\color{black!35}\cftdotfill{1.5}\color{DarkGray}}
+\renewcommand{\cftsubsecleader}{\color{black!25}\cftdotfill{1.5}\color{DarkGray}}
+\setlength{\cftbeforesecskip}{0.65em}
+\setlength{\cftbeforesubsecskip}{0.18em}
+\setlength{\cftsecindent}{0pt}
+\setlength{\cftsubsecindent}{1.5em}
+\setlength{\cftsecnumwidth}{2.2em}
+
+\makeatletter
+\newcommand{\customtableofcontents}{%
+  \clearpage
+  \thispagestyle{empty}%
+
+  \vfill
+  \begin{center}
+    {\rmfamily\bfseries\fontsize{37}{41}\selectfont Contents\par}
+    \vspace{0.22cm}
+    {\color{black!25}\rule{0.38\textwidth}{0.5pt}}%
+    {\color{IEEEorange}\rule{0.16\textwidth}{1.6pt}}%
+    {\color{black!25}\rule{0.38\textwidth}{0.5pt}}\par
+  \end{center}
+  \vspace{0.65cm}
+
+  \noindent\makebox[\textwidth][c]{%
+  \begin{minipage}{1.08\textwidth}
+  \begin{tcolorbox}[
+    enhanced,
+    colback=white,
+    colframe=black!22,
+    boxrule=0.45pt,
+    sharp corners,
+    left=9mm,
+    right=9mm,
+    top=7mm,
+    bottom=7mm,
+  ]
+    \noindent
+    {\rmfamily\bfseries\footnotesize\color{black!50} SECTION}%
+    \hfill
+    {\rmfamily\bfseries\footnotesize\color{black!50} PAGE}\par
+    \vspace{0.1cm}
+    {\color{black!18}\hrule height 0.4pt}
+    \vspace{0.25cm}
+    \begingroup
+      \sloppy
+      \setlength{\emergencystretch}{4em}%
+      \@starttoc{toc}%
+    \endgroup
+  \end{tcolorbox}
+  \end{minipage}%
+  }
+
+  \vfill
+}
+\makeatother

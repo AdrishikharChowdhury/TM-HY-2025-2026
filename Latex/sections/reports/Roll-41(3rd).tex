@@ -1,0 +1,276 @@
+\input{sections/reports/arjun_figures}
+
+\begin{center}
+  \section{\capitalisewords{Brain-Inspired Neuromorphic Computing Chips for Energy-Efficient Artificial Intelligence}}
+  Arjun Mitra, 3$^{rd}$ Year, ECE
+\end{center}
+
+\setcounter{figure}{0}
+\setcounter{table}{0}
+
+\begin{multicols}{2}
+  \begin{abstract}
+    \bfseries
+    The rapid growth of artificial intelligence has exposed a fundamental limitation of conventional computing: moving data repeatedly between processors and memory consumes more energy than many arithmetic operations themselves. Neuromorphic computing addresses this limitation by reproducing selected principles of the nervous system in hardware, including event-driven communication, distributed memory, massively parallel processing, and adaptive synaptic connections. Instead of continuously executing clocked instructions, neuromorphic chips communicate through sparse electrical spikes and activate computation only when relevant events occur.
+    This report examines the biological foundations, mathematical models, learning rules, semiconductor architectures, and emerging materials that enable neuromorphic systems. Representative platforms such as IBM TrueNorth, Intel Loihi and Loihi~2, SpiNNaker, and Intel Hala Point are compared with conventional accelerators. The report also evaluates memristive crossbars, event-based sensing, edge robotics, photonic and quantum approaches, and the environmental implications of brain-inspired hardware. Finally, a hybrid architecture is proposed in which neuromorphic processors perform continuous low-power perception while conventional GPU or TPU accelerators are invoked selectively for dense reasoning. The analysis shows that neuromorphic chips are unlikely to replace all conventional processors, but they can become an important energy-efficient companion technology for sparse, time-dependent, and always-on intelligence.
+
+    \vspace{2em}
+    {\justifying\noindent\textbf{Keywords:} Neuromorphic Computing, Spiking Neural Networks, Loihi, TrueNorth, Hala Point, Memristor, Event-Driven AI, STDP, Edge Intelligence, Green AI.\par}
+  \end{abstract}
+  \vspace{-0.6em}
+  \subsection*{\centering\uppercase{Introduction}}
+  Modern AI systems achieve remarkable performance by executing enormous numbers of multiply--accumulate operations on GPUs and other dense accelerators. Their success, however, comes with high energy consumption, substantial memory traffic, and increasingly expensive cooling infrastructure. In a conventional von Neumann computer, memory and processing are physically separated. Weights and activations must therefore travel repeatedly through a limited communication path, producing the well-known von Neumann bottleneck.
+
+  \noindent
+  The human brain demonstrates a different computational strategy. Approximately 86 billion neurons operate through local, asynchronous interactions while the complete organ consumes only about 20~W. Biological intelligence is not obtained by forcing every neuron to update at every instant. Neurons remain mostly inactive and communicate only when their membrane potential crosses a threshold. Memory and computation are also closely linked because information is stored in the strengths of synaptic connections.
+
+  \noindent
+  Neuromorphic engineering, introduced as a formal hardware discipline by Carver Mead, translates these principles into electronic circuits. Its goal is not to reproduce the brain in every biological detail, but to identify useful computational properties---sparsity, local state, temporal coding, parallelism, and adaptation---and implement them efficiently in silicon.
+
+  \begin{center}
+\vspace{-0.5em}
+\begin{minipage}{0.98\columnwidth}
+\centering
+    \arjunArchitectureFigure
+    \captionof{figure}{Architectural shift from processor--memory data shuttling to an asynchronous neuromorphic grid with local memory and computation.}
+\end{minipage}
+  \end{center}
+\vspace{-0.35em}
+
+  \subsection*{\centering\uppercase{From Biological Neurons to Electronic Circuits}}
+  A biological neuron receives signals through dendrites, integrates them in the soma, and transmits an action potential along the axon when sufficient excitation is accumulated. Synapses determine the influence of one neuron on another, and their strengths change with experience. This provides a natural model for computation in which both information and time are significant.
+
+  \begin{center}
+\vspace{-0.5em}
+\begin{minipage}{0.98\columnwidth}
+\centering
+    \arjunNeuronFigure
+    \captionof{figure}{Biological neuron structure that inspires artificial dendrites, soma integration, axonal communication, and programmable synaptic weights.}
+\end{minipage}
+  \end{center}
+
+  In digital neuromorphic hardware, each neuron is represented by a small state machine or circuit. Incoming spikes update its internal voltage, leakage reduces that voltage with time, and an output spike is generated at a threshold. Communication commonly uses Address-Event Representation (AER), in which a transmitted packet identifies the firing neuron rather than carrying a continuous-valued activation.
+
+  Table~1 compares conventional and neuromorphic computing principles.
+  \begin{center}
+\vspace{-0.5em}
+\begin{minipage}{0.98\columnwidth}
+\centering
+    \scriptsize
+    \captionof{table}{Conventional and neuromorphic computing principles}
+    \setlength{\tabcolsep}{3pt}
+    \renewcommand{\arraystretch}{1.25}
+    \begin{tabular}{@{}>{\RaggedRight\arraybackslash}p{0.25\columnwidth}
+      >{\RaggedRight\arraybackslash}p{0.31\columnwidth}
+      >{\RaggedRight\arraybackslash}p{0.34\columnwidth}@{}}
+      \toprule
+      \textbf{Feature} & \textbf{Von Neumann} & \textbf{Neuromorphic} \\
+      \midrule
+      Processing & Sequential or batched & Massively parallel \\
+      Memory & Separate hierarchy & Distributed near compute \\
+      Timing & Global clock & Event-driven, asynchronous \\
+      Data & Dense numeric words & Sparse spike events \\
+      Learning & Usually off-chip & Local or on-chip possible \\
+      Idle power & Continual activity & Units sleep between events \\
+      \bottomrule
+    \end{tabular}
+\end{minipage}
+  \end{center}
+\vspace{-0.35em}
+
+  \subsection*{\centering\uppercase{Spiking Neural Network Fundamentals}}
+  Spiking Neural Networks (SNNs) are often described as the third generation of neural networks because they represent both the occurrence and timing of neural activity. The spike train emitted by neuron $i$ can be written as
+  \[
+    S_i(t)=\sum_f \delta\!\left(t-t_i^{(f)}\right),
+  \]
+  where $t_i^{(f)}$ is the time of its $f$th spike. Information may be represented by the average firing rate, the exact timing of individual spikes, the order of spikes, or the synchrony of a population.
+
+  \subsubsection*{Leaky Integrate-and-Fire Model}
+  The Leaky Integrate-and-Fire (LIF) neuron provides a practical balance between biological meaning and hardware simplicity. Its membrane voltage is commonly modelled by
+  \[
+    \tau_m\frac{dV}{dt}=-(V-E_L)+R_m I_e(t),
+  \]
+  where $\tau_m$ is the membrane time constant, $E_L$ is the resting potential, $R_m$ is the membrane resistance, and $I_e(t)$ is the input current. When $V$ reaches a threshold $V_{th}$, the neuron emits a spike, resets, and may enter a short refractory period.
+
+  \begin{center}
+\vspace{-0.5em}
+\begin{minipage}{0.98\columnwidth}
+\centering
+    \arjunLIFFigure
+    \captionof{figure}{Operational flow of a LIF neuron from presynaptic spikes and weighted integration to threshold firing and reset.}
+\end{minipage}
+  \end{center}
+
+  Rate coding is robust and easy to decode but may require many spikes and longer observation windows. Temporal coding can transmit information with fewer events and lower latency, but it is more sensitive to timing noise. Practical systems often combine both approaches depending on the sensor, task, and available hardware.
+
+  \subsection*{\centering\uppercase{Learning and Synaptic Plasticity}}
+  Biological learning occurs largely through changes in synaptic strength. A widely used local rule is Spike-Timing-Dependent Plasticity (STDP), which adjusts a synapse according to the interval $\Delta t=t_{post}-t_{pre}$ between pre- and postsynaptic spikes:
+  \[
+    \Delta w=
+    \begin{cases}
+      A_+e^{-\Delta t/\tau_+}, & \Delta t>0,\\
+      -A_-e^{\Delta t/\tau_-}, & \Delta t<0.
+    \end{cases}
+  \]
+  A presynaptic spike arriving shortly before a postsynaptic spike strengthens the connection, while the reverse order weakens it. Because only local timing information is required, STDP is attractive for on-chip and continual learning.
+
+  \noindent
+  Deep SNNs are also trained using surrogate gradients. During the forward pass, neurons retain their discrete threshold behaviour. During backpropagation, the zero or undefined derivative of the spike function is replaced by a smooth approximation. This makes conventional gradient-based optimisation possible while retaining sparse event-driven inference. Other approaches include conversion of trained Artificial Neural Networks (ANNs) into SNNs and local error rules such as the Prescribed Error Sensitivity method.
+
+  \subsection*{\centering\uppercase{Neuromorphic Chip Architectures}}
+  A neuromorphic processor contains many small cores connected by a packet-routing network. Each core stores neuron states and synaptic weights locally, processes incoming spike events, and forwards new events only when neurons fire. This reduces long-distance memory transfers and allows inactive regions to consume little dynamic power.
+
+  Table~2 lists representative neuromorphic platforms.
+  \begin{center}
+\vspace{-0.5em}
+\begin{minipage}{0.98\columnwidth}
+\centering
+    \scriptsize
+    \captionof{table}{Representative neuromorphic platforms}
+    \setlength{\tabcolsep}{2.5pt}
+    \renewcommand{\arraystretch}{1.2}
+    \begin{tabular}{@{}>{\RaggedRight\arraybackslash}p{0.20\columnwidth}
+      >{\RaggedRight\arraybackslash}p{0.19\columnwidth}
+      >{\RaggedRight\arraybackslash}p{0.23\columnwidth}
+      >{\RaggedRight\arraybackslash}p{0.29\columnwidth}@{}}
+      \toprule
+      \textbf{Platform} & \textbf{Scale} & \textbf{Learning} & \textbf{Distinctive feature} \\
+      \midrule
+      IBM TrueNorth & 1M neurons & Offline & 4,096 low-power cores \\
+      Intel Loihi & 131k neurons & On-chip & Programmable plasticity \\
+      Loihi 2 & Up to 1M/chip & On-chip & Graded events and improved cores \\
+      SpiNNaker & Many ARM cores & Software-defined & Real-time large SNN simulation \\
+      Hala Point & 1.15B neurons & Distributed & 1,152 Loihi 2 chips \\
+      \bottomrule
+    \end{tabular}
+\end{minipage}
+  \end{center}
+\vspace{-0.35em}
+
+  \subsubsection*{IBM TrueNorth}
+  TrueNorth demonstrated that one million programmable spiking neurons and 256 million synapses could be integrated into a low-power many-core device. Its 4,096 cores communicate through a scalable event-routing network. The architecture is efficient for inference but does not provide the flexible on-chip learning available in later systems.
+
+  \subsubsection*{Intel Loihi and Loihi 2}
+  Intel Loihi introduced programmable learning engines within each neuromorphic core, enabling local plasticity and adaptation without constant host intervention. Loihi~2 increased neuron capacity, event flexibility, connectivity, and processing speed while supporting Intel's Lava software framework. Hala Point scales 1,152 Loihi~2 chips to approximately 1.15 billion neurons and 128 billion synapses, showing that neuromorphic systems can reach brain-scale neuron counts in research hardware.
+
+  \subsubsection*{SpiNNaker}
+  SpiNNaker uses large numbers of conventional ARM processor cores linked by a specialised multicast network. It sacrifices some custom-circuit efficiency in exchange for flexibility, making it valuable for real-time neuroscience simulation and experiments with large, heterogeneous spiking networks.
+
+  \subsection*{\centering\uppercase{Memristive Synapses and In-Memory Computing}}
+  A memristor is a non-volatile device whose conductance depends on its electrical history. Conductance can represent a synaptic weight, making memristors attractive for dense, persistent, and analog synapse arrays. In a crossbar, input voltages are applied along rows and column currents naturally perform matrix--vector multiplication:
+  \[
+    I_j=\sum_i G_{ij}V_i,
+  \]
+  where $G_{ij}$ is the programmed conductance at cross-point $(i,j)$. The computation occurs where the weights are stored, greatly reducing data movement.
+
+  \begin{center}
+\vspace{-0.5em}
+\begin{minipage}{0.98\columnwidth}
+\centering
+    \arjunMemristorFigure
+    \captionof{figure}{Memristive training loop using crossbar readout, an error or reward signal, programming pulses, and conductance updates.}
+\end{minipage}
+  \end{center}
+
+  {\justifying
+  Candidate technologies include Resistive RAM, phase-change memory, and hafnium-oxide devices. Important obstacles remain: device-to-device variation, limited endurance, nonlinear programming, conductance drift, peripheral converter overhead, and the difficulty of obtaining precise symmetric weight updates. Hybrid analog--digital control is therefore likely to remain necessary.\par}
+
+  \subsection*{\centering\uppercase{Edge Intelligence, Sensors, and Robotics}}
+  Neuromorphic processors are particularly suitable for edge systems that must observe the environment continuously while operating from a small battery. Dynamic Vision Sensors report changes in brightness rather than sending complete image frames. Their output is naturally sparse, asynchronous, and compatible with SNNs. Similar principles apply to event-based microphones, tactile arrays, biomedical signals, and industrial anomaly sensors.
+
+  \noindent
+  In robotics, low-latency spike processing can support obstacle avoidance, motor control, localisation, gesture recognition, and sensor fusion. The greatest advantage appears when the complete pipeline is event-driven. Converting conventional frames into spikes or repeatedly moving data back to a host processor can eliminate much of the energy benefit.
+
+  \subsection*{\centering\uppercase{Proposed Hybrid Neuromorphic Edge Architecture}}
+  A practical deployment model combines specialised components rather than forcing every task onto one processor. The proposed architecture begins with event cameras or other sparse sensors. An FPGA interface schedules and filters events, a Loihi-like SNN core extracts temporal features, and an adaptive STDP layer updates selected local representations. An edge decision engine then controls a robot, vehicle, or healthcare device. Only compressed model updates and anomaly summaries are synchronised with the cloud.
+
+  \begin{center}
+\vspace{-0.5em}
+\begin{minipage}{0.98\columnwidth}
+\centering
+    \arjunEdgeFigure
+    \captionof{figure}{Proposed closed-loop edge architecture combining event sensing, FPGA scheduling, SNN inference, local adaptation, decisions, and selective cloud synchronisation.}
+\end{minipage}
+  \end{center}
+
+  This design reduces bandwidth, improves response time, and keeps sensitive raw data near its source. It also separates fast local decisions from slower global calibration. Safety-critical systems should retain deterministic fallback logic, confidence thresholds, and conventional verification pathways.
+
+  \subsection*{\centering\uppercase{Photonics, Quantum Devices, and Emerging Directions}}
+  Photonic neuromorphic processors use light for communication and computation. Optical interference and wavelength multiplexing can provide high bandwidth and parallel matrix operations with low propagation delay. Phase-change photonic memories can retain analog weights without continuous power. The main challenges are optical loss, fabrication variability, device size, electro-optic conversion, and integration with electronic control.
+
+  \noindent
+  Quantum neuromorphic computing is more speculative. It investigates whether quantum states, stochastic sampling, and quantum sensing can be combined with neural dynamics. Near-term impact is more likely to come from quantum-inspired algorithms and specialised sensors than from a universal quantum replacement for neuromorphic chips.
+
+  \subsection*{\centering\uppercase{Sustainability and Green AI}}
+  Neuromorphic hardware can reduce operational energy when workloads are sparse. If only a fraction $\alpha$ of neurons is active and only a fraction $\gamma$ of connections is used, the effective computation may be approximated as
+  \[
+    C_{active}\approx\alpha\gamma C_{dense}.
+  \]
+  Very small values of $\alpha$ and $\gamma$ explain why event-driven hardware can outperform dense accelerators on suitable sensory and optimisation tasks.
+
+  \noindent
+  Energy claims must nevertheless be evaluated at system level. Sensor conversion, host processors, data movement, cooling, training, fabrication, and embodied carbon can dominate the chip-level savings. Fair comparisons should report accuracy, latency, total energy per decision, hardware utilisation, and the complete measurement boundary rather than isolated operations per watt.
+
+  \subsection*{\centering\uppercase{Critical Analysis and Research Gaps}}
+  Despite impressive prototypes, several barriers prevent widespread adoption:
+  \begin{itemize}\justifying
+    \item \textbf{Software fragmentation:} platforms use different neuron models, compilers, learning rules, and programming interfaces.
+    \item \textbf{Training difficulty:} temporal credit assignment remains more difficult than training conventional dense networks.
+    \item \textbf{Benchmark inconsistency:} energy and accuracy are often reported under different assumptions, making comparisons unreliable.
+    \item \textbf{Workload mismatch:} transformer models and other dense workloads do not automatically benefit from spike-based execution.
+    \item \textbf{Device variability:} analog memories require calibration and error-tolerant algorithms.
+    \item \textbf{Commercial integration:} developers need stable toolchains, standard interfaces, debugging tools, and cost-effective packaging.
+  \end{itemize}
+
+  Neuromorphic attention mechanisms may reduce transformer cost by activating only important tokens, channels, or time steps. If conventional scaled dot-product attention is
+  \[
+    \operatorname{Attention}(Q,K,V)=
+    \operatorname{softmax}\!\left(\frac{QK^{T}}{\sqrt{d_k}}\right)V,
+  \]
+  a spike-gated implementation can avoid portions of the computation when the corresponding queries or keys are inactive. This is promising, but current large-language-model workloads still favour dense GPU and TPU hardware.
+
+  \begin{center}
+\vspace{-0.5em}
+\begin{minipage}{0.98\columnwidth}
+\centering
+    \arjunHybridFigure
+    \captionof{figure}{Hybrid computing proposal: neuromorphic hardware handles continuous sparse perception, while a GPU or TPU is activated for semantic reasoning and planning.}
+\end{minipage}
+  \end{center}
+
+  The most realistic near-term system is therefore heterogeneous. Neuromorphic cores can manage always-on perception, anomaly detection, reflex control, and adaptive filtering. Conventional accelerators can handle large dense models, global optimisation, and high-level planning. The design principle is simple: spikes handle time-sensitive sparse activity; GPUs handle abstraction-intensive dense computation.
+
+  \subsection*{\centering\uppercase{Conclusion}}
+  Neuromorphic computing provides a credible hardware response to the energy and data-movement limitations of conventional AI. By co-locating memory and processing, communicating through sparse events, and supporting local adaptation, neuromorphic chips can deliver very low latency and energy consumption on workloads that contain temporal structure and limited activity.
+
+  \noindent
+  TrueNorth established the feasibility of million-neuron digital hardware, Loihi added programmable on-chip learning, SpiNNaker demonstrated flexible large-scale real-time simulation, and Hala Point extended Loihi~2 to more than a billion neurons. Memristive and photonic technologies may improve density and efficiency further, although manufacturing variability and peripheral circuitry remain substantial challenges.
+
+  \noindent
+  Neuromorphic systems should not be judged as universal replacements for CPUs, GPUs, or TPUs. Their strongest role is as specialised accelerators within heterogeneous systems, particularly for event-based sensing, edge robotics, biomedical monitoring, and other always-on applications. Progress in common software tools, reproducible benchmarks, reliable devices, and hybrid architectures will determine whether brain-inspired computing moves from research platforms to routine engineering practice.
+
+  \subsection*{\centering\uppercase{References}}
+  \footnotesize
+  \begin{enumerate}
+    \item C. D. Schuman et al., “A Survey of Neuromorphic Computing and Neural Networks in Hardware,” arXiv:1705.06963, 2017.
+    \item C. Mead, “Neuromorphic Electronic Systems,” \textit{Proceedings of the IEEE}, vol. 78, no. 10, pp. 1629--1636, 1990.
+    \item M. Davies et al., “Loihi: A Neuromorphic Manycore Processor with On-Chip Learning,” \textit{IEEE Micro}, vol. 38, no. 1, pp. 82--99, 2018.
+    \item S. B. Furber et al., “The SpiNNaker Project,” \textit{Proceedings of the IEEE}, vol. 102, no. 5, pp. 652--665, 2014.
+    \item P. A. Merolla et al., “A Million Spiking-Neuron Integrated Circuit with a Scalable Communication Network and Interface,” \textit{Science}, vol. 345, no. 6197, pp. 668--673, 2014.
+    \item M. Davies et al., “Advancing Neuromorphic Computing with Loihi: A Survey of Results and Outlook,” \textit{Proceedings of the IEEE}, vol. 109, no. 5, pp. 911--934, 2021.
+    \item Intel Corporation, “Intel Builds World's Largest Neuromorphic System to Enable More Sustainable AI,” Intel Newsroom, 2024.
+    \item P. Lichtsteiner, C. Posch, and T. Delbruck, “A 128$\times$128 120 dB 15 $\mu$s Latency Asynchronous Temporal Contrast Vision Sensor,” \textit{IEEE Journal of Solid-State Circuits}, vol. 43, no. 2, pp. 566--576, 2008.
+    \item D. Kudithipudi et al., “Neuromorphic Computing at Scale,” \textit{Nature}, vol. 637, pp. 801--812, 2025.
+    \item S. B. Shrestha and G. Orchard, “SLAYER: Spike Layer Error Reassignment in Time,” \textit{NeurIPS}, vol. 31, 2018.
+    \item G. W. Burr et al., “Neuromorphic Computing Using Non-Volatile Memory,” \textit{Advances in Physics: X}, vol. 2, no. 1, pp. 89--124, 2017.
+    \item N. Farmakidis et al., “Integrated Photonic Neuromorphic Computing,” \textit{Nature Reviews Electrical Engineering}, vol. 1, pp. 358--373, 2024.
+    \item B. J. Shastri et al., “Photonics for Artificial Intelligence and Neuromorphic Computing,” \textit{Nature Photonics}, vol. 15, pp. 102--114, 2021.
+    \item A. Vaswani et al., “Attention Is All You Need,” \textit{NeurIPS}, vol. 30, 2017.
+    \item J. Kaplan et al., “Scaling Laws for Neural Language Models,” arXiv:2001.08361, 2020.
+    \item J. Hoffmann et al., “Training Compute-Optimal Large Language Models,” arXiv:2203.15556, 2022.
+  \end{enumerate}
+\end{multicols}
+% Full-width info box outside multicols
+\noindent\begin{minipage}{\textwidth}
+  \input{sections/reports/component_marking_guide}
+\end{minipage}

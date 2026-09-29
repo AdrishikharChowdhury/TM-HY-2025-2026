@@ -1,0 +1,218 @@
+% Exact TikZ figures imported from the author-provided LaTeX source.
+
+\newcommand{\arjunArchitectureFigure}{%
+\resizebox{0.85\columnwidth}{!}{%
+    \begin{tikzpicture}[node distance=1.5cm, every node/.style={font=\scriptsize}]
+        % Traditional Architecture (Von Neumann)
+        \draw[thick, IEEEblue, fill=IEEEblue!5] (-3.5, 1.5) rectangle (-1.0, 3.5);
+        \node[align=center, text width=2.1cm] at (-2.25, 2.8) {\textbf{Von Neumann}\\\textbf{Processor}\\\textbf{(CPU/GPU)}};
+        \draw[thick, IEEEblue, fill=IEEEblue!5] (-3.5, -1.5) rectangle (-1.0, -0.5);
+        \node[align=center, text width=2.5cm] at (-2.25, -1.0) {\textbf{Memory}\\\textbf{SRAM/DRAM}};
+        
+        \draw[<->, >=Latex, line width=1.5pt, IEEEorange] (-2.25, -0.5) -- (-2.25, 1.5) 
+            node[midway, right, align=left, text width=2.2cm, text=IEEEorange] {\textbf{Von Neumann}\\\textbf{Bottleneck}\\\textbf{Data Shuttling}};
+
+        % Neuromorphic Architecture
+        \draw[thick, IEEEorange, fill=IEEEorange!5] (1.5, -1.5) rectangle (5.5, 3.5);
+        \node[above, font=\small\bfseries, text=IEEEblue, text width=4.2cm, align=center] at (3.5, 3.5) {Neuromorphic Grid (In-Memory)};
+        
+        % Sub-grid of co-located neurocores
+        \foreach \x in {2.0, 3.5, 5.0} {
+            \foreach \y in {-1.0, 1.0, 2.5} {
+                \draw[thick, IEEEblue, fill=IEEEblue!10] (\x-0.3, \y-0.3) rectangle (\x+0.3, \y+0.3);
+                \node at (\x, \y) [scale=0.7] {\textbf{C}};
+            }
+        }
+        % Connect the cores (NoC Router mesh)
+        \draw[thick, dashed, IEEEblue] (2.0, -1.0) -- (5.0, -1.0);
+        \draw[thick, dashed, IEEEblue] (2.0, 1.0) -- (5.0, 1.0);
+        \draw[thick, dashed, IEEEblue] (2.0, 2.5) -- (5.0, 2.5);
+        \draw[thick, dashed, IEEEblue] (2.0, -1.0) -- (2.0, 2.5);
+        \draw[thick, dashed, IEEEblue] (3.5, -1.0) -- (3.5, 2.5);
+        \draw[thick, dashed, IEEEblue] (5.0, -1.0) -- (5.0, 2.5);
+        
+        \node[align=center, text width=3.2cm, text=IEEEblue] at (3.5, -1.8) {\textbf{Asynchronous}\\\textbf{NoC Mesh}};
+        
+    \end{tikzpicture}%
+    }%
+}
+
+\newcommand{\arjunNeuronFigure}{%
+\resizebox{\columnwidth}{!}{%
+    \begin{tikzpicture}[
+        neuron/.style={line cap=round, line join=round},
+        trunk/.style={neuron, line width=1.55pt, IEEEblue!78},
+        branch/.style={neuron, line width=0.95pt, IEEEblue!68},
+        twig/.style={neuron, line width=0.55pt, IEEEblue!58},
+        axon/.style={neuron, line width=2.3pt, IEEEblue!90},
+        label/.style={font=\small\bfseries, text=DarkGray}
+    ]
+        % Soft microscope-slide backdrop
+        \fill[SoftBlue, rounded corners=10pt] (-4.85,-2.55) rectangle (7.45,2.75);
+        \draw[IEEEblue!12, rounded corners=10pt] (-4.85,-2.55) rectangle (7.45,2.75);
+
+        % Dense dendritic arbor around the soma: primary trunks, secondary branches, and tiny spines
+        \draw[trunk] (-0.72,0.58) .. controls (-1.30,1.10) and (-2.05,1.55) .. (-3.02,2.15);
+        \draw[branch] (-1.28,1.10) .. controls (-1.82,1.62) .. (-2.32,2.35);
+        \draw[twig] (-1.72,1.48) .. controls (-1.42,1.95) .. (-1.28,2.42);
+        \draw[twig] (-2.26,1.78) .. controls (-2.88,1.62) .. (-3.62,1.68);
+        \draw[twig] (-2.75,1.98) .. controls (-3.25,2.38) .. (-3.98,2.46);
+
+        \draw[trunk] (-0.92,0.20) .. controls (-1.68,0.44) and (-2.55,0.28) .. (-3.85,0.78);
+        \draw[branch] (-1.74,0.35) .. controls (-2.18,0.92) .. (-2.90,1.18);
+        \draw[twig] (-2.35,0.40) .. controls (-3.08,0.18) .. (-4.22,0.08);
+        \draw[twig] (-3.10,0.62) .. controls (-3.58,1.15) .. (-4.28,1.28);
+        \draw[twig] (-3.42,0.74) .. controls (-3.88,0.52) .. (-4.46,0.58);
+
+        \draw[trunk] (-0.85,-0.30) .. controls (-1.68,-0.80) and (-2.55,-0.88) .. (-3.80,-1.55);
+        \draw[branch] (-1.58,-0.72) .. controls (-1.95,-1.28) .. (-2.62,-1.86);
+        \draw[twig] (-2.30,-0.98) .. controls (-3.05,-0.78) .. (-3.92,-0.88);
+        \draw[twig] (-2.92,-1.28) .. controls (-3.48,-1.84) .. (-4.28,-2.08);
+        \draw[twig] (-3.25,-1.42) .. controls (-3.56,-1.18) .. (-4.05,-1.18);
+
+        \draw[trunk] (-0.32,0.86) .. controls (-0.82,1.45) and (-1.02,1.95) .. (-1.58,2.48);
+        \draw[branch] (-0.80,1.54) .. controls (-0.45,2.02) .. (-0.36,2.48);
+        \draw[twig] (-1.05,1.92) .. controls (-1.64,2.08) .. (-2.04,2.52);
+
+        \draw[trunk] (-0.18,-0.88) .. controls (-0.52,-1.38) and (-0.86,-1.78) .. (-1.55,-2.22);
+        \draw[branch] (-0.78,-1.58) .. controls (-0.42,-2.02) .. (-0.20,-2.42);
+        \draw[twig] (-1.02,-1.82) .. controls (-1.62,-2.05) .. (-2.18,-2.40);
+
+        % Small dendritic spines for a more biological silhouette
+        \foreach \x/\y in {-3.78/1.66,-3.22/2.37,-2.04/2.34,-4.16/1.26,-4.30/0.08,-3.84/-0.88,-4.22/-2.06,-2.12/-2.36,-0.28/-2.38,-0.36/2.44} {
+            \fill[IEEEblue!65] (\x,\y) circle (0.035);
+        }
+
+        % Irregular soma and nucleus with a more cell-like outline
+        \shade[ball color=IEEEorange!32, draw=IEEEorange!80, line width=1pt]
+            (0.02,0.86)
+            .. controls (0.62,0.86) and (1.10,0.48) .. (1.16,-0.08)
+            .. controls (1.22,-0.72) and (0.68,-1.02) .. (0.12,-0.94)
+            .. controls (-0.48,-0.86) and (-1.00,-0.52) .. (-0.98,0.10)
+            .. controls (-0.96,0.62) and (-0.48,0.90) .. (0.02,0.86) -- cycle;
+        \shade[ball color=IEEEblue!25, draw=IEEEblue!65, line width=0.6pt] (0.10,0.02) circle (0.33);
+        \fill[white!45, opacity=0.35] (-0.23,0.36) ellipse (0.22 and 0.10);
+
+        % Axon hillock and longer axon with myelin gaps (nodes of Ranvier)
+        \filldraw[fill=IEEEorange!35, draw=IEEEorange!85, line width=0.7pt]
+            (0.98,0.18) .. controls (1.25,0.10) and (1.46,0.04) .. (1.62,0.00)
+            .. controls (1.42,-0.06) and (1.22,-0.16) .. (0.95,-0.24) -- cycle;
+        \draw[axon] (1.46,0.00) .. controls (2.15,0.20) and (2.75,-0.18) .. (3.45,0.03)
+                         .. controls (4.10,0.22) and (4.82,-0.18) .. (5.42,0.04)
+                         .. controls (5.88,0.20) and (6.15,0.05) .. (6.38,0.00);
+        \foreach \x/\y/\rot in {1.85/0.06/9,2.45/-0.03/-8,3.05/0.04/7,3.66/-0.02/-7,4.28/0.04/7,4.88/-0.03/-8,5.48/0.04/8} {
+            \begin{scope}[shift={(\x,\y)}, rotate=\rot]
+                \filldraw[fill=SoftOrange, draw=IEEEorange!75, line width=0.75pt, rounded corners=2pt]
+                    (-0.22,-0.24) rectangle (0.22,0.24);
+            \end{scope}
+        }
+
+        % Rich axon terminal arbor with bouton-like endpoints
+        \draw[axon] (6.38,0.00) .. controls (6.62,0.26) and (6.80,0.56) .. (7.08,0.90);
+        \draw[axon] (6.38,0.00) .. controls (6.70,0.10) and (6.98,0.08) .. (7.25,0.16);
+        \draw[axon] (6.38,0.00) .. controls (6.66,-0.24) and (6.88,-0.55) .. (7.08,-0.92);
+        \draw[branch] (7.08,0.90) .. controls (7.24,1.06) .. (7.34,1.26);
+        \draw[branch] (7.08,0.90) .. controls (7.32,0.82) .. (7.52,0.74);
+        \draw[branch] (7.08,-0.92) .. controls (7.26,-1.10) .. (7.45,-1.28);
+        \draw[branch] (7.08,-0.92) .. controls (7.34,-0.82) .. (7.55,-0.72);
+        \foreach \p in {(7.36,1.31),(7.58,0.72),(7.31,0.16),(7.50,-1.33),(7.60,-0.70)} {
+            \shade[ball color=IEEEorange!60, draw=IEEEorange!90] \p circle (0.105);
+        }
+
+        % Direction of spike propagation
+        \draw[-Latex, thick, IEEEorange] (2.10,0.68) -- node[above, font=\scriptsize\bfseries, text=IEEEorange] {action potential} (5.62,0.68);
+
+        % Labels
+        \node[label] at (-3.12,2.58) {Highly branched dendrites};
+        \node[label] at (0,-1.45) {Soma};
+        \node[label] at (0.13,0.55) {\scriptsize Nucleus};
+        \node[label] at (3.85,-0.78) {Myelinated axon};
+        \node[label] at (6.88,1.62) {Synaptic boutons};
+    \end{tikzpicture}%
+    }%
+}
+
+\newcommand{\arjunLIFFigure}{%
+\resizebox{\columnwidth}{!}{%
+    \begin{tikzpicture}[node distance=1.8cm, auto, >=Latex, every node/.style={font=\scriptsize}]
+        % Flowchart nodes
+        \node [draw=IEEEblue, fill=IEEEblue!5, rectangle, rounded corners, align=center, text width=2.5cm] (input) {\textbf{Input Presynaptic Spikes}\\$S_j(t) = \sum \delta(t-t_j)$};
+        \node [draw=IEEEblue, fill=IEEEblue!5, rectangle, rounded corners, align=center, text width=2.2cm, right=of input] (synapse) {\textbf{Synaptic Weighting}\\$I_e(t) = \sum w_{ij} S_j(t)$};
+        \node [draw=IEEEblue, fill=IEEEblue!5, rectangle, rounded corners, align=center, text width=2.8cm, right=of synapse] (integrate) {\textbf{Membrane Integration}\\$\tau_m \frac{dV}{dt} = -(V - E_L) + R_m I_e$};
+        \node [draw=IEEEorange, fill=IEEEorange!5, diamond, align=center, aspect=1.8, text width=1.5cm, below=of integrate] (threshold) {\textbf{Threshold Check}\\$V(t) \ge V_{th}$?};
+        \node [draw=IEEEorange, fill=IEEEorange!5, rectangle, rounded corners, align=center, text width=2.0cm, left=of threshold] (reset) {\textbf{Reset Membrane}\\$V(t) \leftarrow V_{reset}$\\Refractory $T_R$};
+        \node [draw=IEEEorange, fill=IEEEorange!5, rectangle, rounded corners, align=center, text width=2.0cm, below=of threshold] (fire) {\textbf{Output Spike!}\\$S_i(t) = 1$};
+
+        % Paths
+        \path [draw, ->, thick, IEEEblue] (input) -- (synapse);
+        \path [draw, ->, thick, IEEEblue] (synapse) -- (integrate);
+        \path [draw, ->, thick, IEEEblue] (integrate) -- (threshold);
+        \path [draw, ->, thick, IEEEorange] (threshold) -- node [near start, left] {Yes} (fire);
+        \path [draw, ->, thick, IEEEorange] (threshold) -- node [near start, above] {No} (reset);
+        \path [draw, ->, thick, IEEEorange] (reset) -- ++(0, 1.8) -- (integrate);
+        \path [draw, ->, thick, IEEEorange] (fire) -- ++(-4.5, 0) -- (input);
+    \end{tikzpicture}%
+    }%
+}
+
+\newcommand{\arjunMemristorFigure}{%
+\resizebox{\columnwidth}{!}{%
+    \begin{tikzpicture}[node distance=0.75cm,>=Latex,every node/.style={font=\scriptsize\bfseries, align=center}, flowstep/.style={draw, rounded corners=4pt, minimum width=2.25cm, minimum height=1.05cm, inner sep=4pt}]
+        \node[flowstep, draw=IEEEblue, fill=SoftBlue] (input) {Input Spike\\Vector};
+        \node[flowstep, draw=IEEEorange, fill=SoftOrange, right=of input] (read) {Crossbar Read\\$I_j=\sum_iG_{ij}V_i$};
+        \node[flowstep, draw=IEEEblue, fill=white, right=of read] (error) {Error / Reward\\Signal};
+        \node[flowstep, draw=IEEEorange, fill=SoftOrange, right=of error] (pulse) {SET/RESET\\Pulse Pair};
+        \node[flowstep, draw=IEEEblue, fill=white, right=of pulse] (conductance) {Conductance\\Update $G_{ij}$};
+        \draw[-Latex, line width=1.1pt, IEEEblue] (input) -- (read);
+        \draw[-Latex, line width=1.1pt, IEEEorange] (read) -- (error);
+        \draw[-Latex, line width=1.1pt, IEEEblue] (error) -- (pulse);
+        \draw[-Latex, line width=1.1pt, IEEEorange] (pulse) -- (conductance);
+        \draw[-Latex, dashed, line width=0.9pt, IEEEblue] (conductance.south) .. controls +(0,-1.0) and +(0,-1.0) .. node[below, text=DarkGray] {verify-and-correct readback} (read.south);
+        \node[draw=IEEEorange!70, fill=white, rounded corners=3pt, text width=4.4cm] at (5.95,-1.35) {Training changes physics directly: learning is stored as device conductance rather than as a separate DRAM tensor.};
+    \end{tikzpicture}%
+    }%
+}
+
+\newcommand{\arjunEdgeFigure}{%
+\resizebox{\columnwidth}{!}{%
+    \begin{tikzpicture}[node distance=0.7cm,>=Latex,every node/.style={font=\scriptsize\bfseries, align=center}, edgeblock/.style={draw, rounded corners=4pt, minimum width=2.25cm, minimum height=1.05cm, inner sep=4pt}]
+        \node[edgeblock, draw=IEEEblue, fill=SoftBlue] (dvs) {Event Camera\\DVS};
+        \node[edgeblock, draw=IEEEorange, fill=SoftOrange, right=of dvs] (fpga) {FPGA Interface\\Scheduler};
+        \node[edgeblock, draw=IEEEblue, fill=white, right=of fpga] (snn) {Loihi-like\\SNN Core};
+        \node[edgeblock, draw=IEEEorange, fill=SoftOrange, right=of snn] (stdp) {Adaptive\\STDP Layer};
+        \node[edgeblock, draw=IEEEblue, fill=white, right=of stdp] (decision) {Edge Decision\\Engine};
+        \node[edgeblock, draw=DarkGray!75, fill=white, above=1.15cm of stdp] (cloud) {Cloud Sync\\Model Update};
+        \node[edgeblock, draw=IEEEorange, fill=SoftOrange, below=1.05cm of snn] (actuator) {Robot / Vehicle /\\Healthcare Device};
+
+        \draw[-Latex, line width=1.1pt, IEEEblue] (dvs) -- node[above] {events} (fpga);
+        \draw[-Latex, line width=1.1pt, IEEEorange] (fpga) -- node[above] {scheduled spikes} (snn);
+        \draw[-Latex, line width=1.1pt, IEEEblue] (snn) -- node[above] {features} (stdp);
+        \draw[-Latex, line width=1.1pt, IEEEorange] (stdp) -- node[above] {adapted state} (decision);
+        \draw[-Latex, line width=1.1pt, IEEEblue] (decision.south) |- (actuator.east);
+        \draw[-Latex, dashed, line width=0.9pt, IEEEblue] (stdp) -- node[right, text=DarkGray] {compressed updates} (cloud);
+        \draw[-Latex, dashed, line width=0.9pt, IEEEorange] (cloud.west) -| node[pos=0.25, above, text=DarkGray] {global calibration} (fpga.north);
+        \draw[-Latex, dashed, line width=0.9pt, IEEEblue] (actuator.west) -| node[pos=0.25, below, text=DarkGray] {closed-loop feedback} (dvs.south);
+    \end{tikzpicture}%
+    }%
+}
+
+\newcommand{\arjunHybridFigure}{%
+\resizebox{\columnwidth}{!}{%
+    \begin{tikzpicture}[node distance=0.85cm, every node/.style={font=\scriptsize\bfseries, align=center}, block/.style={draw, rounded corners=4pt, minimum width=2.45cm, minimum height=1.05cm, inner sep=4pt}]
+        \node[block, fill=SoftBlue, draw=IEEEblue] (sensor) {Event Sensors\\DVS / audio / tactile};
+        \node[block, fill=SoftOrange, draw=IEEEorange, right=of sensor] (snn) {Neuromorphic\\Reflex Layer};
+        \node[block, fill=white, draw=IEEEblue, right=of snn] (memory) {Sparse Local\\Memory};
+        \node[block, fill=SoftBlue, draw=IEEEblue, right=of memory] (arbiter) {Policy\\Arbitration};
+        \node[block, fill=SoftOrange, draw=IEEEorange, right=of arbiter] (gpu) {GPU / TPU\\Transformer};
+        \node[block, fill=white, draw=DarkGray, below=of arbiter] (robot) {Action Output\\Robot / edge device};
+
+        \draw[-Latex, line width=1.1pt, IEEEblue] (sensor) -- node[above] {events} (snn);
+        \draw[-Latex, line width=1.1pt, IEEEorange] (snn) -- node[above] {state} (memory);
+        \draw[-Latex, line width=1.1pt, IEEEblue] (memory) -- node[above] {novelty} (arbiter);
+        \draw[-Latex, line width=1.1pt, IEEEorange] (arbiter) -- node[above] {escalate} (gpu);
+        \draw[-Latex, line width=1.1pt, IEEEblue] (gpu.south) |- (robot.east);
+        \draw[-Latex, line width=1.1pt, IEEEorange] (arbiter) -- (robot);
+        \draw[-Latex, dashed, line width=0.9pt, IEEEblue] (robot.west) -| (snn.south);
+    \end{tikzpicture}%
+    }%
+}

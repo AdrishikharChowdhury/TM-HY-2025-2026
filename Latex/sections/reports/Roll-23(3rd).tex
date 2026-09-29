@@ -1,0 +1,260 @@
+\begin{center}
+  \section{\capitalisewords{Role of Machine Learning in Data Analytics}}
+  Tanisha Ghosh, 3$^{rd}$ Year, ECE
+\end{center}
+
+\setcounter{figure}{0}
+\setcounter{table}{0}
+
+\begin{multicols}{2}
+  \begin{abstract}
+    \bfseries
+    Machine Learning (ML) enables analytical systems to learn patterns, generate predictions, and support data-driven decisions from large structured and unstructured datasets. This report examines supervised, unsupervised, and reinforcement learning; major regression, classification, neural-network, and clustering algorithms; applications in healthcare, finance, e-commerce, automation, and cybersecurity; and challenges involving data quality, privacy, computation, bias, and interpretability. It concludes that successful ML analytics depends on reliable data, suitable evaluation, domain knowledge, and responsible human oversight as much as on algorithmic sophistication.
+  \end{abstract}
+
+  \subsection*{\centering\uppercase{Introduction}}
+  Industries, healthcare organisations, online platforms, sensors, financial systems, social media, and Internet of Things (IoT) devices generate data at a scale that is difficult to analyse using traditional methods alone. Machine Learning (ML), a branch of Artificial Intelligence (AI), enables systems to learn patterns from historical data without being explicitly programmed for every case.
+
+  \noindent
+  ML algorithms identify relationships, trends, and hidden structures that support prediction, automation, classification, clustering, anomaly detection, and pattern recognition. These capabilities are now used across healthcare, finance, transportation, cybersecurity, robotics, manufacturing, and e-commerce.
+
+  \noindent
+  Machine learning methods are commonly grouped into supervised, unsupervised, and reinforcement learning. The choice among them depends on the available data, the intended output, and the operational context. This report studies these approaches, their mathematical foundations, practical applications, evaluation methods, limitations, and future scope.
+
+  \subsection*{\centering\uppercase{Literature Review}}
+  The development of machine learning spans theoretical foundations, probabilistic modelling, deep learning, and application-oriented analytics. Mitchell described learning systems in terms of improving performance through experience [1]. Bishop established probabilistic foundations for pattern recognition [2], while Goodfellow, Bengio, and Courville consolidated modern deep-learning methods [3]. More recent studies have focused on unsupervised pattern discovery and the practical use of ML in large-scale analytics [4, 5].
+
+\end{multicols}
+
+  \begin{table}[tb]
+\centering
+\caption{Selected literature on machine learning and data analytics.}
+\scriptsize
+    \setlength{\tabcolsep}{8pt}
+    \renewcommand{\arraystretch}{1.2}
+    \begin{tabular}{@{}>{\RaggedRight\arraybackslash}p{0.20\textwidth}
+                        >{\Centering\arraybackslash}p{0.10\textwidth}
+                        >{\RaggedRight\arraybackslash}p{0.60\textwidth}@{}}
+      \toprule
+      \textbf{Source} & \textbf{Year} & \textbf{Contribution} \\
+      \midrule
+      Mitchell [1] & 1997 & Formal definition of learning through experience. \\
+      Bishop [2] & 2006 & Probabilistic pattern-recognition methods. \\
+      Goodfellow et al. [3] & 2016 & Deep neural networks and representation learning. \\
+      Pavithra et al. [4] & 2021 & Unsupervised learning for pattern discovery. \\
+      Long [5] & 2025 & Practical ML applications in data analysis. \\
+      \bottomrule
+    \end{tabular}
+\end{table}
+\vspace{-0.18em}
+
+\begin{multicols}{2}
+
+  \subsection*{\centering\uppercase{Research Methodology}}
+  Table~1 reviews selected literature on machine learning and data analytics.
+  A reliable machine-learning analytics pipeline normally follows six stages:
+  \begin{enumerate}\justifying
+    \item \textbf{Data collection:} gather relevant structured or unstructured observations.
+    \item \textbf{Data cleaning:} remove duplicates, correct inconsistencies, and handle missing or noisy values.
+    \item \textbf{Feature engineering:} select, transform, or construct informative input variables.
+    \item \textbf{Model training:} fit an algorithm to the prepared training data.
+    \item \textbf{Validation:} measure generalisation and tune model settings using unseen data.
+    \item \textbf{Deployment and monitoring:} integrate the model into an application and track its behaviour as real-world data changes.
+  \end{enumerate}
+  Each stage affects the final result. Data cleaning improves consistency, feature engineering strengthens the input representation, validation detects overfitting, and post-deployment monitoring identifies performance loss caused by data drift.
+
+  \subsection*{\centering\uppercase{Fundamentals of Machine Learning}}
+  \subsubsection*{Supervised Learning}
+  Supervised learning uses labelled examples to learn the relationship between input variables and known outputs. It is applied to classification tasks, such as spam or disease detection, and regression tasks, such as sales or demand forecasting. Common algorithms include linear regression, logistic regression, decision trees, support vector machines, and neural networks.
+
+  \subsubsection*{Unsupervised Learning}
+  Unsupervised learning works with unlabelled datasets and discovers hidden structures without predefined target values. Its principal techniques include clustering, dimensionality reduction, and association-rule mining. Typical applications include customer segmentation, anomaly detection, exploratory analysis, and recommendation systems.
+
+  \subsubsection*{Reinforcement Learning}
+  Reinforcement learning trains an agent through interaction with an environment. Actions that produce useful outcomes receive rewards, while undesirable outcomes receive penalties. The agent gradually learns a policy that maximises long-term reward. This approach is used in robotics, autonomous control, resource allocation, and gaming.
+
+\end{multicols}
+
+  \begin{table}[tb]
+\centering
+\caption{Comparison of major learning approaches.}
+\footnotesize
+    \setlength{\tabcolsep}{2.5pt}
+    \renewcommand{\arraystretch}{1.35}
+    \begin{tabular}{@{}>{\RaggedRight\arraybackslash}p{0.22\textwidth}
+                        >{\RaggedRight\arraybackslash}p{0.28\textwidth}
+                        >{\RaggedRight\arraybackslash}p{0.44\textwidth}@{}}
+      \toprule
+      \textbf{Technique} & \textbf{Data / Feedback} & \textbf{Typical Uses} \\
+      \midrule
+      Supervised & Labelled examples & Classification, diagnosis, forecasting \\
+      Unsupervised & Unlabelled data & Clustering, segmentation, anomaly detection \\
+      Reinforcement & Rewards and penalties & Robotics, gaming, autonomous systems \\
+      \bottomrule
+    \end{tabular}
+\end{table}
+\vspace{-0.18em}
+
+\begin{multicols}{2}
+
+  \subsection*{\centering\uppercase{Mathematical Formulations}}
+  Table~2 compares major learning approaches.
+  \subsubsection*{Linear Regression}
+  Linear regression models the relationship between an input and a continuous output:
+  \[
+    y = \beta_0 + \beta_1x + \epsilon,
+  \]
+  where $\beta_0$ is the intercept, $\beta_1$ is the regression coefficient, and $\epsilon$ represents error. It is widely used for forecasting and trend estimation.
+
+  \subsubsection*{Logistic Regression}
+  Logistic regression estimates the probability of a binary outcome using
+  \[
+    P(y=1)=\frac{1}{1+e^{-z}},
+  \]
+  where $z=\beta_0+\beta_1x_1+\cdots+\beta_nx_n$. The probability can be compared with a threshold to assign a class.
+
+  \subsubsection*{K-Means Clustering}
+  K-Means assigns observations to clusters by minimising the distance from each point to its cluster centroid:
+  \[
+    J=\sum_{i=1}^{k}\sum_{x\in C_i}\lVert x-\mu_i\rVert^2,
+  \]
+  where $C_i$ is the $i$th cluster and $\mu_i$ is its centroid. A smaller $J$ indicates more compact clusters.
+
+  \subsubsection*{Neural-Network Activation}
+  Neural networks use nonlinear activation functions. The sigmoid function,
+  \[
+    f(x)=\frac{1}{1+e^{-x}},
+  \]
+  maps a real-valued input to the interval from 0 to 1 and can represent a class probability.
+
+  \subsection*{\centering\uppercase{Major Algorithms in Data Analytics}}
+  \begin{enumerate}\justifying
+    \item \textbf{Linear Regression:} estimates continuous outcomes and supports sales, economic, and demand forecasting.
+    \item \textbf{Logistic Regression:} provides interpretable probabilities for binary classification, including fraud and disease-risk prediction.
+    \item \textbf{Decision Trees:} divide data using hierarchical decision rules. They handle numerical and categorical variables and are comparatively easy to interpret.
+    \item \textbf{Support Vector Machines:} identify a separating hyperplane with a large margin between classes and are used in image, text, and face classification.
+    \item \textbf{Neural Networks:} learn complex nonlinear relationships through interconnected layers and support speech recognition, computer vision, language processing, and autonomous systems.
+    \item \textbf{Hierarchical Clustering:} constructs a dendrogram by repeatedly combining or dividing groups, revealing multi-level relationships in a dataset.
+    \item \textbf{Association-Rule Learning:} identifies relationships among variables, such as products frequently purchased together.
+  \end{enumerate}
+
+  \subsection*{\centering\uppercase{Performance Evaluation}}
+  Model evaluation must use data that was not used during training. For classification, predictions are described using true positives ($TP$), true negatives ($TN$), false positives ($FP$), and false negatives ($FN$):
+  \[
+    \text{Accuracy}=\frac{TP+TN}{TP+TN+FP+FN},
+  \]
+  \[
+    \text{Precision}=\frac{TP}{TP+FP},
+  \]
+  \[
+    \text{Recall}=\frac{TP}{TP+FN},
+  \]
+  \[
+    F_1=2\frac{\text{Precision}\times\text{Recall}}
+    {\text{Precision}+\text{Recall}}.
+  \]
+  Accuracy measures overall correctness, precision measures the reliability of positive predictions, recall measures how many actual positive cases are detected, and the $F_1$ score balances precision and recall.
+
+  \noindent
+  For regression, Mean Squared Error (MSE) measures the average squared difference between actual and predicted values:
+  \[
+    \text{MSE}=\frac{1}{n}\sum_{i=1}^{n}(y_i-\hat{y}_i)^2.
+  \]
+  Lower MSE indicates predictions closer to the observed values.
+
+  \subsection*{\centering\uppercase{Applications}}
+  \subsubsection*{Healthcare}
+  ML supports disease-risk prediction, medical-image analysis, drug discovery, and patient monitoring. Models can combine clinical measurements and medical history to identify high-risk patients, but the output should support rather than replace professional judgement.
+
+  \subsubsection*{Finance}
+  Financial institutions apply ML to fraud detection, credit scoring, stock analysis, risk management, and abnormal-transaction monitoring. The ability to process transactions in real time makes ML valuable, although explainability and fairness are essential in lending decisions.
+
+  \subsubsection*{E-Commerce}
+  Recommendation systems, customer segmentation, demand prediction, inventory forecasting, and personalised advertising use behavioural and transaction data to improve customer experience and operational planning.
+
+  \subsubsection*{Industrial Automation and Cybersecurity}
+  Manufacturing systems use ML for predictive maintenance, fault detection, quality control, and smart production. Cybersecurity systems use anomaly detection and classification to identify suspicious network behaviour, malware, and potential attacks.
+
+  \subsection*{\centering\uppercase{Case Study: Healthcare Analytics}}
+  Consider an analytics system designed to predict diabetes risk from anonymised health records. Inputs may include glucose level, body mass index, age, blood pressure, insulin level, and family medical history. Logistic regression can provide an interpretable probability score, while a neural network can capture nonlinear relationships among the indicators.
+
+  \noindent
+  In the uploaded case study, the model achieved a reported prediction accuracy of 92\% for identifying high-risk patients. The proposed benefits include faster screening, reduced manual record analysis, improved preventive treatment, and better patient monitoring. This figure should be interpreted in the context of the dataset, validation design, class balance, and clinical setting; accuracy alone is not sufficient to establish clinical safety.
+
+  
+\end{multicols}
+
+  \begin{table}[tb]
+  \centering
+  \caption{Advantages and limitations of machine learning.}
+  \small
+    \setlength{\tabcolsep}{3pt}
+    \renewcommand{\arraystretch}{1.35}
+    \begin{tabular}{@{}>{\RaggedRight\arraybackslash}p{0.46\textwidth}
+                        >{\RaggedRight\arraybackslash}p{0.48\textwidth}@{}}
+      \toprule
+      \textbf{Advantages} & \textbf{Limitations} \\
+      \midrule
+      Automates repetitive analytical tasks & Complex models can require substantial computation \\
+      Detects patterns in large datasets & Performance depends strongly on data quality \\
+      Enables rapid prediction and decision support & Sensitive data creates privacy and security risks \\
+      Supports real-time monitoring & Black-box models can be difficult to explain \\
+      \bottomrule
+    \end{tabular}
+  \end{table}
+
+\begin{multicols}{2}
+
+  \subsection*{\centering\uppercase{Challenges and Critical Observations}}
+  Table~3 summarizes advantages and limitations of machine learning.
+  \begin{enumerate}\justifying
+    \item \textbf{Data quality:} missing values, noise, inconsistent formatting, sampling errors, and biased records can reduce accuracy or create unfair outcomes.
+    \item \textbf{Computational complexity:} large neural networks may require specialised processors, considerable memory, long training times, and substantial energy.
+    \item \textbf{Privacy and security:} analytics systems often process sensitive personal, medical, or financial information, making access control and responsible data governance essential.
+    \item \textbf{Interpretability:} users in high-stakes domains need to understand why a model produced a decision. A marginal accuracy gain may not justify an opaque model.
+    \item \textbf{Overfitting and generalisation:} a model can perform well on training data but fail on new observations. Careful validation, regularisation, and representative datasets are required.
+    \item \textbf{Data drift:} real-world conditions change after deployment. Models must be monitored and updated rather than treated as one-time solutions.
+  \end{enumerate}
+  A central observation is that algorithmic complexity alone does not determine value. A simple model trained on clean, relevant data can be more reliable than a sophisticated model trained on noisy or biased data. Effective analytics therefore combines data preparation, suitable model selection, domain expertise, transparent reporting, and human oversight.
+
+  \subsection*{\centering\uppercase{Future Scope and Research Directions}}
+  Machine learning will increasingly interact with IoT, cloud computing, big-data platforms, and embedded systems. Important research directions include:
+  \begin{itemize}\justifying
+    \item \textbf{Explainable AI:} models whose reasoning can be understood and audited.
+    \item \textbf{Federated Learning:} collaborative training without directly sharing sensitive local data.
+    \item \textbf{TinyML and Edge AI:} lightweight models running on low-power sensors and embedded devices.
+    \item \textbf{Green AI:} methods that reduce energy consumption and the environmental cost of training and deployment.
+    \item \textbf{Quantum Machine Learning:} investigation of quantum methods for optimisation and pattern recognition.
+    \item \textbf{AI Ethics:} fairness, accountability, privacy, safety, and responsible human control.
+  \end{itemize}
+  Future systems must balance predictive performance with explainability, sustainability, privacy, security, and social responsibility. Human--AI collaboration is likely to be more practical than complete replacement of domain experts.
+
+  \subsection*{\centering\uppercase{Conclusion}}
+  Machine learning has become a core technology in modern data analytics. Supervised, unsupervised, and reinforcement learning contribute different capabilities, while algorithms such as regression, decision trees, support vector machines, neural networks, and clustering transform raw data into predictions and useful patterns.
+
+  \noindent
+  The technology supports healthcare diagnosis, financial risk analysis, e-commerce recommendations, cybersecurity, and industrial automation. However, dependable results require high-quality data, suitable evaluation, privacy protection, interpretable behaviour, and continuous monitoring. Machine learning is most effective when it augments human expertise and operates within clear technical and ethical safeguards.
+
+  \subsection*{\centering\uppercase{References}}
+  {\small
+  \begin{justify}
+    \begin{enumerate}[label={\relax[\arabic*]},leftmargin=*,labelsep=0.5em,itemsep=0.20em,parsep=0pt]
+      \item T. M. Mitchell, \textit{Machine Learning}. New York, NY, USA: McGraw-Hill, 1997.
+      \item C. M. Bishop, \textit{Pattern Recognition and Machine Learning}. New York, NY, USA: Springer, 2006.
+      \item I. Goodfellow, Y. Bengio, and A. Courville, \textit{Deep Learning}. Cambridge, MA, USA: MIT Press, 2016.
+      \item A. Pavithra et al., “Role of unsupervised learning algorithms in data analytics and pattern discovery,” 2021.
+      \item J. Long, “Practical applications of machine learning in modern data analysis systems,” 2025.
+      \item C. Cortes and V. Vapnik, “Support-vector networks,” \textit{Machine Learning}, vol. 20, pp. 273--297, 1995.
+      \item J. MacQueen, “Some methods for classification and analysis of multivariate observations,” in \textit{Proceedings of the Fifth Berkeley Symposium on Mathematical Statistics and Probability}, 1967.
+      \item T. Hastie, R. Tibshirani, and J. Friedman, \textit{The Elements of Statistical Learning}, 2nd ed. New York, NY, USA: Springer, 2009.
+      \item P. Domingos, “A few useful things to know about machine learning,” \textit{Communications of the ACM}, vol. 55, no. 10, pp. 78--87, 2012.
+      \item S. Shalev-Shwartz and S. Ben-David, \textit{Understanding Machine Learning: From Theory to Algorithms}. Cambridge, UK: Cambridge University Press, 2014.
+    \end{enumerate}
+  \end{justify}}
+\end{multicols}
+% Full-width info box outside multicols
+\begin{center}
+  \begin{minipage}{\textwidth}
+    \input{sections/reports/ml_analytics_quick_reference}
+  \end{minipage}
+\end{center}

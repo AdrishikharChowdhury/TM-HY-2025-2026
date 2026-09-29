@@ -1,0 +1,247 @@
+\vspace{-10pt}
+\begin{center}
+  \section{\capitalisewords{The Historical Evolution and Modern Applications of Mathematical Symbols}}
+  Arjun Mitra, 3$^{rd}$ Year, ECE
+\end{center}
+\vspace{-6pt}
+
+\setcounter{figure}{0}
+\setcounter{table}{0}
+
+\begin{multicols}{2}
+  \begin{abstract}
+    \bfseries
+    Mathematical symbols form the compressed language of modern science, engineering, and computation. This report traces the historical development and contemporary applications of the constant $\pi$, the summation operator $\sum$, the infinity symbol $\infty$, and the radical sign $\sqrt{\phantom{x}}$. It follows the transition from rhetorical mathematics, through abbreviated or syncopated notation, to the fully symbolic language used today. Applications include orbital mechanics and spacecraft navigation, machine-learning loss functions, algorithm analysis, IEEE 754 floating-point arithmetic, signal processing, RMS measurement, and the Fast Inverse Square Root algorithm. The report also surveys the engineering meanings of the Greek symbols $\theta$, $\alpha$, $\lambda$, $\Delta$, $\delta$, and $\mu$. These symbols are not merely shorthand: they preserve centuries of mathematical development while enabling precise communication across modern STEM disciplines.
+  \end{abstract}
+\end{multicols}
+
+\begin{table}[t]
+\centering
+\caption{Historical stages in the development of mathematical notation.}
+\footnotesize
+  \setlength{\tabcolsep}{3pt}
+  \renewcommand{\arraystretch}{1.5}
+  \begin{tabular}{@{}>{\bfseries\RaggedRight\arraybackslash}p{0.20\textwidth}
+                      >{\Centering\arraybackslash}p{0.19\textwidth}
+                      >{\RaggedRight\arraybackslash}p{0.53\textwidth}@{}}
+    \toprule
+    \textbf{Stage} & \textbf{Period} & \textbf{Main Characteristic} \\
+    \midrule
+    Rhetorical & Antiquity--3rd century & Calculations expressed in natural language without specialised symbols. \\
+    Syncopated & 3rd--16th century & Abbreviations used for common quantities and operations. \\
+    Symbolic & 16th century--present & Standardised notation supports compact, general mathematical reasoning. \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{multicols}{2}
+  \subsection*{\centering\uppercase{Introduction to Pi Day}}
+  Pi Day is observed on March 14 because the month/day form 3/14 matches the first three digits of $\pi\approx3.14159$. Physicist Larry Shaw organised an early public celebration at the Exploratorium in San Francisco in 1988. The date also coincides with the birth of Albert Einstein on March 14, 1879. In November 2019, UNESCO proclaimed March 14 as the International Day of Mathematics [1--3].
+
+  \noindent
+  Pi Day offers a broader opportunity to celebrate the language of mathematics. Symbols allow a long verbal description to be represented by a compact expression, making relationships easier to manipulate, verify, and communicate. Their development therefore reflects both mathematical discovery and the evolution of human notation.
+
+  \subsection*{\centering\uppercase{Evolution of Mathematical Symbols}}
+  \subsubsection*{The Rhetorical Stage}
+  For much of history, mathematical procedures were written entirely in ordinary language. Babylonian astronomers and geometers performed advanced calculations, yet an equation such as $y+2=5$ would be described in words: “the thing plus two is five.” This approach required lengthy explanations and made complex reasoning difficult to scan.
+
+  \subsubsection*{The Syncopated Stage}
+  Mathematicians gradually introduced abbreviations for recurring quantities and operations. Diophantus of Alexandria and Brahmagupta are associated with important developments in this stage. In medieval Indian mathematics, syllabic abbreviations derived from Sanskrit words represented quantities and operations, reducing the cognitive burden of fully rhetorical work.
+
+  \subsubsection*{The Symbolic Stage}
+  Between the medieval period and the European Renaissance, comprehensive notation increasingly replaced prose. Robert Recorde introduced the modern equals sign in \textit{The Whetstone of Witte} in 1557, choosing parallel lines because he believed that no two things could be more equal [4--7]. Later   mathematicians, especially Leonhard Euler, helped standardise symbols and conventions that remain in use.
+
+  \subsection*{\centering\uppercase{Historical Origins of Key Symbols}}
+  As summarized in Table~1, mathematical notation progressed from rhetorical to symbolic forms.
+  \subsubsection*{The Constant Pi, $\pi$}
+  The constant $\pi$ is the ratio of a circle's circumference $C$ to its diameter $d$:
+  \[
+    \pi=\frac{C}{d}\approx3.14159265.
+  \]
+  It is irrational, so its decimal expansion is infinite and non-repeating. The fractions $22/7$ and $355/113$ are useful approximations, with the latter agreeing with $\pi$ to six decimal places.
+
+  \noindent
+  Civilisations developed increasingly accurate values of $\pi$. Babylonian work used approximately $3.125$, the Rhind Mathematical Papyrus implies about $3.1605$, Archimedes bounded $\pi$ with inscribed and circumscribed polygons, and Zu Chongzhi obtained the approximation $355/113$. In fourteenth-century India, Madhava of Sangamagrama used infinite series, moving the computation of $\pi$ beyond finite polygon methods [8--10].
+
+  One famous alternating expansion is the Madhava--Leibniz series:
+  \[
+    \frac{\pi}{4}=1-\frac{1}{3}+\frac{1}{5}-\frac{1}{7}+\cdots.
+  \]
+  The series converges slowly, but it demonstrates how an infinite sum can represent a geometric constant.
+
+  Table~2 presents selected historical approximations of $\pi$.
+
+\begin{center}
+\vspace{-0.5em}
+\begin{minipage}{0.98\columnwidth}
+\centering
+    \captionof{table}{Selected historical approximations of $\pi$.}
+    \scriptsize
+    \setlength{\tabcolsep}{3pt}
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabular}{@{}>{\RaggedRight\arraybackslash}p{0.30\columnwidth}
+                        >{\RaggedRight\arraybackslash}p{0.25\columnwidth}
+                        >{\RaggedRight\arraybackslash}p{0.33\columnwidth}@{}}
+      \toprule
+      \textbf{Source} & \textbf{Era} & \textbf{Value / Method} \\
+      \midrule
+      Babylonians & c. 1900 BCE & $3.125$ \\
+      Egyptians & c. 1650 BCE & $3.1605$ \\
+      Archimedes & c. 250 BCE & Polygon bounds \\
+      Zu Chongzhi & 5th century & $355/113$ \\
+      Madhava & 14th century & Infinite series \\
+      \bottomrule
+    \end{tabular}
+\end{minipage}
+  \end{center}
+\vspace{-0.35em}
+
+  \subsubsection*{The Summation Operator, $\sum$}
+  The capital Greek letter sigma represents discrete summation. Its compact structure contains the index, lower bound, upper bound, and term being added:
+  \[
+    \sum_{i=1}^{n}a_i=a_1+a_2+\cdots+a_n.
+  \]
+  Leibniz used an elongated letter S, $\int$, from the Latin \textit{summa} to represent continuous summation in calculus. Euler later promoted sigma notation for discrete series, distinguishing a finite or countable sum from an integral.
+
+  \subsubsection*{Infinity, $\infty$}
+  Infinity describes a quantity or process without a finite bound; it is not an ordinary real number. John Wallis introduced the modern symbol $\infty$ in 1655. Infinity appears in limits, infinite series, idealised physical models, asymptotic algorithm analysis, and integrals over unbounded intervals:
+  \[
+    \lim_{t\to\infty}x(t), \qquad
+    \int_{0}^{\infty}f(t)\,dt.
+  \]
+  The discovery of irrational quantities such as $\sqrt{2}$ had already challenged ancient ideas about finite ratios and number representation.
+
+  \subsubsection*{The Radical Sign, $\sqrt{\phantom{x}}$}
+  Square-root calculations appear in Babylonian mathematics; the tablet YBC 7289 contains an accurate sexagesimal approximation of $\sqrt{2}$. The printed radical sign was introduced by Christoff Rudolff in his 1525 algebra text \textit{Die Coss}. It may have developed from a stylised form of the letter $r$, associated with the Latin word \textit{radix}, meaning root.
+
+  \subsection*{\centering\uppercase{Applications of Pi in Aerospace}}
+  Orbital mechanics, circular motion, antenna geometry, fuel-tank volume, wheel rotation, and periodic signals all depend on $\pi$. A circular orbit of radius $r$ has circumference $2\pi r$, while angular frequency is related to ordinary frequency by
+  \[
+    \omega=2\pi f.
+  \]
+  A cylindrical tank has volume $V=\pi r^2h$.
+
+  \noindent
+  Space missions require these relationships at extraordinary scales. The Cassini spacecraft used precisely planned gravity assists, including a trajectory change of approximately $180^\circ$, to observe Saturn from different perspectives. NASA's DART mission used orbital geometry when targeting Dimorphos, while optical communication experiments must lead a moving Earth so that a laser arrives at the correct future position. Lunar laser experiments similarly use circular spot geometry to estimate illuminated surface area [2].
+
+  \subsection*{\centering\uppercase{Summation in Computing and Engineering}}
+  In machine learning, a loss function aggregates prediction errors over a dataset. Mean Squared Error is
+  \[
+    \mathrm{MSE}=\frac{1}{n}\sum_{i=1}^{n}(y_i-\hat{y}_i)^2,
+  \]
+  where $y_i$ is an observed value and $\hat{y}_i$ is the prediction. Training algorithms adjust model parameters to minimise such sums.
+
+  \noindent
+  An artificial neuron also uses a weighted sum:
+  \[
+    z=\sum_{i=1}^{n}w_ix_i+b, \qquad \hat{y}=f(z).
+  \]
+  In algorithm analysis, summations describe loop cost and cumulative work. In mechanics, equilibrium requires the sum of forces and moments to vanish:
+  \[
+    \sum \mathbf{F}=0, \qquad \sum \mathbf{M}=0.
+  \]
+
+  \subsection*{\centering\uppercase{Infinity in Physics and Computing}}
+  Quantum field calculations historically produced divergent or infinite terms. Renormalisation reorganises these expressions so measurable quantities remain finite, contributing to the extraordinary predictive accuracy of quantum electrodynamics.
+
+  \noindent
+  Digital computers have finite memory, but the IEEE 754 floating-point standard reserves patterns for positive and negative infinity. In a binary32 value, an exponent of all ones and a fraction of all zeros represents infinity; the sign bit distinguishes $+\infty$ from $-\infty$.
+
+  Table~3 summarizes IEEE 754 binary floating-point formats.
+
+\begin{center}
+\vspace{-0.5em}
+\begin{minipage}{0.98\columnwidth}
+\centering
+    \captionof{table}{IEEE 754 binary floating-point formats.}
+    \scriptsize
+    \setlength{\tabcolsep}{3pt}
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabular}{@{}>{\RaggedRight\arraybackslash}p{0.30\columnwidth}
+                        >{\Centering\arraybackslash}p{0.15\columnwidth}
+                        >{\Centering\arraybackslash}p{0.18\columnwidth}
+                        >{\Centering\arraybackslash}p{0.22\columnwidth}@{}}
+      \toprule
+      \textbf{Format} & \textbf{Bits} & \textbf{Exponent} & \textbf{Fraction} \\
+      \midrule
+      Binary32 & 32 & 8 & 23 \\
+      Binary64 & 64 & 11 & 52 \\
+      \bottomrule
+    \end{tabular}
+\end{minipage}
+  \end{center}
+\vspace{-0.35em}
+
+  \subsection*{\centering\uppercase{Square Roots in Signal Processing}}
+  Square roots appear throughout engineering. The Euclidean distance between two planar points is
+  \[
+    d=\sqrt{(x_2-x_1)^2+(y_2-y_1)^2},
+  \]
+  and the root-mean-square value of sampled voltage is
+  \[
+    V_{\mathrm{RMS}}=\sqrt{\frac{1}{n}\sum_{i=1}^{n}v_i^2}.
+  \]
+  A mass-spring system has natural angular frequency $\omega_n=\sqrt{k/m}$.
+
+  \subsubsection*{Fast Inverse Square Root}
+  Three-dimensional graphics frequently normalises vectors using $1/\sqrt{x}$. On older processors, division and square-root instructions were expensive. The algorithm popularised by \textit{Quake III Arena} interpreted a 32-bit floating-point value as an integer, shifted its bits, subtracted the result from the “magic” constant \texttt{0x5F3759DF}, and then applied Newton--Raphson refinement:
+  \[
+    y_{n+1}=y_n\left(1.5-\frac{x}{2}y_n^2\right).
+  \]
+  The method illustrates how numerical analysis, floating-point representation, and low-level programming can combine to produce a fast approximation.
+\end{multicols}
+
+\begin{table}[t]
+\centering
+\caption{Common Greek symbols and representative STEM meanings.}
+\scriptsize
+  \setlength{\tabcolsep}{3pt}
+  \renewcommand{\arraystretch}{1.35}
+  \begin{tabular}{@{}>{\Centering\arraybackslash}p{0.11\textwidth}
+                      >{\RaggedRight\arraybackslash}p{0.18\textwidth}
+                      >{\RaggedRight\arraybackslash}p{0.63\textwidth}@{}}
+    \toprule
+    \textbf{Symbol} & \textbf{Name} & \textbf{Representative Uses} \\
+    \midrule
+    $\Theta,\theta$ & Theta & Angles, phase, angular displacement, scattering, and asymptotic bounds. \\
+    $A,\alpha$ & Alpha & Angles, significance level, attenuation, thermal expansion, and angle of attack. \\
+    $\Lambda,\lambda$ & Lambda & Wavelength, eigenvalues, decay constants, and vibration modes. \\
+    $\Delta,\delta$ & Delta & Finite change, small variation, error terms, and the Dirac delta function. \\
+    $M,\mu$ & Mu & Metric prefix micro ($10^{-6}$), population mean, friction, permeability, and viscosity. \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+\vspace{-0.18em}
+
+\begin{multicols}{2}
+  \subsection*{\centering\uppercase{The Continuing Role of Greek Symbols}}
+  Table~4 lists common Greek symbols and their representative STEM meanings.
+  Greek notation provides a large, recognisable symbol set that supplements the Latin alphabet. Theta commonly denotes an angle or phase; alpha represents coefficients and physical parameters; lambda is strongly associated with wavelength and eigenvalues; delta indicates change; and mu represents the SI prefix micro as well as several engineering properties.
+
+  \noindent
+  Their meanings are contextual rather than universal. For example, $\mu$ may mean magnetic permeability in electromagnetism, coefficient of friction in mechanics, dynamic viscosity in fluid systems, or population mean in statistics. Engineers must therefore define symbols clearly whenever ambiguity is possible.
+
+  \subsection*{\centering\uppercase{Conclusion}}
+  Symbols such as $\pi$, $\sum$, $\infty$, and $\sqrt{\phantom{x}}$ are more than marks on a page. They preserve a historical progression from verbal calculation to a universal symbolic language. Their development includes Babylonian computation, Greek geometry, Indian infinite series, Renaissance printing, and later international standardisation.
+
+  \noindent
+  The same symbols now support spacecraft trajectories, neural-network optimisation, floating-point processors, signal measurements, graphics algorithms, control systems, and scientific models. Mathematical notation succeeds because it compresses complex ideas without removing their logical structure. Its history therefore belongs not only to mathematics, but also to the history of engineering and technology.
+
+  \subsection*{\centering\uppercase{References}}
+  {\small
+  \begin{justify}
+    \begin{enumerate}[label={\relax[\arabic*]},leftmargin=*,labelsep=0.5em,itemsep=0.20em,parsep=0pt]
+      \item Exploratorium, “A Brief History of Pi,” available online at \url{https://www.exploratorium.edu/pi/history-of-pi}.
+      \item NASA JPL Education, “Pi Goes to Infinity and Beyond in NASA Challenge.”
+      \item UNESCO, “International Day of Mathematics,” March 14.
+      \item “History of mathematical notation,” reference overview.
+      \item J. Mazur, “Notation, notation, notation: a brief history of mathematical symbols,” \textit{The Guardian}, May 2014.
+      \item University of Waterloo, “11 things you never knew about mathematical symbols.”
+      \item California Institute of Technology, “Who Invented the Equal Sign, and Why?”
+      \item “Madhava's Pi-series in the modern context,” arXiv reference article.
+      \item “Pi,” historical and mathematical reference overview.
+      \item \textit{Harvard Gazette}, “Why pi endlessly fascinates us,” March 2019.
+    \end{enumerate}
+  \end{justify}}
+
+\end{multicols}

@@ -1,0 +1,143 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{newtxtext}
+\usepackage{multicol}
+\usepackage{tocloft}
+\IfFileExists{sourcesanspro.sty}{\usepackage[scale=0.95]{sourcesanspro}}{}
+\usepackage{ragged2e}   % Provides \justify used in vision_mission.tex
+\usepackage{xcolor}
+\definecolor{IEEEblue}{HTML}{003B73}
+\definecolor{IEEEorange}{HTML}{F28C28}
+\definecolor{SoftBlue}{HTML}{EEF6FF}
+\definecolor{SoftOrange}{HTML}{FFF4E8}
+\definecolor{DarkGray}{HTML}{222222}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins}
+\usetikzlibrary{arrows.meta,positioning,shapes.geometric,calc}
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{newtxmath}
+\usepackage{fancyhdr}
+\usepackage{caption}
+\captionsetup[figure]{font=footnotesize,labelfont=bf}
+\usepackage{graphicx}  % PNG support built-in!
+\usepackage{subcaption}
+\usepackage{enumitem}   % Fixes enumerate errors
+\setlist[itemize]{itemsep=1pt,topsep=0pt,parsep=0pt,partopsep=0pt}
+\setlist[enumerate]{itemsep=1pt,topsep=0pt,parsep=0pt,partopsep=0pt}
+\setlength{\multicolsep}{6pt plus 2pt minus 2pt}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{\usepackage{url}}  % xurl allows breaks anywhere so long links never overflow narrow columns
+\Urlmuskip=0mu plus 1mu\relax
+\setlength{\emergencystretch}{2em}
+\usepackage{array}   % For p{} columns
+\usepackage{float}    % For [H] where still needed
+\usepackage{flafter}  % Floats never appear before their definition (keeps tables sequential)
+% Prefer top/bottom placement near the referencing text
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\bottomfraction}{0.85}
+\renewcommand{\textfraction}{0.1}
+\renewcommand{\floatpagefraction}{0.7}
+\setcounter{topnumber}{3}
+\setcounter{bottomnumber}{3}
+\setcounter{totalnumber}{4}
+% Rigid vertical spacing everywhere: no stretchable glue for multicol/page balancing to inflate into phantom gaps
+\raggedbottom
+\setlength{\parskip}{2pt}
+\setlength{\abovedisplayskip}{2pt}
+\setlength{\belowdisplayskip}{2pt}
+\setlength{\abovedisplayshortskip}{1pt}
+\setlength{\belowdisplayshortskip}{1pt}
+% Compact section headings (article defaults put ~3.5ex above every heading)
+\usepackage{titlesec}
+\titleformat{\section}[block]{\filcenter\Large\bfseries}{\thesection}{1em}{}
+\titlespacing*{\section}{0pt}{6pt}{4pt}
+\titlespacing*{\subsection}{0pt}{5pt}{3pt}
+\titlespacing*{\subsubsection}{0pt}{4pt}{2pt}
+\setlength{\tabcolsep}{12pt}
+% Tighter figure/caption spacing (figs use center+\captionof, not floats)
+\setlength{\abovecaptionskip}{2pt}
+\setlength{\belowcaptionskip}{2pt}
+\setlength{\intextsep}{4pt}
+\setlength{\textfloatsep}{4pt}
+\setlength{\floatsep}{4pt}
+\usepackage{booktabs}   % Optional: nicer lines
+\usepackage{needspace} % Keep headings with following paras (used report 1 only)
+\usepackage{tcolorbox}  % For magazine style
+\usepackage{multicol}
+\raggedcolumns
+\setlength{\multicolsep}{6pt}
+\setlength{\topsep}{3pt}
+\setlength{\partopsep}{1pt}
+\IfFileExists{frcursive.sty}{\usepackage{frcursive}}{}
+\providecommand{\cursive}{\itshape}
+\IfFileExists{anyfontsize.sty}{\usepackage{anyfontsize}}{}
+\IfFileExists{mfirstuc.sty}{\usepackage{mfirstuc}}{}
+\providecommand{\capitalisewords}[1]{#1}
+\providecommand{\makefirstuc}[1]{#1}
+
+% Clickable email links without document-wide hyperlink anchors.
+\newcommand{\emaillink}[1]{%
+  \leavevmode
+  \pdfstartlink attr{/Border [0 0 0]} user{%
+    /Subtype /Link /A << /S /URI /URI (mailto:#1) >>}%
+  \textcolor{IEEEblue}{#1}%
+  \pdfendlink
+}
+
+% Full-width abstract suitable for use inside multicolumn layouts
+\renewenvironment{abstract}
+  {\par\small\noindent\textbf{\abstractname.}\enspace}
+  {\par}
+
+\input{sections/front_matter/custom_contents}
+
+% Fix header height warning
+\setlength{\headheight}{15pt}
+\addtolength{\topmargin}{-2.5pt}
+
+\pagestyle{fancy}
+\fancyhead[L]{Electronic Trends}
+\fancyhead[R]{St. Thomas College of Engineering \& Technology [ECE]}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\title{\Huge\textbf{Electronic Trends}}
+\author{\Large Electronics \& Communication Engineering Department \\ 
+        St. Thomas College of Engineering \& Technology}
+\date{Vol. X \linebreak 28\textsuperscript{th} July 2026}  % Updated: publication date
+\begin{document}
+
+\pagenumbering{gobble}
+
+\include{sections/front_matter/magazine_cover}
+
+\include{sections/front_matter/editorial_board}
+
+\include{sections/front_matter/message_principal}
+
+\include{sections/front_matter/message_dean}
+
+\include{sections/front_matter/message_head}
+
+\include{sections/front_matter/message_editorial_board}
+
+\include{sections/front_matter/vision_mission}
+
+\newpage
+
+\include{sections/front_matter/quote}
+
+\newpage
+
+\customtableofcontents
+
+
+
+\include{sections/reports/reports}
+\include{sections/events/events}
+\include{sections/activities/fun_zone}
+\include{sections/activities/fun_zone_answers}
+
+\end{document}
