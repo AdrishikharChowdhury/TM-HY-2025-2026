@@ -63,14 +63,12 @@
   At the network layer, IPv6 provides addressing, 6LoWPAN compresses and fragments IPv6 packets for constrained links, and the Routing Protocol for Low-Power and Lossy Networks (RPL) supports multi-hop routing [1--3]. TCP offers reliable connection-oriented transport, whereas UDP reduces overhead and is often paired with lightweight application protocols. TLS protects TCP sessions, while DTLS provides comparable protection for datagram communication.
 
   \begin{center}
-\vspace{-0.9em}
 \begin{minipage}{0.98\columnwidth}
 \centering
     \includegraphics[width=0.70\columnwidth]{assets/images/faculty_pc_protocol_stack.jpg}
     \captionof{figure}{Protocols and technologies across a representative IoT stack.}
 \end{minipage}
   \end{center}
-\vspace{-0.9em}
 
   \needspace{4\baselineskip}
   \subsection*{\centering\uppercase{Short-Range Connectivity}}
@@ -85,13 +83,11 @@
   \noindent
   Low-Power Wide-Area Network (LPWAN) technologies such as LoRaWAN connect distant sensors that send small payloads infrequently. They are effective for soil monitoring, utility metering, and logistics, but are not designed for video or continuous low-latency control. Engineers must account for duty-cycle limits, link budget, gateway density, spectrum rules, and downlink capacity.
 
+  \noindent
+  Table~1 summarizes representative IoT communication technologies and their design trade-offs.
 \end{multicols}
 
 \begin{table}[!b]
-\noindent\hfill\begin{minipage}{0.48\textwidth}
-\raggedright
-Table~1 summarizes representative IoT communication technologies and their design trade-offs.\par
-\end{minipage}\par
 \centering
 \caption{Representative IoT communication technologies and design trade-offs.}
 \normalsize
@@ -138,10 +134,7 @@ Table~1 summarizes representative IoT communication technologies and their desig
   \end{tabular}
 \end{minipage}
 \par\vspace{4pt}
-\noindent\begin{minipage}{0.48\textwidth}
-\raggedright
-Table~2 compares common IoT application protocols and their typical placements.\par
-\end{minipage}
+\noindent
 \par\vspace{4pt}
 
 \begin{multicols}{2}
@@ -180,14 +173,13 @@ Table~2 compares common IoT application protocols and their typical placements.\
   Edge computing places processing near sensors. A gateway can filter noise, aggregate samples, detect anomalies, and execute urgent control even when the Internet connection is unavailable. Fog architectures distribute these functions across several intermediate nodes. Practical designs divide work according to urgency, computation, energy, privacy, and the value of retaining raw data.
 
   \begin{center}
-\vspace{-0.9em}
+
 \begin{minipage}{0.98\columnwidth}
 \centering
     \includegraphics[width=0.75\columnwidth]{assets/images/faculty_pc_edge.jpg}
     \captionof{figure}{Edge nodes process time-sensitive data near IoT devices while coordinating with cloud services.}
 \end{minipage}
   \end{center}
-\vspace{-0.9em}
 
   \subsection*{\centering\uppercase{Industrial IoT}}
   Industrial IoT connects machines, robots, instruments, controllers, and supervisory platforms. Representative technologies include Modbus, OPC UA, PROFINET, and EtherCAT. Unlike consumer telemetry, industrial communication may demand bounded latency, deterministic scheduling, high availability, functional safety, and operation alongside legacy equipment.
