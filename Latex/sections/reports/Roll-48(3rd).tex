@@ -9,13 +9,7 @@
 \begin{multicols}{2}
   \begin{abstract}
     \bfseries
-    Neuromorphic computing is an interdisciplinary hardware discipline that implements brain-inspired principles -co-located memory and computation, event-driven (spike-based) signalling, and adaptive synaptic weighting -directly in silicon, in contrast to the instruction-driven, memory-separated Von Neumann model that underlies conventional CPUs and GPUs. This report examines the architectural principles of neuromorphic systems, benchmarks representative chips quantitatively, and critically evaluates the gap between demonstrated laboratory efficiency and real-world commercial deployment.
-
-    \noindent
-    Published results indicate that the approach can deliver large efficiency gains on workloads that map naturally onto sparse, event-driven computation: IBM's NorthPole reports roughly 25× higher energy efficiency (frames-per-second per watt) than a comparable 12 nm-class GPU on the ResNet-50 image-classification benchmark, while Intel's Hala Point system (1,152 Loihi 2 chips, 1.15 billion neurons, 128 billion synapses) sustains approximately 20 petaops at over 15 trillion 8-bit operations per second per watt. Earlier devices - IBM TrueNorth (1 million neurons, 256 million synapses, 28 nm) and Intel's first-generation Loihi (131,072 neurons, 130 million synapses, 14 nm) - established the feasibility of large-scale spiking hardware but were confined to research settings.
-
-    \noindent
-    However, these efficiency figures are workload-specific rather than general-purpose: dense-matrix operations that dominate contemporary AI, such as transformer-based language models, do not map efficiently onto spiking substrates, and the absence of a mature, standardized programming model (comparable to CUDA for GPUs) remains the principal barrier to commercial adoption. This report therefore combines a technical description of neuromorphic architecture with a critical assessment of where the technology currently delivers genuine advantage, where its benefits are overstated, and what would be required for wider adoption.
+    Neuromorphic computing is an interdisciplinary hardware discipline that implements brain-inspired principles -co-located memory and computation, event-driven (spike-based) signalling, and adaptive synaptic weighting -directly in silicon, in contrast to the instruction-driven, memory-separated Von Neumann model that underlies conventional CPUs and GPUs. This report examines the architectural principles of neuromorphic systems, benchmarks representative chips quantitatively, and critically evaluates the gap between demonstrated laboratory efficiency and real-world commercial deployment. Published results indicate that the approach can deliver large efficiency gains on workloads that map naturally onto sparse, event-driven computation: IBM's NorthPole reports roughly 25× higher energy efficiency (frames-per-second per watt) than a comparable 12 nm-class GPU on the ResNet-50 image-classification benchmark, while Intel's Hala Point system (1,152 Loihi 2 chips, 1.15 billion neurons, 128 billion synapses) sustains approximately 20 petaops at over 15 trillion 8-bit operations per second per watt. Earlier devices - IBM TrueNorth (1 million neurons, 256 million synapses, 28 nm) and Intel's first-generation Loihi (131,072 neurons, 130 million synapses, 14 nm) - established the feasibility of large-scale spiking hardware but were confined to research settings. However, these efficiency figures are workload-specific rather than general-purpose: dense-matrix operations that dominate contemporary AI, such as transformer-based language models, do not map efficiently onto spiking substrates, and the absence of a mature, standardized programming model (comparable to CUDA for GPUs) remains the principal barrier to commercial adoption. This report therefore combines a technical description of neuromorphic architecture with a critical assessment of where the technology currently delivers genuine advantage, where its benefits are overstated, and what would be required for wider adoption.
   \end{abstract}
 
   \subsection*{\centering\uppercase{INTRODUCTION}}
@@ -50,7 +44,7 @@
 \vspace{-0.5em}
 \begin{minipage}{0.98\columnwidth}
 \centering
-    \includegraphics[width=0.85\columnwidth]{assets/images/neuron.png}
+    \includegraphics[width=0.62\columnwidth]{assets/images/neuron.png}
     \captionof{figure}{Schematic comparison of a biological neuron and an artificial neuron (dendrites, soma, axon, and synapse mapped to inputs, weighted sum, activation function, and output). Diagram prepared by the author to illustrate the structural analogy described by Mead [1] and Maass [2].}
 \end{minipage}
   \end{center}
@@ -96,6 +90,16 @@
   \subsubsection*{Spiking Neural Networks (SNNs)}
   Spiking Neural Networks are the computational foundation of neuromorphic systems. Unlike traditional artificial neural networks, SNNs transmit information using discrete spikes only when a neuron's membrane potential reaches a threshold, following the formulation introduced by Maass [2].
 
+  \begin{center}
+\vspace{-0.5em}
+\begin{minipage}{0.98\columnwidth}
+\centering
+    \includegraphics[width=0.70\columnwidth]{assets/images/NN.png}
+    \captionof{figure}{Spiking Neural Network data flow: parallel spike-train inputs are weighted by synapse blocks (S), integrated by Leaky Integrate-and-Fire (LIF) neurons, and combined into a sparse output spike train. Diagram prepared by the author, illustrating the LIF formulation described by Maass [2] and Roy et al. [4].}
+\end{minipage}
+  \end{center}
+\vspace{-0.35em}
+
   \noindent
   Advantages of SNNs:
   \begin{itemize}\justifying
@@ -104,16 +108,6 @@
     \item Event-based (rather than clock-based) learning
     \item Closer biological plausibility than rate-based artificial neural networks
   \end{itemize}
-
-  \begin{center}
-\vspace{-0.5em}
-\begin{minipage}{0.98\columnwidth}
-\centering
-    \includegraphics[width=0.85\columnwidth]{assets/images/NN.png}
-    \captionof{figure}{Spiking Neural Network data flow: parallel spike-train inputs are weighted by synapse blocks (S), integrated by Leaky Integrate-and-Fire (LIF) neurons, and combined into a sparse output spike train. Diagram prepared by the author, illustrating the LIF formulation described by Maass [2] and Roy et al. [4].}
-\end{minipage}
-  \end{center}
-\vspace{-0.35em}
 
   \subsubsection*{Neuromorphic Computing Architecture}
   Neuromorphic computing architecture is a brain-inspired system design that replicates the structure, functionality, and communication methods of biological neural networks. Unlike conventional computing systems that rely on a strict separation between memory and processing units, neuromorphic architecture integrates both functions into a unified framework, allowing computation to occur in a more natural, efficient, and parallel manner.
@@ -150,7 +144,7 @@
 \vspace{-0.5em}
 \begin{minipage}{0.98\columnwidth}
 \centering
-    \includegraphics[width=0.72\columnwidth]{assets/images/NMC.png}
+    \includegraphics[width=0.70\columnwidth]{assets/images/NMC.png}
     \captionof{figure}{Simplified neuromorphic crossbar architecture: input spikes are decoded onto axons, weighted at crossbar synapse junctions, integrated by neurons $N_1$--$N_n$, and re-encoded into output spikes. Diagram prepared by the author, conceptually based on the crossbar-array designs surveyed by Schuman et al. [9].}
 \end{minipage}
   \end{center}
