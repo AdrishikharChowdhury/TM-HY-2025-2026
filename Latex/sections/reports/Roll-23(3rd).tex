@@ -18,11 +18,8 @@
   \noindent
   ML algorithms identify relationships, trends, and hidden structures that support prediction, automation, classification, clustering, anomaly detection, and pattern recognition. These capabilities are now used across healthcare, finance, transportation, cybersecurity, robotics, manufacturing, and e-commerce.
 
-  \noindent
+   \noindent
   Machine learning methods are commonly grouped into supervised, unsupervised, and reinforcement learning. The choice among them depends on the available data, the intended output, and the operational context. This report studies these approaches, their mathematical foundations, practical applications, evaluation methods, limitations, and future scope.
-
-  \subsection*{\centering\uppercase{Literature Review}}
-  The development of machine learning spans theoretical foundations, probabilistic modelling, deep learning, and application-oriented analytics. Mitchell described learning systems in terms of improving performance through experience [1]. Bishop established probabilistic foundations for pattern recognition [2], while Goodfellow, Bengio, and Courville consolidated modern deep-learning methods [3]. More recent studies have focused on unsupervised pattern discovery and the practical use of ML in large-scale analytics [4, 5].
 
 \end{multicols}
 
@@ -46,9 +43,31 @@
       \bottomrule
     \end{tabular}
 \end{table}
+
+  \begin{table}[tb]
+\centering
+\caption{Comparison of major learning approaches.}
+\footnotesize
+    \setlength{\tabcolsep}{2.5pt}
+    \renewcommand{\arraystretch}{1.35}
+    \begin{tabular}{@{}>{\RaggedRight\arraybackslash}p{0.22\textwidth}
+                        >{\RaggedRight\arraybackslash}p{0.28\textwidth}
+                        >{\RaggedRight\arraybackslash}p{0.44\textwidth}@{}}
+      \toprule
+      \textbf{Technique} & \textbf{Data / Feedback} & \textbf{Typical Uses} \\
+      \midrule
+      Supervised & Labelled examples & Classification, diagnosis, forecasting \\
+      Unsupervised & Unlabelled data & Clustering, segmentation, anomaly detection \\
+      Reinforcement & Rewards and penalties & Robotics, gaming, autonomous systems \\
+      \bottomrule
+    \end{tabular}
+\end{table}
 \vspace{-0.18em}
 
 \begin{multicols}{2}
+
+  \subsection*{\centering\uppercase{Literature Review}}
+  The development of machine learning spans theoretical foundations, probabilistic modelling, deep learning, and application-oriented analytics. Mitchell described learning systems in terms of improving performance through experience [1]. Bishop established probabilistic foundations for pattern recognition [2], while Goodfellow, Bengio, and Courville consolidated modern deep-learning methods [3]. More recent studies have focused on unsupervised pattern discovery and the practical use of ML in large-scale analytics [4, 5].
 
   \subsection*{\centering\uppercase{Research Methodology}}
   Table~1 reviews selected literature on machine learning and data analytics.
@@ -72,30 +91,6 @@
 
   \subsubsection*{Reinforcement Learning}
   Reinforcement learning trains an agent through interaction with an environment. Actions that produce useful outcomes receive rewards, while undesirable outcomes receive penalties. The agent gradually learns a policy that maximises long-term reward. This approach is used in robotics, autonomous control, resource allocation, and gaming.
-
-\end{multicols}
-
-  \begin{table}[tb]
-\centering
-\caption{Comparison of major learning approaches.}
-\footnotesize
-    \setlength{\tabcolsep}{2.5pt}
-    \renewcommand{\arraystretch}{1.35}
-    \begin{tabular}{@{}>{\RaggedRight\arraybackslash}p{0.22\textwidth}
-                        >{\RaggedRight\arraybackslash}p{0.28\textwidth}
-                        >{\RaggedRight\arraybackslash}p{0.44\textwidth}@{}}
-      \toprule
-      \textbf{Technique} & \textbf{Data / Feedback} & \textbf{Typical Uses} \\
-      \midrule
-      Supervised & Labelled examples & Classification, diagnosis, forecasting \\
-      Unsupervised & Unlabelled data & Clustering, segmentation, anomaly detection \\
-      Reinforcement & Rewards and penalties & Robotics, gaming, autonomous systems \\
-      \bottomrule
-    \end{tabular}
-\end{table}
-\vspace{-0.18em}
-
-\begin{multicols}{2}
 
   \subsection*{\centering\uppercase{Mathematical Formulations}}
   Table~2 compares major learning approaches.
@@ -178,10 +173,6 @@
   \subsection*{\centering\uppercase{Case Study: Healthcare Analytics}}
   Consider an analytics system designed to predict diabetes risk from anonymised health records. Inputs may include glucose level, body mass index, age, blood pressure, insulin level, and family medical history. Logistic regression can provide an interpretable probability score, while a neural network can capture nonlinear relationships among the indicators.
 
-  \noindent
-  In the uploaded case study, the model achieved a reported prediction accuracy of 92\% for identifying high-risk patients. The proposed benefits include faster screening, reduced manual record analysis, improved preventive treatment, and better patient monitoring. This figure should be interpreted in the context of the dataset, validation design, class balance, and clinical setting; accuracy alone is not sufficient to establish clinical safety.
-
-  
 \end{multicols}
 
   \begin{table}[tb]
@@ -204,6 +195,9 @@
   \end{table}
 
 \begin{multicols}{2}
+
+  \noindent
+  In the uploaded case study, the model achieved a reported prediction accuracy of 92\% for identifying high-risk patients. The proposed benefits include faster screening, reduced manual record analysis, improved preventive treatment, and better patient monitoring. This figure should be interpreted in the context of the dataset, validation design, class balance, and clinical setting; accuracy alone is not sufficient to establish clinical safety.
 
   \subsection*{\centering\uppercase{Challenges and Critical Observations}}
   Table~3 summarizes advantages and limitations of machine learning.
