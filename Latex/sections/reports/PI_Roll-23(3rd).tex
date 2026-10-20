@@ -48,35 +48,37 @@
   Christoff Rudolff introduced the printed radical sign in his 1525 algebra book \textit{Die Coss}. Earlier writers used words or abbreviations related to the Latin \textit{radix}, meaning root. René Descartes later helped establish the vinculum, the horizontal line extending over the expression [3, 5].
 
   \subsubsection*{Integral, $\int$}
-  Gottfried Wilhelm Leibniz introduced the integral sign in 1675. It is an elongated S derived from \textit{summa}, reflecting the idea that integration accumulates infinitely many small contributions. Leibniz's notation, together with the differential $d$, remains central to calculus [8].
-\end{multicols}
+  Gottfried Wilhelm Leibniz introduced the integral sign in 1675. It is an elongated S derived from \textit{summa}, reflecting the idea that integration accumulates infinitely many small contributions.   Leibniz's notation, together with the differential $d$, remains central to calculus [8].
 
-\begin{table}[tb]
-\centering
-\caption{Origins and modern roles of selected mathematical symbols.}
-\small
-  \setlength{\tabcolsep}{6pt}
-  \renewcommand{\arraystretch}{1.35}
-  \begin{tabular}{@{}>{\Centering\arraybackslash}p{0.10\textwidth}
-                      >{\RaggedRight\arraybackslash}p{0.18\textwidth}
-                      >{\RaggedRight\arraybackslash}p{0.26\textwidth}
-                      >{\RaggedRight\arraybackslash}p{0.38\textwidth}@{}}
-    \toprule
-    \textbf{Symbol} & \textbf{Associated Name} & \textbf{Historical Introduction} & \textbf{Representative Modern Role} \\
-    \midrule
-    $\pi$ & William Jones / Euler & 1706; widely standardised in the 18th century & Circles, periodic motion, waves, and orbital geometry \\
-    $\sum$ & Leonhard Euler & 18th-century discrete-sum notation & DSP, statistics, machine learning, forces, and moments \\
-    $\infty$ & John Wallis & 1655 & Limits, ideal models, asymptotic behaviour, and infinite series \\
-    $\sqrt{\phantom{x}}$ & Christoff Rudolff & Printed in 1525 & Distance, RMS, vector magnitude, roots, and natural frequency \\
-    $\int$ & G. W. Leibniz & 1675 & Accumulation, area, energy, charge, and continuous-time systems \\
-    \bottomrule
-  \end{tabular}
-\end{table}
-\vspace{-0.18em}
-
-\begin{multicols}{2}
   \subsection*{\centering\uppercase{Additional Symbols in ECE}}
   Table~1 summarizes origins and modern roles of selected mathematical symbols.
+
+\begin{center}
+\vspace{-0.5em}
+\begin{minipage}{0.98\columnwidth}
+\centering
+    \captionof{table}{Origins and modern roles of selected mathematical symbols.}
+    \scriptsize
+    \setlength{\tabcolsep}{2pt}
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabular}{@{}>{\Centering\arraybackslash}p{0.10\columnwidth}
+                        >{\RaggedRight\arraybackslash}p{0.19\columnwidth}
+                        >{\RaggedRight\arraybackslash}p{0.27\columnwidth}
+                        >{\RaggedRight\arraybackslash}p{0.34\columnwidth}@{}}
+      \toprule
+      \textbf{Symbol} & \textbf{Associated Name} & \textbf{Historical Introduction} & \textbf{Representative Modern Role} \\
+      \midrule
+      $\pi$ & William Jones / Euler & 1706; widely standardised in the 18th century & Circles, periodic motion, waves, and orbital geometry \\
+      $\sum$ & Leonhard Euler & 18th-century discrete-sum notation & DSP, statistics, machine learning, forces, and moments \\
+      $\infty$ & John Wallis & 1655 & Limits, ideal models, asymptotic behaviour, and infinite series \\
+      $\sqrt{\phantom{x}}$ & Christoff Rudolff & Printed in 1525 & Distance, RMS, vector magnitude, roots, and natural frequency \\
+      $\int$ & G. W. Leibniz & 1675 & Accumulation, area, energy, charge, and continuous-time systems \\
+      \bottomrule
+    \end{tabular}
+\end{minipage}
+  \end{center}
+\vspace{-0.35em}
+
   \subsubsection*{Theta, $\theta$}
   Theta usually represents an angle or phase. Polar coordinates use $(r\cos\theta,r\sin\theta)$, AC circuit analysis uses phase differences, and antenna radiation patterns express gain as a function of direction $G(\theta,\phi)$.
 
@@ -170,36 +172,38 @@
   A satellite in a circular orbit uses $2\pi r$ geometry, while its angular position can be expressed as $\theta=\omega t$. Ground antennas track the spacecraft using changing azimuth and elevation angles. The same symbols connect orbital motion with antenna pointing.
 
   \subsubsection*{Inclined-Plane Equilibrium}
-  A force diagram resolves weight into components using $\theta$. Equilibrium requires summation of forces along each axis. If friction is present, $\mu$ may represent the coefficient of friction and $\alpha$ may be used for an inclination or friction angle.
-
-  \subsubsection*{Noise and Sensor Fusion}
-  A sensor system combines many samples using $\sum$, estimates their mean with $\mu$, and describes noise magnitude through a square-root operation such as standard deviation or RMS. Compact notation makes multi-stage processing easier to implement and review.
+  A force diagram resolves weight into components using $\theta$. Equilibrium requires summation of forces along each axis.   If friction is present, $\mu$ may represent the coefficient of friction and $\alpha$ may be used for an inclination or friction angle.
 \end{multicols}
 
-\begin{table}[tb]
-\centering
-\caption{Worked examples using mathematical symbols in engineering.}
-\small
-  \setlength{\tabcolsep}{6pt}
-  \renewcommand{\arraystretch}{1.45}
-  \begin{tabular}{@{}>{\bfseries\RaggedRight\arraybackslash}p{0.19\textwidth}
-                      >{\RaggedRight\arraybackslash}p{0.35\textwidth}
-                      >{\RaggedRight\arraybackslash}p{0.38\textwidth}@{}}
-    \toprule
-    \textbf{Example} & \textbf{Method} & \textbf{Result} \\
-    \midrule
-    Quadratic equation & For $x^2-5x+6=0$, $\Delta=b^2-4ac=25-24=1$ and $x=(5\pm\sqrt{1})/2$. & The roots are $x=3$ and $x=2$. \\
-    RMS voltage & For samples $[10,0,-10,0]$, $V_{\mathrm{RMS}}=\sqrt{(100+0+100+0)/4}$. & $V_{\mathrm{RMS}}=\sqrt{50}\approx7.07\,\mathrm{V}$. \\
-    Orbital period & For circular orbit radius $r$ and central mass $M$, use $T=2\pi\sqrt{r^3/(GM)}$. & The formula links $\pi$, a square root, and orbital geometry. \\
-    Wavelength & For frequency $f$ in free space, use $\lambda=c/f$. & At $1\,\mathrm{GHz}$, $\lambda\approx0.30\,\mathrm{m}$. \\
-    \bottomrule
-  \end{tabular}
-\end{table}
 \vspace{-0.18em}
 
 \begin{multicols}{2}
   \subsection*{\centering\uppercase{Conclusion}}
   Table~2 presents worked examples using mathematical symbols in engineering.
+
+\begin{center}
+\vspace{-0.5em}
+\begin{minipage}{0.98\columnwidth}
+\centering
+    \captionof{table}{Worked examples using mathematical symbols in engineering.}
+    \scriptsize
+    \setlength{\tabcolsep}{3pt}
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabular}{@{}>{\bfseries\RaggedRight\arraybackslash}p{0.19\columnwidth}
+                        >{\RaggedRight\arraybackslash}p{0.34\columnwidth}
+                        >{\RaggedRight\arraybackslash}p{0.35\columnwidth}@{}}
+      \toprule
+      \textbf{Example} & \textbf{Method} & \textbf{Result} \\
+      \midrule
+      Quadratic equation & For $x^2-5x+6=0$, $\Delta=b^2-4ac=25-24=1$ and $x=(5\pm\sqrt{1})/2$. & The roots are $x=3$ and $x=2$. \\
+      RMS voltage & For samples $[10,0,-10,0]$, $V_{\mathrm{RMS}}=\sqrt{(100+0+100+0)/4}$. & $V_{\mathrm{RMS}}=\sqrt{50}\approx7.07\,\mathrm{V}$. \\
+      Orbital period & For circular orbit radius $r$ and central mass $M$, use $T=2\pi\sqrt{r^3/(GM)}$. & The formula links $\pi$, a square root, and orbital geometry. \\
+      Wavelength & For frequency $f$ in free space, use $\lambda=c/f$. & At $1\,\mathrm{GHz}$, $\lambda\approx0.30\,\mathrm{m}$. \\
+      \bottomrule
+    \end{tabular}
+\end{minipage}
+  \end{center}
+\vspace{-0.35em}
   Mathematical symbols carry both historical depth and practical value. Pi, sigma, infinity, the radical sign, and the integral symbol emerged from centuries of effort to express reasoning more clearly. Greek symbols such as theta, lambda, alpha, delta, and mu provide additional notation for the quantities used throughout Electronics and Communication Engineering.
 
   \noindent
