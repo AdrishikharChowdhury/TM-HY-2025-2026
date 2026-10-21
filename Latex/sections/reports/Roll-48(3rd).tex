@@ -167,19 +167,20 @@
 
   \subsubsection*{Quantitative Comparison of Neuromorphic Systems}
   The table below consolidates the quantitative specifications discussed above to allow direct comparison across generations and design philosophies.
-\end{multicols}
-\begin{table}[tb]
+
+  \begin{center}
+\begin{minipage}{0.98\columnwidth}
 \centering
-\caption{Quantitative comparison of representative neuromorphic and brain-inspired computing systems.}
-\small
-  \setlength{\tabcolsep}{3pt}
-  \renewcommand{\arraystretch}{1.2}
-  \begin{tabular}{@{}>{\RaggedRight\arraybackslash}p{0.18\textwidth}
-      >{\RaggedRight\arraybackslash}p{0.11\textwidth}
-      >{\RaggedRight\arraybackslash}p{0.12\textwidth}
-      >{\RaggedRight\arraybackslash}p{0.10\textwidth}
-      >{\RaggedRight\arraybackslash}p{0.20\textwidth}
-    >{\RaggedRight\arraybackslash}p{0.21\textwidth}@{}}
+    \scriptsize
+    \captionof{table}{Quantitative comparison of representative neuromorphic and brain-inspired computing systems.}
+    \setlength{\tabcolsep}{2pt}
+    \renewcommand{\arraystretch}{1.2}
+    \begin{tabular}{@{}>{\RaggedRight\arraybackslash}p{0.17\columnwidth}
+      >{\RaggedRight\arraybackslash}p{0.11\columnwidth}
+      >{\RaggedRight\arraybackslash}p{0.12\columnwidth}
+      >{\RaggedRight\arraybackslash}p{0.09\columnwidth}
+      >{\RaggedRight\arraybackslash}p{0.19\columnwidth}
+    >{\RaggedRight\arraybackslash}p{0.20\columnwidth}@{}}
     \toprule
     \textbf{Chip / System} & \textbf{Neurons} & \textbf{Synapses} & \textbf{Process Node} & \textbf{Power / Efficiency} & \textbf{Status / Notes} \\
     \midrule
@@ -190,10 +191,9 @@
     IBM NorthPole (2023) & 224M-parameter-class arrays & N/A (dense on-chip weights) & 12 nm & 25$\times$ FPS/W vs. comparable 12 nm GPU on ResNet-50 & Not spike-based; inference-only ASIC [12] \\
     \bottomrule
   \end{tabular}
-\end{table}
-\vspace{-0.18em}
+\end{minipage}
+  \end{center}
 
-\begin{multicols}{2}
   Table~2 (above) quantifies representative neuromorphic and brain-inspired systems.
 
   \subsubsection*{Working Principle of Neuromorphic Chips}
