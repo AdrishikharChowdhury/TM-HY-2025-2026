@@ -1,6 +1,6 @@
 \begin{center}
   \section{\capitalisewords{Pi Digits in Huffman Coding: Entropy, Compression, and Randomness}}
-  Adrishikhar Chowdhury, 3$^{rd}$ Year, ECE
+  \vspace*{-6pt}Adrishikhar Chowdhury, 3$^{rd}$ Year, ECE
 \end{center}
 
 \setcounter{figure}{0}
@@ -72,11 +72,6 @@
 
   \subsection*{\centering\uppercase{Uniformity Testing}}
   Table~1 compares theoretical coding approaches for nearly uniform decimal digits.
-  For $N$ digits, let $f_i$ be the observed count of digit $i$. Under the uniform hypothesis, the expected count is $e_i=N/10$. The chi-squared statistic is
-  \[
-    \chi^2=\sum_{i=0}^{9}\frac{(f_i-e_i)^2}{e_i}.
-  \]
-
 \begin{center}
 \vspace{-0.5em}
 \begin{minipage}{0.98\columnwidth}
@@ -100,6 +95,12 @@
     \end{tabular}
 \end{minipage}
   \end{center}
+  For $N$ digits, let $f_i$ be the observed count of digit $i$. Under the uniform hypothesis, the expected count is $e_i=N/10$. The chi-squared statistic is
+  \[
+    \chi^2=\sum_{i=0}^{9}\frac{(f_i-e_i)^2}{e_i}.
+  \]
+
+
 \vspace{-0.35em}
 
   It is compared with a chi-squared distribution having $9$ degrees of freedom. A large $p$-value means the data do not provide sufficient evidence to reject uniformity; it does not prove independence or normality. Testing single-digit counts cannot detect every form of local correlation, so digit-pair and longer-block tests are useful extensions.
@@ -191,12 +192,6 @@
     \item standard suites such as NIST statistical tests, with careful interpretation.
   \end{itemize}
 
-  \subsection*{\centering\uppercase{Future Work}}
-  Arithmetic coding or range coding should be used to approach the $3.3219$-bit entropy limit without integer codeword restrictions. Block Huffman coding over pairs of digits creates an alphabet of 100 symbols and reduces per-digit redundancy, although it requires a larger codebook. Context models can test whether knowledge of previous digits improves prediction; any stable improvement would indicate exploitable dependence in the tested prefix.
-
-  \subsection*{\centering\uppercase{Conclusion}}
-  Table~2 lists recommended measurements for a reproducible compression experiment.
-
 \begin{center}
 \vspace{-0.5em}
 \begin{minipage}{0.98\columnwidth}
@@ -222,6 +217,12 @@
 \end{minipage}
   \end{center}
 \vspace{-0.35em}
+
+  \subsection*{\centering\uppercase{Future Work}}
+  Arithmetic coding or range coding should be used to approach the $3.3219$-bit entropy limit without integer codeword restrictions. Block Huffman coding over pairs of digits creates an alphabet of 100 symbols and reduces per-digit redundancy, although it requires a larger codebook. Context models can test whether knowledge of previous digits improves prediction; any stable improvement would indicate exploitable dependence in the tested prefix.
+
+
+  \subsection*{\centering\uppercase{Conclusion}}
   The decimal digits of $\pi$ provide a useful and engaging data source for studying entropy, prefix codes, statistical uniformity, and lossless compression. The first $10^5$ digits are expected to have empirical entropy close to $\log_2(10)$, and frequency tests generally support a near-uniform first-order model.
 
   \noindent

@@ -173,16 +173,21 @@
   \subsection*{\centering\uppercase{Case Study: Healthcare Analytics}}
   Consider an analytics system designed to predict diabetes risk from anonymised health records. Inputs may include glucose level, body mass index, age, blood pressure, insulin level, and family medical history. Logistic regression can provide an interpretable probability score, while a neural network can capture nonlinear relationships among the indicators.
 
-\end{multicols}
+  \noindent
+  In the uploaded case study, the model achieved a reported prediction accuracy of 92\% for identifying high-risk patients. The proposed benefits include faster screening, reduced manual record analysis, improved preventive treatment, and better patient monitoring. This figure should be interpreted in the context of the dataset, validation design, class balance, and clinical setting; accuracy alone is not sufficient to establish clinical safety.
 
-  \begin{table}[tb]
-  \centering
-  \caption{Advantages and limitations of machine learning.}
-  \small
-    \setlength{\tabcolsep}{3pt}
-    \renewcommand{\arraystretch}{1.35}
-    \begin{tabular}{@{}>{\RaggedRight\arraybackslash}p{0.46\textwidth}
-                        >{\RaggedRight\arraybackslash}p{0.48\textwidth}@{}}
+  \subsection*{\centering\uppercase{Challenges and Critical Observations}}
+
+\begin{center}
+\vspace{-0.5em}
+\begin{minipage}{0.98\columnwidth}
+\centering
+    \captionof{table}{Advantages and limitations of machine learning.}
+    \scriptsize
+    \setlength{\tabcolsep}{2pt}
+    \renewcommand{\arraystretch}{1.25}
+    \begin{tabular}{@{}>{\RaggedRight\arraybackslash}p{0.42\columnwidth}
+                        >{\RaggedRight\arraybackslash}p{0.48\columnwidth}@{}}
       \toprule
       \textbf{Advantages} & \textbf{Limitations} \\
       \midrule
@@ -192,15 +197,10 @@
       Supports real-time monitoring & Black-box models can be difficult to explain \\
       \bottomrule
     \end{tabular}
-  \end{table}
+\end{minipage}
+\end{center}
+\vspace{-0.35em}
 
-\begin{multicols}{2}
-
-  \noindent
-  In the uploaded case study, the model achieved a reported prediction accuracy of 92\% for identifying high-risk patients. The proposed benefits include faster screening, reduced manual record analysis, improved preventive treatment, and better patient monitoring. This figure should be interpreted in the context of the dataset, validation design, class balance, and clinical setting; accuracy alone is not sufficient to establish clinical safety.
-
-  \subsection*{\centering\uppercase{Challenges and Critical Observations}}
-  Table~3 summarizes advantages and limitations of machine learning.
   \begin{enumerate}\justifying
     \item \textbf{Data quality:} missing values, noise, inconsistent formatting, sampling errors, and biased records can reduce accuracy or create unfair outcomes.
     \item \textbf{Computational complexity:} large neural networks may require specialised processors, considerable memory, long training times, and substantial energy.
@@ -246,9 +246,3 @@
     \end{enumerate}
   \end{justify}}
 \end{multicols}
-% Full-width info box outside multicols
-\begin{center}
-  \begin{minipage}{\textwidth}
-    \input{sections/reports/ml_analytics_quick_reference}
-  \end{minipage}
-\end{center}
