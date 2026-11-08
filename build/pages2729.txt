@@ -1,0 +1,308 @@
+Electronic Trends
+
+St. Thomas College of Engineering & Technology [ECE]
+
+Effect of Fixed Cell Charge
+Positive fixed charge near the cavity promotes inversion and shifts the transfer curve toward lower gate voltage; negative charge promotes accumulation and shifts
+it toward higher voltage. Fixed charge can therefore
+move the threshold and change sensitivity. The simulations distinguish this static shift from hysteresis: a fixed
+charge does not automatically create different forward
+and reverse curves.
+
+TEMPERATURE AND TRAP
+LOCATION
+At a fixed slow sweep rate, predicted hysteresis for the
+T47D condition rises from 32.8 mV at 300 K to 35.1 mV
+at 350 K and 40.2 mV at 400 K. Higher temperature alters capture and emission times and increases thermal
+carrier velocity.
+Trap location also matters. The model compares defects
+at the crystalline InAs–Si heterojunction with those at
+the amorphous/crystalline Si–SiO2 boundary. Across
+the investigated sweep rates, Si–SiO2 traps produce
+larger hysteresis because their time-constant distribution interacts more strongly with the applied sweep. Reliability improvement therefore requires careful oxide
+growth, interface passivation, and low-damage cavity
+processing.
+
+TRAP-INDUCED HYSTERESIS
+Interface defects can capture electrons during an upward
+gate sweep and release them on a different timescale during the downward sweep. The resulting transfer curves
+no longer coincide. Hysteresis width is measured at a
+chosen current criterion as
+𝐻𝑊 = |𝑉th,for − 𝑉th,rev |.
+
+DAMAGED-SENSOR SENSITIVITY
+
+A simplified dependence is
+𝑁𝑖𝑡
+,
+𝐻𝑊 ≈ 𝑞 𝐶𝑓𝑡net
+
+where 𝑞 is electronic charge, 𝑓𝑡 is trap occupancy, 𝑁𝑖𝑡
+is interface-trap density, and 𝐶net is the effective series
+capacitance.
+
+Traps introduce recombination paths, reduce available
+channel carriers, and degrade on-current. The resulting
+drain-current sensitivity is lower than that of the fresh
+device for every modelled cell line. The study defines
+Inaccuracy =
+
+damaged
+−𝑆𝐼fresh
+ON
+ON
+fresh
+𝑆𝐼
+ON
+
+𝑆𝐼
+
+× 100%.
+
+The predicted inaccuracy is about 97% for MCF-10A,
+around 60% for several intermediate diseased-cell conditions, and roughly 50% for T47D. A sensor may
+therefore retain a seemingly large signal for a strongly
+coupled target while becoming unreliable near the
+healthy/disease decision boundary.
+Figure 2: Forward and reverse transfer curves defining hysteresis
+width for the T47D condition.
+
+SWEEP-RATE DEPENDENCE
+Sweep rate determines how long traps have to exchange
+charge with the channel. The study models a triangular
+gate waveform between 0 and 1.5 V. For T47D, hysteresis is approximately 10.2 mV at 1 V/s, 16.3 mV at
+0.1 V/s, and 32.8 mV at 0.01 V/s. A slow sweep allows
+more traps to capture and retain charge, increasing the
+difference between forward and reverse thresholds.
+Figure 4: Sensitivity inaccuracy caused by trap degradation for the
+modelled cell conditions.
+
+SENSITIVITY VERSUS SELECTIVITY
+Selectivity measures discrimination between the T47D
+target and other cell conditions. The damaged device
+can show a larger relative contrast for some comparisons even while its absolute current and sensitivity fall.
+This is not an improvement in overall sensing quality. A
+weak signal may appear relatively distinct yet
+
+Figure 3: Simulated hysteresis increases as the gate sweep becomes
+slower.
+
+10
+
+Electronic Trends
+
+St. Thomas College of Engineering & Technology [ECE]
+
+Table 2 summarizes key reliability results from the calibrated simulation study.
+Table 2: Key reliability results from the calibrated simulation study.
+Comparison
+
+Predicted Result
+
+Interpretation
+
+T47D sweep rate: 1 →
+0.01 V/s
+
+𝐻𝑊 : 10.2 → 32.8 mV
+
+Slow measurement exposes more trap capture and delayed emission
+
+T47D temperature: 300 →
+400 K
+
+𝐻𝑊 : 32.8 → 40.2 mV
+
+Thermal activation increases trap participation
+
+Fixed positive cell charge,
+no switching traps
+
+𝐻𝑊 ≈ 0
+
+Static charge shifts threshold but does not create sweepdependent hysteresis
+
+Si–SiO2 versus InAs–Si
+traps
+
+Larger 𝐻𝑊 at Si–SiO2
+
+Oxide-interface time constants dominate the simulated
+degradation
+
+MCF-10A fresh versus
+damaged sensitivity
+
+Approximately
+97% inaccuracy
+
+Reliability loss can hide or distort the healthy reference
+condition
+
+T47D fresh versus damaged
+sensitivity
+
+7.77 × 108 → 3.9 × 108
+
+Strong response remains, but absolute sensitivity is
+substantially reduced
+
+• evaluate device-to-device variability and repeated
+measurement cycles;
+• confirm the predicted response through fabrication and blinded biological testing.
+
+remain difficult to measure accurately in the presence of
+noise, drift, device variability, and biological interference.
+Reliable benchmarking should therefore report the raw
+transfer curves, signal magnitude, sensitivity, selectivity, hysteresis, repeatability, noise, and calibration drift.
+Evaluating only one normalised metric can conceal device degradation.
+
+CONCLUSION
+The oxide-engineered InAs–Si double-gate TFET offers a promising simulated platform for dielectricmodulated breast-cancer sensing. Larger dielectric constants strengthen electrostatic coupling, shorten the tunnelling path, and increase drain-current sensitivity. The
+same device, however, is vulnerable to transient charge
+trapping at semiconductor interfaces.
+Trap-induced hysteresis depends strongly on measurement time and temperature, with the Si–SiO2 interface
+producing the greatest degradation in the model. Sensitivity loss can be severe even when selectivity appears
+acceptable. The central lesson is that a biosensor cannot
+be judged by peak sensitivity alone: stability, hysteresis,
+inaccuracy, fabrication quality, measurement protocol,
+and experimental validation must be designed together.
+
+CLINICAL AND EXPERIMENTAL
+LIMITATIONS
+The reported results are calibrated TCAD predictions,
+not measurements from a fabricated H-OE-DG-TFET
+biosensor. No liquid-phase breast-cell assay is included.
+The assumed dielectric constants represent literature
+values and may vary with frequency, temperature, cell
+state, measurement method, surface coverage, and biological environment.
+A practical electrolyte creates an electric double layer
+and introduces biolayer capacitance, mobile ions, Debye
+screening, reference-electrode conditions, fluidic transport, non-specific adsorption, and surface-chemistry
+variability. These effects modify the effective capacitance and surface-potential coupling. Experimental
+work must also demonstrate selectivity through appropriate receptors and controls; dielectric contrast alone
+does not identify a cancer cell uniquely.
+
+REFERENCES
+
+DESIGN GUIDANCE
+The study suggests several priorities for future devices:
+• minimise Si–SiO2 defect density through interface passivation and controlled processing;
+• report gate sweep rate, direction, current criterion,
+temperature, and bias history with every hysteresis result;
+• calibrate fresh and aged devices rather than assuming sensitivity remains constant;
+• include liquid-gate electrostatics, receptor layers,
+ionic screening, and realistic biological noise;
+
+11
+
+[1] R. Ghosh and P. Saha, “Modeling trap dynamics in oxideengineered heterostructure TFETs for breast cancer detection,” Scientific Reports, vol. 16, art. 3970, 2026.
+[2] H. Im et al., “A dielectric-modulated field-effect transistor
+for biosensing,” Nature Nanotechnology, vol. 2, no. 7, pp.
+430–434, 2007.
+[3] S. Shreya et al., “Core-shell junctionless nanotube tunnel
+field effect transistor: Design and sensitivity analysis for
+biosensing application,” IEEE Sensors Journal, vol. 20,
+no. 2, pp. 672–679, 2020.
+[4] M. Hussein et al., “Breast cancer cells exhibit specific dielectric signatures in vitro,” Scientific Reports, vol. 9, art.
+4681, 2019.
+[5] F. Heiman and G. Warfield, “The effects of oxide traps
+on the MOS capacitance,” IEEE Transactions on Electron
+Devices, vol. 12, no. 4, pp. 167–178, 1965.
+[6] K. E. Moselund et al., “Lateral InAs/Si P-type tunnel FETs
+
+Electronic Trends
+
+St. Thomas College of Engineering & Technology [ECE]
+
+vol. 63, no. 11, pp. 4240–4247, 2016.
+[8] R. Ghosh et al., “Theoretical insights into the impact
+of border and interface traps on hysteresis in monolayer
+MoS2 FETs,” Microelectronic Engineering, vol. 299, art.
+112333, 2025.
+[9] Silvaco, ATLAS User’s Manual, Santa Clara, CA, USA.
+
+integrated on Si—Part 1: Experimental devices,” IEEE
+Transactions on Electron Devices, vol. 63, no. 11, pp.
+4233–4239, 2016.
+[7] S. Sant et al., “Lateral InAs/Si P-type tunnel FETs integrated on Si—Part 2: Simulation study of the impact of
+interface traps,” IEEE Transactions on Electron Devices,
+
+Did you know that biological cells can exhibit different electrical properties? How could these differences
+help an electronic sensor identify abnormal cells?
+
+4
+
+Neuromorphic Computing Chips Inspired By The Human Brain
+Soumyadeep Sengupta, 1𝑠𝑡 Year, ECE
+today’s AI workhorse, draws up to 700 watts under full
+load. At data-centre scale, this gap becomes critical.
+Global AI infrastructure is projected to consume 1,000
+TWh of electricity yearly by 2026 comparable to Japan’s
+total national energy consumption.
+This is not merely an environmental concern, it is an engineering ceiling. As AI models scale toward hundreds
+of trillions of new limits, power consumption threatens
+to become the front running issue on further capability
+growth. The solution, many researchers argue, has been
+operating inside human skulls for millions of years.
+Neuromorphic computing, first theorized by Carver
+Mead at Caltech in the 1980s proposes the idea of building chips that mirror biological neural networks structurally and programmatically. Unlike conventional von
+Neumann architectures, which continuously shift data
+between separate memory and processing units, neuromorphic systems co-locate computation and storage.
+These activate only on spike events, and learn through
+local synaptic adaptation. Between 2024 and 2026, the
+initial model crossed a decisive onset from laboratory
+demonstration to competitive benchmarks, from exotic
+materials to CMOS-compatible fabrication, and from
+academic precursor to the world’s largest deployed AI
+system by neuron count.
+
+Abstract.
+Artificial Intelligence revolution is built on
+an unstated inefficiency, while the human brain performs
+complex discernment on approximately 20 watts, a stateof-the-art GPU draws up to 700 watts for similar workloads. Neuromorphic computing addresses this basic inconsistency by replicating the framework of biological neural networks directly in hardware by integrating memory and computation. Running only on incoming spike
+events, and learning through local synaptic rules rather
+than global backward propagation of errors. This report
+goes over the entire neuromorphic pipeline, from the biological neuron’s threshold-firing mechanism to Spiking
+Neural Networks (SNNs) trained using surrogate gradient
+methods and Model Fusion Technology (MFT), continuing into silicon implementation on Intel’s Loihi 2 and the
+billion-neuron Hala Point system. We go over the 2024–
+2025 state-of-the-art benchmarks, including SpikeYOLO
+achieving 66.2% mAP@50 on COCO with 5.7× energy
+efficiency over equivalent ANNs, and Advanced SpikingYOLOX leveraging 2D-Spiking Transformers for object detection at ACM MM 2025 that confirm SNNs have crossed
+from research interests to competitive engineering. The
+2026 University of Cambridge hafnium oxide memristive
+synapse breakthrough, providing a 70% energy reduction using standard CMOS-compatible materials, is analysed alongside the critical integration challenge of linking
+spike-domain hardware with real- valued deep learning
+pipelines. With the neuromorphic market projected to
+reach $61.48 billion by 2035 at a 33.32% CAGR, and neuromorphic chip patents rising 401% in 2025 alone, this
+report demonstrates that computing modelled by the human brain is not a future possibility, it is an engineering
+reality.
+
+BIOLOGICAL FOUNDATIONS: FROM
+NEURON TO CIRCUIT
+Threshold-Fired Spike Coding
+A biological neuron brings together electrochemical inputs across its dendritic membrane. Only when accumulated charge crosses a critical upper limit, does it emit
+a different action potential. It sends a spike down its
+axon to connected neurons. This all-or-nothing, actiondriven mechanism encrypts information in spike timing
+and rate, not continuous amplitude. The result stands
+out as zero computation during silence, and information
+processing only when something in the environment actually changes.
+Neuromorphic chips replicate this using Leaky
+Integrate-and-Fire (LIF) neurons. The most widely
+implemented spiking neuron model. Each LIF unit accumulates input charge as membrane potential 𝑉𝑚 , de-
+
+Keywords: Neuromorphic Computing, Spiking Neural
+Networks, Surrogate Gradient, MFT Training, SpikeYOLO, SpikingYOLOX, Memristor, ANN-to-SNN Conversion, Loihi 2, Hala Point, Event-Driven AI.
+
+INTRODUCTION
+There is a strange contradiction at the base of modern AI. The field’s greatest ambition to replicate human
+intelligence is pursued using hardware fundamentally
+opposite to the organ it seeks to replicate. The human
+brain processes information across 86 billion neurons
+connected by 100 trillion synapses, running on roughly
+20 watts of cellular power. The NVIDIA H100 GPU,
+
+12
+
+
