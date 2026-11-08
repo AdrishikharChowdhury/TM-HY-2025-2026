@@ -1,0 +1,123 @@
+Electronic Trends
+
+St. Thomas College of Engineering & Technology [ECE]
+
+Table 2 summarizes key reliability results from the calibrated simulation study.
+Table 2: Key reliability results from the calibrated simulation study.
+Comparison
+
+Predicted Result
+
+Interpretation
+
+T47D sweep rate: 1 →
+0.01 V/s
+
+𝐻𝑊 : 10.2 → 32.8 mV
+
+Slow measurement exposes more trap capture and delayed emission
+
+T47D temperature: 300 →
+400 K
+
+𝐻𝑊 : 32.8 → 40.2 mV
+
+Thermal activation increases trap participation
+
+Fixed positive cell charge,
+no switching traps
+
+𝐻𝑊 ≈ 0
+
+Static charge shifts threshold but does not create sweepdependent hysteresis
+
+Si–SiO2 versus InAs–Si
+traps
+
+Larger 𝐻𝑊 at Si–SiO2
+
+Oxide-interface time constants dominate the simulated
+degradation
+
+MCF-10A fresh versus
+damaged sensitivity
+
+Approximately
+97% inaccuracy
+
+Reliability loss can hide or distort the healthy reference
+condition
+
+T47D fresh versus damaged
+sensitivity
+
+7.77 × 108 → 3.9 × 108
+
+Strong response remains, but absolute sensitivity is
+substantially reduced
+
+• evaluate device-to-device variability and repeated
+measurement cycles;
+• confirm the predicted response through fabrication and blinded biological testing.
+
+remain difficult to measure accurately in the presence of
+noise, drift, device variability, and biological interference.
+Reliable benchmarking should therefore report the raw
+transfer curves, signal magnitude, sensitivity, selectivity, hysteresis, repeatability, noise, and calibration drift.
+Evaluating only one normalised metric can conceal device degradation.
+
+CONCLUSION
+The oxide-engineered InAs–Si double-gate TFET offers a promising simulated platform for dielectricmodulated breast-cancer sensing. Larger dielectric constants strengthen electrostatic coupling, shorten the tunnelling path, and increase drain-current sensitivity. The
+same device, however, is vulnerable to transient charge
+trapping at semiconductor interfaces.
+Trap-induced hysteresis depends strongly on measurement time and temperature, with the Si–SiO2 interface
+producing the greatest degradation in the model. Sensitivity loss can be severe even when selectivity appears
+acceptable. The central lesson is that a biosensor cannot
+be judged by peak sensitivity alone: stability, hysteresis,
+inaccuracy, fabrication quality, measurement protocol,
+and experimental validation must be designed together.
+
+CLINICAL AND EXPERIMENTAL
+LIMITATIONS
+The reported results are calibrated TCAD predictions,
+not measurements from a fabricated H-OE-DG-TFET
+biosensor. No liquid-phase breast-cell assay is included.
+The assumed dielectric constants represent literature
+values and may vary with frequency, temperature, cell
+state, measurement method, surface coverage, and biological environment.
+A practical electrolyte creates an electric double layer
+and introduces biolayer capacitance, mobile ions, Debye
+screening, reference-electrode conditions, fluidic transport, non-specific adsorption, and surface-chemistry
+variability. These effects modify the effective capacitance and surface-potential coupling. Experimental
+work must also demonstrate selectivity through appropriate receptors and controls; dielectric contrast alone
+does not identify a cancer cell uniquely.
+
+REFERENCES
+
+DESIGN GUIDANCE
+The study suggests several priorities for future devices:
+• minimise Si–SiO2 defect density through interface passivation and controlled processing;
+• report gate sweep rate, direction, current criterion,
+temperature, and bias history with every hysteresis result;
+• calibrate fresh and aged devices rather than assuming sensitivity remains constant;
+• include liquid-gate electrostatics, receptor layers,
+ionic screening, and realistic biological noise;
+
+11
+
+[1] R. Ghosh and P. Saha, “Modeling trap dynamics in oxideengineered heterostructure TFETs for breast cancer detection,” Scientific Reports, vol. 16, art. 3970, 2026.
+[2] H. Im et al., “A dielectric-modulated field-effect transistor
+for biosensing,” Nature Nanotechnology, vol. 2, no. 7, pp.
+430–434, 2007.
+[3] S. Shreya et al., “Core-shell junctionless nanotube tunnel
+field effect transistor: Design and sensitivity analysis for
+biosensing application,” IEEE Sensors Journal, vol. 20,
+no. 2, pp. 672–679, 2020.
+[4] M. Hussein et al., “Breast cancer cells exhibit specific dielectric signatures in vitro,” Scientific Reports, vol. 9, art.
+4681, 2019.
+[5] F. Heiman and G. Warfield, “The effects of oxide traps
+on the MOS capacitance,” IEEE Transactions on Electron
+Devices, vol. 12, no. 4, pp. 167–178, 1965.
+[6] K. E. Moselund et al., “Lateral InAs/Si P-type tunnel FETs
+
+

@@ -161,40 +161,32 @@
   \end{center}
 
   \subsection*{\centering\uppercase{Sensitivity Versus Selectivity}}
-  Selectivity measures discrimination between the T47D target and other cell conditions. The damaged device can show a larger relative contrast for some comparisons even while its absolute current and sensitivity fall. This is not an improvement in overall sensing quality. A weak signal may appear relatively distinct yet
-\end{multicols}
+  Selectivity measures discrimination between the T47D target and other cell conditions. The damaged device can show a larger relative contrast for some comparisons even while its absolute current and sensitivity fall. This is not an improvement in overall sensing quality. A weak signal may appear relatively distinct yet remain difficult to measure accurately in the presence of noise, drift, device variability, and biological interference.
 
-\needspace{300pt}
-\noindent Table~2 summarizes key reliability results from the calibrated simulation study.
+  \noindent\begin{minipage}{\columnwidth}
+  \centering
+  \captionof{table}{Key reliability results from the calibrated simulation study.}
+  \footnotesize
+    \setlength{\tabcolsep}{2pt}
+    \renewcommand{\arraystretch}{1.05}
+    \begin{tabular}{@{}>{\bfseries\RaggedRight\arraybackslash}p{0.32\columnwidth}
+                        >{\Centering\arraybackslash}p{0.23\columnwidth}
+                        >{\RaggedRight\arraybackslash}p{0.39\columnwidth}@{}}
+      \toprule
+      \textbf{Comparison} & \textbf{Predicted Result} & \textbf{Interpretation} \\
+      \midrule
+      T47D sweep rate: $1\rightarrow0.01\,\mathrm{V/s}$ & $HW:10.2\rightarrow32.8\,\mathrm{mV}$ & Slow measurement exposes more trap capture and delayed emission \\
+      T47D temp.: $300\rightarrow400\,\mathrm{K}$ & $HW:32.8\rightarrow40.2\,\mathrm{mV}$ & Thermal activation increases trap participation \\
+      Fixed positive cell charge, no switching traps & $HW\approx0$ & Static charge shifts threshold but does not create sweep-dependent hysteresis \\
+      Si--SiO$_2$ vs InAs--Si traps & Larger $HW$ at Si--SiO$_2$ & Oxide-interface time constants dominate the simulated degradation \\
+      MCF-10A fresh vs damaged & $\approx 97\%$ inaccuracy & Reliability loss can hide or distort the healthy reference condition \\
+      T47D fresh vs damaged & $7.77\times10^8\rightarrow3.9\times10^8$ & Strong response remains, but absolute sensitivity is substantially reduced \\
+      \bottomrule
+    \end{tabular}
+  \end{minipage}
+  \vspace{2pt}
 
-\begin{center}
-\begin{minipage}{\textwidth}
-\centering
-\captionof{table}{Key reliability results from the calibrated simulation study.}
-\small
-  \setlength{\tabcolsep}{6pt}
-  \renewcommand{\arraystretch}{1.35}
-  \begin{tabular}{@{}>{\bfseries\RaggedRight\arraybackslash}p{0.24\textwidth}
-                      >{\Centering\arraybackslash}p{0.23\textwidth}
-                      >{\RaggedRight\arraybackslash}p{0.45\textwidth}@{}}
-    \toprule
-    \textbf{Comparison} & \textbf{Predicted Result} & \textbf{Interpretation} \\
-    \midrule
-    T47D sweep rate: $1\rightarrow0.01\,\mathrm{V/s}$ & $HW:10.2\rightarrow32.8\,\mathrm{mV}$ & Slow measurement exposes more trap capture and delayed emission \\
-    T47D temperature: $300\rightarrow400\,\mathrm{K}$ & $HW:32.8\rightarrow40.2\,\mathrm{mV}$ & Thermal activation increases trap participation \\
-    Fixed positive cell charge, no switching traps & $HW\approx0$ & Static charge shifts threshold but does not create sweep-dependent hysteresis \\
-    Si--SiO$_2$ versus InAs--Si traps & Larger $HW$ at Si--SiO$_2$ & Oxide-interface time constants dominate the simulated degradation \\
-    MCF-10A fresh versus damaged sensitivity & Approximately $97\%$ inaccuracy & Reliability loss can hide or distort the healthy reference condition \\
-    T47D fresh versus damaged sensitivity & $7.77\times10^8\rightarrow3.9\times10^8$ & Strong response remains, but absolute sensitivity is substantially reduced \\
-    \bottomrule
-  \end{tabular}
-\end{minipage}
-\end{center}
-\vspace{-0.18em}
-
-\begin{multicols}{2}
-
-    \noindent remain difficult to measure accurately in the presence of noise, drift, device variability, and biological interference.
+  Reliable benchmarking should therefore report the raw transfer curves, signal magnitude, sensitivity, selectivity, hysteresis, repeatability, noise, and calibration drift. Evaluating only one normalised metric can conceal device degradation.
 
   \noindent
   Reliable benchmarking should therefore report the raw transfer curves, signal magnitude, sensitivity, selectivity, hysteresis, repeatability, noise, and calibration drift. Evaluating only one normalised metric can conceal device degradation.
