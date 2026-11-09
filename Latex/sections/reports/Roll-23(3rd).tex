@@ -6,24 +6,7 @@
 \setcounter{figure}{0}
 \setcounter{table}{0}
 
-\begin{multicols}{2}
-  \begin{abstract}
-    \bfseries
-    Machine Learning (ML) enables analytical systems to learn patterns, generate predictions, and support data-driven decisions from large structured and unstructured datasets. This report examines supervised, unsupervised, and reinforcement learning; major regression, classification, neural-network, and clustering algorithms; applications in healthcare, finance, e-commerce, automation, and cybersecurity; and challenges involving data quality, privacy, computation, bias, and interpretability. It concludes that successful ML analytics depends on reliable data, suitable evaluation, domain knowledge, and responsible human oversight as much as on algorithmic sophistication.
-  \end{abstract}
-
-  \subsection*{\centering\uppercase{Introduction}}
-  Industries, healthcare organisations, online platforms, sensors, financial systems, social media, and Internet of Things (IoT) devices generate data at a scale that is difficult to analyse using traditional methods alone. Machine Learning (ML), a branch of Artificial Intelligence (AI), enables systems to learn patterns from historical data without being explicitly programmed for every case.
-
-  \noindent
-  ML algorithms identify relationships, trends, and hidden structures that support prediction, automation, classification, clustering, anomaly detection, and pattern recognition. These capabilities are now used across healthcare, finance, transportation, cybersecurity, robotics, manufacturing, and e-commerce.
-
-   \noindent
-  Machine learning methods are commonly grouped into supervised, unsupervised, and reinforcement learning. The choice among them depends on the available data, the intended output, and the operational context. This report studies these approaches, their mathematical foundations, practical applications, evaluation methods, limitations, and future scope.
-
-\end{multicols}
-
-  \begin{table}[tb]
+\begin{table}[!b]
 \centering
 \caption{Selected literature on machine learning and data analytics.}
 \scriptsize
@@ -44,7 +27,7 @@
     \end{tabular}
 \end{table}
 
-  \begin{table}[tb]
+\begin{table}[!t]
 \centering
 \caption{Comparison of major learning approaches.}
 \footnotesize
@@ -62,9 +45,40 @@
       \bottomrule
     \end{tabular}
 \end{table}
-\vspace{-0.18em}
+
+\begin{table}[!b]
+\centering
+\caption{Advantages and limitations of machine learning.}
+\scriptsize
+    \setlength{\tabcolsep}{4pt}
+    \renewcommand{\arraystretch}{1.25}
+    \begin{tabular}{@{}>{\RaggedRight\arraybackslash}p{0.42\textwidth}
+                        >{\RaggedRight\arraybackslash}p{0.53\textwidth}@{}}
+      \toprule
+      \textbf{Advantages} & \textbf{Limitations} \\
+      \midrule
+      Automates repetitive analytical tasks & Complex models can require substantial computation \\
+      Detects patterns in large datasets & Performance depends strongly on data quality \\
+      Enables rapid prediction and decision support & Sensitive data creates privacy and security risks \\
+      Supports real-time monitoring & Black-box models can be difficult to explain \\
+      \bottomrule
+    \end{tabular}
+\end{table}
 
 \begin{multicols}{2}
+  \begin{abstract}
+    \bfseries
+    Machine Learning (ML) enables analytical systems to learn patterns, generate predictions, and support data-driven decisions from large structured and unstructured datasets. This report examines supervised, unsupervised, and reinforcement learning; major regression, classification, neural-network, and clustering algorithms; applications in healthcare, finance, e-commerce, automation, and cybersecurity; and challenges involving data quality, privacy, computation, bias, and interpretability. It concludes that successful ML analytics depends on reliable data, suitable evaluation, domain knowledge, and responsible human oversight as much as on algorithmic sophistication.
+  \end{abstract}
+
+  \subsection*{\centering\uppercase{Introduction}}
+  Industries, healthcare organisations, online platforms, sensors, financial systems, social media, and Internet of Things (IoT) devices generate data at a scale that is difficult to analyse using traditional methods alone. Machine Learning (ML), a branch of Artificial Intelligence (AI), enables systems to learn patterns from historical data without being explicitly programmed for every case.
+
+  \noindent
+  ML algorithms identify relationships, trends, and hidden structures that support prediction, automation, classification, clustering, anomaly detection, and pattern recognition. These capabilities are now used across healthcare, finance, transportation, cybersecurity, robotics, manufacturing, and e-commerce.
+
+   \noindent
+  Machine learning methods are commonly grouped into supervised, unsupervised, and reinforcement learning. The choice among them depends on the available data, the intended output, and the operational context. This report studies these approaches, their mathematical foundations, practical applications, evaluation methods, limitations, and future scope.
 
   \subsection*{\centering\uppercase{Literature Review}}
   The development of machine learning spans theoretical foundations, probabilistic modelling, deep learning, and application-oriented analytics. Mitchell described learning systems in terms of improving performance through experience [1]. Bishop established probabilistic foundations for pattern recognition [2], while Goodfellow, Bengio, and Courville consolidated modern deep-learning methods [3]. More recent studies have focused on unsupervised pattern discovery and the practical use of ML in large-scale analytics [4, 5].
@@ -177,29 +191,6 @@
   In the uploaded case study, the model achieved a reported prediction accuracy of 92\% for identifying high-risk patients. The proposed benefits include faster screening, reduced manual record analysis, improved preventive treatment, and better patient monitoring. This figure should be interpreted in the context of the dataset, validation design, class balance, and clinical setting; accuracy alone is not sufficient to establish clinical safety.
 
   \subsection*{\centering\uppercase{Challenges and Critical Observations}}
-
-\begin{center}
-\vspace{-0.5em}
-\begin{minipage}{0.98\columnwidth}
-\centering
-    \captionof{table}{Advantages and limitations of machine learning.}
-    \scriptsize
-    \setlength{\tabcolsep}{2pt}
-    \renewcommand{\arraystretch}{1.25}
-    \begin{tabular}{@{}>{\RaggedRight\arraybackslash}p{0.42\columnwidth}
-                        >{\RaggedRight\arraybackslash}p{0.48\columnwidth}@{}}
-      \toprule
-      \textbf{Advantages} & \textbf{Limitations} \\
-      \midrule
-      Automates repetitive analytical tasks & Complex models can require substantial computation \\
-      Detects patterns in large datasets & Performance depends strongly on data quality \\
-      Enables rapid prediction and decision support & Sensitive data creates privacy and security risks \\
-      Supports real-time monitoring & Black-box models can be difficult to explain \\
-      \bottomrule
-    \end{tabular}
-\end{minipage}
-\end{center}
-\vspace{-0.35em}
 
   \begin{enumerate}\justifying
     \item \textbf{Data quality:} missing values, noise, inconsistent formatting, sampling errors, and biased records can reduce accuracy or create unfair outcomes.
