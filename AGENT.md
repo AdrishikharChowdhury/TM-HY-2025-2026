@@ -15,6 +15,7 @@
 - Use a consistent light yellow background for all “Did you know?” boxes. When the user asks to split a fact into points, preserve its existing facts and wording without adding new claims.
 - When the user explicitly asks for new technical facts, add only the requested number and verify them against authoritative sources.
 - Keep visible separation between points in boxed “Did you know?” lists when requested.
+- When the editor supplies an official accreditation period, use the exact month/year range consistently in the event's subtitle, at-a-glance box, opening paragraph, and closing paragraph; do not shorten it to bare years.
 - Keep consecutive report sections in one continuous `multicols` flow; closing and reopening columns mid-article can cause later left-column headings to appear before earlier right-column text.
 - The user is the editor, not the report author. Do not add, remove, paraphrase, or invent report content unless explicitly asked; make layout-only changes and preserve the author's wording.
 - When the user asks to check a report for “discrepancies,” interpret that as checking wording consistency and content/reading sequence (including misplaced lead-ins, citations that do not match the reference list, and unbalanced columns that leave one column visibly shorter than the other); do not treat it as a request for technical fact-checking unless asked.
