@@ -7,6 +7,28 @@
 \setcounter{figure}{0}
 \setcounter{table}{0}
 
+\begin{table}[!b]
+\centering
+\caption{Cybersecurity guidance across major technical domains.}
+\scriptsize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{@{}>{\RaggedRight\arraybackslash}p{0.20\textwidth}
+                    >{\RaggedRight\arraybackslash}p{0.36\textwidth}
+                    >{\RaggedRight\arraybackslash}p{0.39\textwidth}@{}}
+\toprule
+\textbf{Domain} & \textbf{Primary Concern} & \textbf{Representative Guidance} \\
+\midrule
+Enterprise security & Coordinated risk management and recovery & NIST Cybersecurity Framework [1] \\
+Identity and access & Continuous verification and least privilege & NIST Zero Trust Architecture [2] \\
+Web applications & Injection, access control, and insecure design & OWASP Top 10 [3] \\
+IoT devices & Constrained hardware, updates, and device identity & NISTIR 8259A [4] \\
+Industrial and OT systems & Safety, availability, segmentation, and legacy protocols & NIST SP 800-82 [5] \\
+Adversary behaviour & Tactics, techniques, detection, and threat hunting & MITRE ATT\&CK [6] \\
+\bottomrule
+\end{tabular}
+\end{table}
+
 \begin{multicols}{2}
   \begin{abstract}
     \bfseries
@@ -26,29 +48,6 @@
 
   \subsection*{\centering\uppercase{Security Foundations}}
 
-\begin{center}
-\begin{minipage}{0.98\columnwidth}
-\centering
-\captionof{table}{Cybersecurity guidance across major technical domains.}
-\scriptsize
-\setlength{\tabcolsep}{2pt}
-\renewcommand{\arraystretch}{1.5}
-\begin{tabular}{@{}>{\RaggedRight\arraybackslash}p{0.20\columnwidth}
-                    >{\RaggedRight\arraybackslash}p{0.36\columnwidth}
-                    >{\RaggedRight\arraybackslash}p{0.40\columnwidth}@{}}
-\toprule
-\textbf{Domain} & \textbf{Primary Concern} & \textbf{Representative Guidance} \\
-\midrule
-Enterprise security & Coordinated risk management and recovery & NIST Cybersecurity Framework [1] \\
-Identity and access & Continuous verification and least privilege & NIST Zero Trust Architecture [2] \\
-Web applications & Injection, access control, and insecure design & OWASP Top 10 [3] \\
-IoT devices & Constrained hardware, updates, and device identity & NISTIR 8259A [4] \\
-Industrial and OT systems & Safety, availability, segmentation, and legacy protocols & NIST SP 800-82 [5] \\
-Adversary behaviour & Tactics, techniques, detection, and threat hunting & MITRE ATT\&CK [6] \\
-\bottomrule
-\end{tabular}
-\end{minipage}
-\end{center}
   \subsubsection*{From Reactive to Proactive Defence}
   {\looseness=-1 Traditional security depended heavily on perimeter firewalls and known-malware signatures. These controls remain useful, but they cannot reliably detect zero-day exploits, stolen legitimate accounts, encrypted command traffic, or attackers already inside a network. Proactive security adds vulnerability management, threat hunting, attack-surface reduction, behavioural monitoring, and incident preparation.\par}
 
