@@ -83,31 +83,7 @@
   \end{itemize}
   MFT fuses both an ANN backbone is pre-trained conventionally, a \textbf{Batch-Matched Integrate-and-Fire (BM-
   IF) neuron} simplifies the conversion stage and reduces conversion error, and surrogate-gradient fine-tuning
-  then refines the hybrid network. Results on this approach are striking:
-
-  Table~1 compares MFT-based SNN and ANN-to-SNN conversion on key benchmarks.
-
-\begin{center}
-\vspace{-0.5em}
-\begin{minipage}{0.98\columnwidth}
-\centering
-    \captionof{table}{MFT-based SNN vs. ANN-to-SNN conversion on key benchmarks}
-    \scriptsize
-    \setlength{\tabcolsep}{3pt}
-    \renewcommand{\arraystretch}{1.25}
-    \begin{tabular}{@{}>{\RaggedRight\arraybackslash}p{0.28\columnwidth}>{\RaggedRight\arraybackslash}p{0.31\columnwidth}>{\RaggedRight\arraybackslash}p{0.31\columnwidth}@{}}
-      \toprule
-      \textbf{Metric} & \textbf{ANN-to-SNN Conversion} & \textbf{MFT-based SNN} \\
-      \midrule
-      Inference time steps & \(512\text{--}1250\times\) baseline & \(1\times\) (\(512\text{--}1250\times\) reduction) \\
-      ImageNet-1K Accuracy & \(\sim 65\%\) (SOTA) & 67.38\% (new SOTA) \\
-      Remote sensing (UCM) & \(\sim 97\%\) & 99.62\% \\
-      Remote sensing (AID) & \(\sim 96\%\) & 98.81\% \\
-      Convergence speed & Slow (STBP) & Significantly faster \\
-      \bottomrule
-    \end{tabular}
-\end{minipage}
-  \end{center}
+  then refines the hybrid network.
 
   Additionally, \textbf{Differential Coding} (ICML 2025) advances ANN-to-SNN conversion further by
   transmitting changes in spike rate information rather than absolute rates---reducing total spike count and
@@ -136,6 +112,32 @@
   simulating 1 million programmable neurons per chip with up to \(10\times\) faster learning than its predecessor.
   The \textbf{Hala Point} system at Sandia National Laboratories scales this to \textbf{1,152 Loihi 2 chips}, achieving 1.15
   billion simulated neurons, 20 Peta operations per second, inference \textbf{\(50\times\) faster} than GPU equivalents, and \textbf{\(100\times\) lower power} on optimization workloads.
+\end{multicols}
+
+\begin{table}[!b]
+\small
+\noindent Results on this approach are striking: Table~1 compares MFT-based SNN and ANN-to-SNN conversion on key benchmarks.\par
+\vspace{3pt}
+\centering
+\caption{MFT-based SNN vs. ANN-to-SNN conversion on key benchmarks}
+  \setlength{\tabcolsep}{6pt}
+  \renewcommand{\arraystretch}{1.3}
+  \begin{tabular}{@{}>{\RaggedRight\arraybackslash}p{0.30\textwidth}
+                      >{\RaggedRight\arraybackslash}p{0.33\textwidth}
+                      >{\RaggedRight\arraybackslash}p{0.31\textwidth}@{}}
+    \toprule
+    \textbf{Metric} & \textbf{ANN-to-SNN Conversion} & \textbf{MFT-based SNN} \\
+    \midrule
+    Inference time steps & \(512\text{--}1250\times\) baseline & \(1\times\) (\(512\text{--}1250\times\) reduction) \\
+    ImageNet-1K Accuracy & \(\sim 65\%\) (SOTA) & 67.38\% (new SOTA) \\
+    Remote sensing (UCM) & \(\sim 97\%\) & 99.62\% \\
+    Remote sensing (AID) & \(\sim 96\%\) & 98.81\% \\
+    Convergence speed & Slow (STBP) & Significantly faster \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{multicols}{2}
 
   \begin{center}
 \vspace{-0.5em}
