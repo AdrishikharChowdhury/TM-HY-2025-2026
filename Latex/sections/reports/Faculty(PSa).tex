@@ -38,7 +38,7 @@
 \vspace{-0.5em}
 \begin{minipage}{0.98\columnwidth}
 \centering
-    \includegraphics[width=0.85\columnwidth]{assets/images/faculty_psa_device.jpg}
+    \includegraphics[width=0.75\columnwidth]{assets/images/faculty_psa_device.jpg}
     \captionof{figure}{Cross-section of the heterostructure oxide-engineered double-gate TFET biosensor.}
 \end{minipage}
   \end{center}
@@ -53,7 +53,6 @@
   \subsection*{\centering\uppercase{Fabrication Feasibility}}
   The proposed flow is informed by experimental lateral InAs--Si TFET integration using selective epitaxy and oxide templates [6]. A practical sequence would form the InAs source, silicon channel and drain, deposit the SiO$_2$/HfO$_2$ dielectric stack, define the dual-metal gate, etch the sensing cavities, and add a surface coating and linker chemistry for selective binding.   Cavity etching and interface quality remain important fabrication risks because damage or roughness can increase the very traps examined in this work.
   \subsection*{\centering\uppercase{Fresh-Sensor Response}}
-  Table~1 lists principal model dimensions and operating conditions.
   The electrostatic simulations show that increasing the cavity dielectric constant strengthens the electric field at the source--channel junction. For diseased-cell conditions, the tunnelling distance falls by roughly $70\%$ relative to the reference case, increasing BTBT rate and saturation drain current. The simulated switching ratio improves by several orders of magnitude, while the subthreshold slope becomes steeper for larger $\kappa$ values [1].
 
   \subsubsection*{Sensitivity Metrics}
@@ -66,34 +65,6 @@
     S_{SS}=\tfrac{|SS(\text{cell})-SS(\text{air})|}{SS(\text{air})}.
   \]
   In the neutral-cell model, peak $S_{I_{\mathrm{ON}}}$ reaches approximately $1.11\times10^9$ for T47D at $V_G\approx1.05\,\mathrm{V}$. At a fixed $V_G=1.5\,\mathrm{V}$, T47D produces $S_{I_{\mathrm{ON}}}\approx7.77\times10^8$, while MCF-10A produces approximately $3.42\times10^5$. These large simulated differences motivate the use of drain current as a sensing signal.
-
-\end{multicols}
-
-\begin{table}[b]
-\centering
-\caption{Principal model dimensions and operating conditions.}
-\small
-  \setlength{\tabcolsep}{6pt}
-  \renewcommand{\arraystretch}{1.5}
-  \begin{tabular}{@{}>{\bfseries\RaggedRight\arraybackslash}p{0.28\textwidth}
-                      >{\Centering\arraybackslash}p{0.20\textwidth}
-                      >{\RaggedRight\arraybackslash}p{0.44\textwidth}@{}}
-    \toprule
-    \textbf{Parameter} & \textbf{Value} & \textbf{Purpose} \\
-    \midrule
-    Silicon body thickness & $10\,\mathrm{nm}$ & Nanoscale channel with double-gate control \\
-    Oxide / cavity thickness & $11/8\,\mathrm{nm}$ & Gate stack and dielectric-modulation region \\
-    Channel length & $40\,\mathrm{nm}$ & $30\,\mathrm{nm}$ M1 plus $10\,\mathrm{nm}$ M2 gate regions \\
-    Source / drain doping & $10^{19}/5\times10^{18}\,\mathrm{cm}^{-3}$ & Degenerate p-type source and n-type drain \\
-    Gate work functions & $3.8$ and $4.7\,\mathrm{eV}$ & Dual-material electrostatic engineering \\
-    Gate / drain bias & $0$--$1.5\,\mathrm{V}$ / $1\,\mathrm{V}$ & Transfer sweep and readout condition \\
-    Modelled interface traps & Up to $5\times10^{12}\,\mathrm{cm}^{-2}$ & Transient reliability and hysteresis analysis \\
-    \bottomrule
-  \end{tabular}
-\end{table}
-\vspace{-0.18em}
-
-\begin{multicols}{2}
 
   \noindent\begin{minipage}{\columnwidth}
   \subsubsection*{Effect of Fixed Cell Charge}
@@ -115,14 +86,42 @@
 \vspace{-0.5em}
 \begin{minipage}{0.98\columnwidth}
 \centering
-    \includegraphics[width=0.62\columnwidth]{assets/images/faculty_psa_hysteresis.jpg}
-    \captionof{figure}{Forward and reverse transfer curves defining hysteresis width for the T47D condition.}
+    \includegraphics[width=0.98\columnwidth]{assets/images/faculty_psa_hysteresis.jpg}
+    \captionof{figure}{Energy-band diagram across the device at zero gate bias, showing the channel and trap locations.}
 \end{minipage}
   \end{center}
 \vspace{-0.35em}
 
   \subsection*{\centering\uppercase{Sweep-Rate Dependence}}
   Sweep rate determines how long traps have to exchange charge with the channel. The study models a triangular gate waveform between $0$ and $1.5\,\mathrm{V}$. For T47D, hysteresis is approximately $10.2\,\mathrm{mV}$ at $1\,\mathrm{V/s}$, $16.3\,\mathrm{mV}$ at $0.1\,\mathrm{V/s}$, and $32.8\,\mathrm{mV}$ at $0.01\,\mathrm{V/s}$. A slow sweep allows more traps to capture and retain charge, increasing the difference between forward and reverse thresholds.
+
+  Table~1 lists principal model dimensions and operating conditions.
+\end{multicols}
+
+\begin{table}[!b]
+\centering
+\caption{Principal model dimensions and operating conditions.}
+\small
+  \setlength{\tabcolsep}{6pt}
+  \renewcommand{\arraystretch}{1.5}
+  \begin{tabular}{@{}>{\bfseries\RaggedRight\arraybackslash}p{0.28\textwidth}
+                      >{\Centering\arraybackslash}p{0.20\textwidth}
+                      >{\RaggedRight\arraybackslash}p{0.44\textwidth}@{}}
+    \toprule
+    \textbf{Parameter} & \textbf{Value} & \textbf{Purpose} \\
+    \midrule
+    Silicon body thickness & $10\,\mathrm{nm}$ & Nanoscale channel with double-gate control \\
+    Oxide / cavity thickness & $11/8\,\mathrm{nm}$ & Gate stack and dielectric-modulation region \\
+    Channel length & $40\,\mathrm{nm}$ & $30\,\mathrm{nm}$ M1 plus $10\,\mathrm{nm}$ M2 gate regions \\
+    Source / drain doping & $10^{19}/5\times10^{18}\,\mathrm{cm}^{-3}$ & Degenerate p-type source and n-type drain \\
+    Gate work functions & $3.8$ and $4.7\,\mathrm{eV}$ & Dual-material electrostatic engineering \\
+    Gate / drain bias & $0$--$1.5\,\mathrm{V}$ / $1\,\mathrm{V}$ & Transfer sweep and readout condition \\
+    Modelled interface traps & Up to $5\times10^{12}\,\mathrm{cm}^{-2}$ & Transient reliability and hysteresis analysis \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{multicols}{2}
 
   \begin{center}
 \vspace{-0.5em}
@@ -163,6 +162,8 @@
   \subsection*{\centering\uppercase{Sensitivity Versus Selectivity}}
   Selectivity measures discrimination between the T47D target and other cell conditions. The damaged device can show a larger relative contrast for some comparisons even while its absolute current and sensitivity fall. This is not an improvement in overall sensing quality. A weak signal may appear relatively distinct yet remain difficult to measure accurately in the presence of noise, drift, device variability, and biological interference.
 
+  Reliable benchmarking should therefore report the raw transfer curves, signal magnitude, sensitivity, selectivity, hysteresis, repeatability, noise, and calibration drift. Evaluating only one normalised metric can conceal device degradation.
+
   \noindent\begin{minipage}{\columnwidth}
   \centering
   \captionof{table}{Key reliability results from the calibrated simulation study.}
@@ -185,11 +186,6 @@
     \end{tabular}
   \end{minipage}
   \vspace{2pt}
-
-  Reliable benchmarking should therefore report the raw transfer curves, signal magnitude, sensitivity, selectivity, hysteresis, repeatability, noise, and calibration drift. Evaluating only one normalised metric can conceal device degradation.
-
-  \noindent
-  Reliable benchmarking should therefore report the raw transfer curves, signal magnitude, sensitivity, selectivity, hysteresis, repeatability, noise, and calibration drift. Evaluating only one normalised metric can conceal device degradation.
 
   \subsection*{\centering\uppercase{Clinical and Experimental Limitations}}
   The reported results are calibrated TCAD predictions, not measurements from a fabricated H-OE-DG-TFET biosensor. No liquid-phase breast-cell assay is included. The assumed dielectric constants represent literature values and may vary with frequency, temperature, cell state, measurement method, surface coverage, and biological environment.
