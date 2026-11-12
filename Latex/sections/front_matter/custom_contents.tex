@@ -12,6 +12,12 @@
 \setlength{\cftsecnumwidth}{2.2em}
 
 \makeatletter
+% Author line shown directly below each report title in the contents.
+\newcommand{\l@author}[2]{%
+  \vspace{-0.35em}%
+  \noindent\hspace*{\cftsecnumwidth}%
+  {\footnotesize\itshape\color{black!65}#1}\par
+}
 \newcommand{\customtableofcontents}{%
   \clearpage
   \thispagestyle{empty}%
